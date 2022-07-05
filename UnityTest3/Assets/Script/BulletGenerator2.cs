@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // 총알 프리팹 정의 스크립트
-public class BulletGenerator : MonoBehaviour
+public class BulletGenerator2 : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public int time = 0;
@@ -18,7 +18,7 @@ public class BulletGenerator : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
 
             // BulletController에서 Shoot() 메서드 호출(총알 발사)
-            bullet.GetComponent<BulletController>().ShootToEnemy();
+            bullet.GetComponent<BulletController>().ShootToPlayer();
 
             DestroyObject(bullet, time);
         }

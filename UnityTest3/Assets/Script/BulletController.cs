@@ -5,14 +5,31 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     public float bulletSpeed = 0.0f;
+    GameObject player;
 
-    void Start() { }
-    void Update() { }
-
-    public void Shoot()
+    void Start() 
     {
-        GetComponent<Rigidbody>().AddForce(0, 0, bulletSpeed);
+    
     }
+
+    void Update() 
+    { 
+
+    }
+  
+    public void ShootToEnemy()
+    {
+        GetComponent<Rigidbody>().AddForce(new Vector3(0, 0, bulletSpeed));
+    }  // 플레이어 -> 적
+  
+    public void ShootToPlayer()
+    {
+        player = GameObject.Find("Player");
+        Vector3 dir = player.transform.position - this.transform.position;
+        this.transform.rotation = Quaternion.LookRotation(dir);
+
+        GetComponent<Rigidbody>().AddForce(dir * bulletSpeed / 10);
+    }  // 적 -> 플레이어
 
     public void OnCollisionEnter(Collision collision)
     {
@@ -20,8 +37,8 @@ public class BulletController : MonoBehaviour
         if (collision.collider.tag == "ENEMY")
         {
             GameObject manager = GameObject.Find("ScoreManager");
-            //manager.GetComponent<ScoreScript>().IncScore();
-            manager.GetComponent<ScoreScript>().Target();
+            manager.GetComponent<ScoreScript>().IncScore();
+            //manager.GetComponent<ScoreScript>().Target();
 
             Destroy(gameObject);
         }
