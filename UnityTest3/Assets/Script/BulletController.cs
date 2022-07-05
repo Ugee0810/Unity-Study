@@ -28,7 +28,7 @@ public class BulletController : MonoBehaviour
         Vector3 dir = player.transform.position - this.transform.position;
         this.transform.rotation = Quaternion.LookRotation(dir);
 
-        GetComponent<Rigidbody>().AddForce(dir * bulletSpeed / 10);
+        GetComponent<Rigidbody>().AddForce(dir * bulletSpeed / 5);
     }  // 적 -> 플레이어
 
     public void OnCollisionEnter(Collision collision)
