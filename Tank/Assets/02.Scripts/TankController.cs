@@ -11,6 +11,9 @@ public class TankController : MonoBehaviour
     private string mvAxisName; // 이동축 이름(Vertical)
     private string roAxisName; // 회전축 이름(Horizontal)
 
+    public ParticleSystem tankExplosion;
+    private int atkCount = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,5 +30,22 @@ public class TankController : MonoBehaviour
 
         transform.Translate(0, 0, mv);
         transform.Rotate(0, ro, 0);
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "SHELL") // 충돌체가 포탄이면
+        {
+            atkCount++;
+
+            if (atkCount == 3) // 3회 포탄에 맞을 시
+            {
+                ParticleSystem fire = Instantiate(tankExplosion, transform.position, transform.rotation); // 폭발 파티클 생성
+                fire.Play(); // 이팩트 재생
+
+                Destroy(gameObject);
+                Destroy(fire, 3.0f);
+            }
+        }
     }
 }
