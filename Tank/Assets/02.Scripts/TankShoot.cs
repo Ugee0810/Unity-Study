@@ -6,11 +6,12 @@ public class TankShoot : MonoBehaviour
 {
     public Rigidbody shellPrefab;
     public Transform fireTransform;
-    public float shootSpeed = 0.0f;
 
     public int playerNum = 1;
+    public float shootSpeed = 0f;
+    
     private string fireName;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,11 @@ public class TankShoot : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        Attack();
+    }
+
+    private void Attack()
     {
         if (Input.GetButtonDown(fireName))
         {
