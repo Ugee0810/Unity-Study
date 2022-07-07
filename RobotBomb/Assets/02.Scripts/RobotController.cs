@@ -21,7 +21,7 @@ public class RobotController : MonoBehaviour
     void Update()
     {
         // Debug를 통해 오브젝트의 x위치값을 확인하여, 화면에 나가지 않는 좌표 찾기
-        print("x : " + transform.position.x);
+        // print("x : " + transform.position.x);
 
         // Mathf.Abs() - 유니티에서의 Math함수, 절대값 | velocity.x - 가속도 체크
         // float speedx = Mathf.Abs(robotRd.velocity.x);
@@ -50,15 +50,24 @@ public class RobotController : MonoBehaviour
         }
 
         // Robot Walk Animation Stop
-        if (!isMove) animator.SetBool("isWalk", false); 
-        
+        if (!isMove) animator.SetBool("isWalk", false);
+
         // Robot Jump
         if (Input.GetKeyDown(KeyCode.Space))
         {
             robotRd.AddForce(transform.up * jumpSpeed, ForceMode2D.Impulse);
-            animator.SetBool("isJump", true);
         }
-        if (Input.GetKeyUp(KeyCode.Space))
-            animator.SetBool("isJump", false); 
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        animator.SetBool("isJump", false);
+        jumpSpeed = 7;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        animator.SetBool("isJump", true);
+        jumpSpeed = 0;
     }
 }

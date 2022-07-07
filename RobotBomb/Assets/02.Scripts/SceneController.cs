@@ -5,10 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    void Start() { }
+    Animator animator;
+
+    void Start() 
+    {
+        animator = GetComponent<Animator>();
+    }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Return)) SceneManager.LoadScene("MainScene");
+        if (Input.GetKey(KeyCode.Return))
+        {
+            animator.SetBool("isDeath", false);
+            SceneManager.LoadScene("MainScene");
+        }
     }
 }

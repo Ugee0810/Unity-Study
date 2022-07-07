@@ -18,8 +18,8 @@ public class BombMaker : MonoBehaviour
         {
             delta = 0;
             GameObject bomb = Instantiate(bombPrefab);
-            int x = Random.Range(-8, 9);
-            bomb.transform.position = new Vector2(x, 6);
+            float x = Random.Range(-11.5f, 12.5f);
+            bomb.transform.position = new Vector2(x, 8);
         }
     }
 }
