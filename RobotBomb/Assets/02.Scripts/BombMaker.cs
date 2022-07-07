@@ -8,10 +8,7 @@ public class BombMaker : MonoBehaviour
     public float interval;
     float delta = 0;
 
-    void Start()
-    {
-        
-    }
+    void Start() { }
 
     void Update()
     {

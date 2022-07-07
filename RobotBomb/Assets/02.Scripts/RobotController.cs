@@ -11,7 +11,6 @@ public class RobotController : MonoBehaviour
     public float jumpSpeed;
 
     private bool isMove;
-    private bool isJumping;
 
     void Start()
     {
@@ -22,18 +21,17 @@ public class RobotController : MonoBehaviour
     void Update()
     {
         // Debug를 통해 오브젝트의 x위치값을 확인하여, 화면에 나가지 않는 좌표 찾기
-        // print("x : " + transform.position.x);
+        print("x : " + transform.position.x);
 
         // Mathf.Abs() - 유니티에서의 Math함수, 절대값 | velocity.x - 가속도 체크
         // float speedx = Mathf.Abs(robotRd.velocity.x);
         // print($"robotRd.velocity.x = {speedx}");
 
-        //print($"isMove : {isMove}");
-        //isMove = false;
-        print($"isJumping : {isJumping}");
+        // print($"isMove : {isMove}");
+        isMove = false;
 
         // Robot Move ← 
-        if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x >= -8.0f)
+        if (Input.GetKey(KeyCode.LeftArrow) && transform.position.x >= -11.5f)
         {
             isMove = true;
             animator.SetBool("isWalk", true);
@@ -43,7 +41,7 @@ public class RobotController : MonoBehaviour
         }
 
         // Robot Move →
-        if (Input.GetKey(KeyCode.RightArrow) && transform.position.x <= 8.0f)
+        if (Input.GetKey(KeyCode.RightArrow) && transform.position.x <= 11.5f)
         {
             isMove = true;
             animator.SetBool("isWalk", true);
@@ -51,23 +49,16 @@ public class RobotController : MonoBehaviour
             transform.localScale = new Vector2(2.0f, 2.0f);
         }
 
-        // Robot Stop Idle(속도를 이용해 싱크 조절)
-        if (!isMove) animator.SetBool("isWalk", false);
-
-
+        // Robot Walk Animation Stop
+        if (!isMove) animator.SetBool("isWalk", false); 
+        
         // Robot Jump
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            animator.SetTrigger("jumpTrigger");
             robotRd.AddForce(transform.up * jumpSpeed, ForceMode2D.Impulse);
-            isJumping = true;
-            jumpSpeed = 0;
+            animator.SetBool("isJump", true);
         }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        isJumping = false;
-        jumpSpeed = 7;
+        if (Input.GetKeyUp(KeyCode.Space))
+            animator.SetBool("isJump", false); 
     }
 }
