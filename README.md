@@ -28,3 +28,5 @@
    = Conditions(조건)
    - Parameters
      - 상태변수
+ - Image오브젝트의 fillAmount 개념(Hp바)
+ - SceneManager.LoadScene("") - Scene 전환
