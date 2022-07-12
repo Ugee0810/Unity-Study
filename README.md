@@ -28,24 +28,39 @@
  - Animator
    - Conditions(조건)
    - Parameters
-     - Int
+     - In
      - Bull
      - Trigger
  - Image오브젝트의 fillAmount 개념(Hp바)
  - SceneManager.LoadScene("") - Scene 전환
 
-### 22-07-08(Fri)
- - 위키북스 - 절대강좌 유니티
- - 
- - 
-
 ### 22-07-12(Tue)
  - 유니티 활용 범위, 예시
  - 프로젝트 내 Resources 폴더 설명
+ - 위키북스 - 절대강좌 유니티
+ 
+### 22-07-13(Wed)
+ - 
+ - 
  - 
  
-### 22-07-08(Sun)
+ ### 22-07-14(Thu)
+ - 
+ - 
+
+### 22-07-()
+ - 
+ - 
+
+### 22-07-()
+ - 
+ - 
+
+### 22-07-()
+ - 
+ - 
+
+### 22-07-()
  - 
  - 
  - 
- 
