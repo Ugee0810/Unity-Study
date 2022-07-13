@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     {
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         GetComponent<Rigidbody2D>().AddForce(Vector2.up * 200);
+        //transform.Translate();
+        //Vector3.MoveTowards();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
