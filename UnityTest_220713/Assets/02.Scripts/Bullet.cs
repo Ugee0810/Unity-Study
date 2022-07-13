@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Vector3 direction;
+
+    public void Shoot(Vector3 direction)
     {
-        
+        this.direction = direction;
+        //Destroy(gameObject, 5.0f);
+        Invoke("ReturnBulletToPolling", 5.0f); // 오브젝트를 풀링하므로 Destroy하면 안됨, Invoke로 5초마다 함수 반환
     }
 
-    // Update is called once per frame
+    public void ReturnBulletToPolling()
+    {
+        ObjectPool.ReturnObject(this);
+    }
+
     void Update()
     {
-        
+        transform.Translate(direction);
     }
 }
