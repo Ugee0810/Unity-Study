@@ -74,7 +74,11 @@
    - Object Pooling
      - https://whiny.tistory.com/17
      - https://a6ly.dev/93
-   
+ - 3D 'UnityTest_220713'
+   - RaycastHit ???; - 마우스포인터가 어디에 닿아있는지 캐치하는 것
+   - normalized vs magnitude
+     - https://neohtux.tistory.com/202
+   - ★ObjectPool - 디펜스 웨이브나, 이펙트, 파티클처럼 무한반복하는 오브젝트들을 사전에 만들어두고 가져와 사용하는 기술로, 리소스 저하(GC,Garbage Collecter) 예방 가능
  - 멀티쓰레드
  ### 22-07-14(Thu)
  - 
