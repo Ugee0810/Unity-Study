@@ -35,7 +35,6 @@
  - SceneManager.LoadScene("") - Scene 전환
 
 ### 22-07-12(Tue)
- - 위키북스 - 절대강좌 유니티
  - 유니티 활용 범위, 예시
  - 프로젝트 내 Resources 폴더 설명
  - Export Package(리소스 압축 및 배포 용이), Import Package
@@ -80,7 +79,7 @@
      - https://neohtux.tistory.com/202
    - ★ObjectPool - 디펜스 웨이브나, 이펙트, 파티클처럼 무한반복하는 오브젝트들을 사전에 만들어두고 가져와 사용하는 기술로, 리소스 저하(GC,Garbage Collecter) 예방 가능
  - ★처음 다른 사람의 코드를 읽을 때 메인에서 스타트와 업데이트 내부로 파악하는 게 빠르다.  
-
+ - 위키북스 - 절대강좌 유니티
  ### 22-07-14(Thu)
  - 멀티쓰레드
  - 
