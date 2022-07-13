@@ -45,16 +45,41 @@
  - Center와 Pibot 좌표(모델링의 배치 시, Pivot좌표계(모델링의 땅)로 배치하는게 용이하다.)
  - UI PNG 파일 2D Sprite 사용해 분리
  - Canvas 개념
- - 2D Flappy Bird 게임 제작
+ - 2D 'Flappy Bird' 게임 제작
    - 좌표계 공부
    - 안드로이드 베이스 - 화면 해상도 비율 자동 조정 스크립트
+ - ★'GameManager'라는 스크립트 이름을 사용하면 톱니바퀴 아이콘으로 바꾸어 준다.(가시성, 로직을 전체 관리하는 중앙 스크립트 형식적 역할(생명 관리, 타임 어택 시간 관리 등)
  
 ### 22-07-13(Wed)
+ - 유니티 C# 스크립트 생명주기 함수(이벤트의 처리 과정)
+   - ![image](https://user-images.githubusercontent.com/85896566/178629812-9bb7680c-77b3-4678-9eb8-73eebe7e3a4a.png)
  - 좌표 이동의 방법
- - 유니티 시스템에서 호출되는 이벤트의 처리 과정에 대해 설명
+   - transform을 이용한 이동 - 움직인다는 느낌 보단 포지션만 변경된다는 느낌 Ex)총알
+     - transform.Translate(Vector3.right * speed * Time.deltaTime);
+     - transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 0, 0), Time.deltaTime);
+   - RigidBody를 이용한 이동 - 실제 중력을 받고 움직이는 내용
+     - AddForce()
+     - velocity
+   - Time.deltatime
+     - 컴퓨터의 성능을 보정하기 위해 사용
+ - 2D 'Flappy Bird' 게임 제작
+   - tag를 쓰지 않고 충돌처리 방법
+   - Coroutine()과 Invoke()의 차이점
+      - ![image](https://user-images.githubusercontent.com/85896566/178635850-f8bda70e-ff06-447a-bac3-48b141a2a76d.png)
+      - 인보크는 2D 'Flappy Bird'의 'GameManager`스크립트 참조
+   - OnTrigger와 OnCollision
+   - SerializeField와 Serializable
+     - https://daisy0461.tistory.com/23
+   - HideInInspector(유니티 인스펙터 창에서 변수 숨기기)
+   - Object Pooling
+     - https://whiny.tistory.com/17
+     - https://a6ly.dev/93
+ - 3D 'UnityTest_220713'
+   - RaycastHit ???; - 마우스포인터가 어디에 닿아있는지 캐치하는 것
+   - normalized vs magnitude
+     - https://neohtux.tistory.com/202
+   - ★ObjectPool - 디펜스 웨이브나, 이펙트, 파티클처럼 무한반복하는 오브젝트들을 사전에 만들어두고 가져와 사용하는 기술로, 리소스 저하(GC,Garbage Collecter) 예방 가능
  - 멀티쓰레드
- - tag를 쓰지 않고 충돌처리 방법
- 
  ### 22-07-14(Thu)
  - 
  - 
