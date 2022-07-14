@@ -82,24 +82,32 @@
  - ![image](https://user-images.githubusercontent.com/85896566/178686819-3e8246bb-14ab-4429-9adf-3e8354fba2a2.png)
    - 오브젝트 풀링을 사용하기 번거로울 때, Delegate를 사용하여 해당 오브젝트를 반응시킨다.
    - 예시)마법사가 친구들을 힐링해줄 때 오브젝트 풀링보단 대체자를 사용하는게 더 자연스러운 로직이기 때문
- - 위키북스 - 절대강좌 유니티
  ### 22-07-14(Thu)
+ - 네트워크 이론과 게임 개발(포톤, 파이어베이스) 개념 공부
+   - 레트로 강의 - 네트워크 게임 개발하기 - 이론 1/2 (로컬 플레이어와 리모트 플레이어)
+     - https://youtu.be/z8KLb3lQofg
+   - 레트로 강의 - 네트워크 게임 개발하기 - 이론 2/2 (서버-클라이언트와 권한 분리)
+     - https://youtu.be/xJFadtTv5BI
+   - PhotonEngine
+     - https://www.photonengine.com/ko-KR/
+   - Firebase
+     - https://firebase.google.com/?hl=ko
+   - 레트로 강의 - Unity MultiPlayer Network Game Study (포톤 + 파이어베이스) 10편
+     - https://www.youtube.com/watch?v=-QsfDgvcheQ&list=PLctzObGsrjfwF7kkoraWb235U8Z602gx1
+
+### 22-07-()
+ - 
+ - 
+
+### 22-07-()
+ - 
+ - 
+
+### 22-07-()
+ - 
+ - 
+
+### 22-07-()
  - 멀티쓰레드
- - 
-
-### 22-07-()
- - 
- - 
-
-### 22-07-()
- - 
- - 
-
-### 22-07-()
- - 
- - 
-
-### 22-07-()
- - 
- - 
+ - 위키북스 - 절대강좌 유니티
  - 
