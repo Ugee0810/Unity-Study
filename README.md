@@ -82,24 +82,68 @@
  - ![image](https://user-images.githubusercontent.com/85896566/178686819-3e8246bb-14ab-4429-9adf-3e8354fba2a2.png)
    - 오브젝트 풀링을 사용하기 번거로울 때, Delegate를 사용하여 해당 오브젝트를 반응시킨다.
    - 예시)마법사가 친구들을 힐링해줄 때 오브젝트 풀링보단 대체자를 사용하는게 더 자연스러운 로직이기 때문
- - 위키북스 - 절대강좌 유니티
  ### 22-07-14(Thu)
+ - 네트워크 이론과 게임 개발(포톤, 파이어베이스) 개념 공부, 실습
+   - 레트로 강의 : 네트워크 게임 개발하기 - 이론 1/2 (로컬 플레이어와 리모트 플레이어)
+     - https://youtu.be/z8KLb3lQofg
+   - 레트로 강의 : 네트워크 게임 개발하기 - 이론 2/2 (서버-클라이언트와 권한 분리)
+     - https://youtu.be/xJFadtTv5BI
+       - Play as Host Server
+         - 한 명의 플레이어가 서버 호스트가 되는 방식
+         - 서버 비용이 절감된다.
+         - 호스트의 PC사양과 인터넷 환경에 네트워크 품질이 달라진다.
+       - Dedicated Server
+         - 플레이어로 참여하지 않고 고정된 서버로서, 100% 자원을 게임 구동에 사용
+         - 서버용 컴퓨터가 별개이므로, 네트워크 품질이 높다.
+       - ★네트워크 공통 사항
+         - 서버는 핵, 치팅 문제를 방지하기 위해 클라이언트를 절대 믿지 않는다.
+         - 클라이언트는 총알을 쏘는 모션과 요청만 할 뿐, 호스트 게임 속에서 총알을 생성하고 물리 충돌이 발생한다. 이후 호스트 게임이 다른 클라이언트에게 정보를 전달한다.
+         - 서버에서 일어난 일은 모든 클라이언트에서 일어난 일이고, 서버에서 일어나지 않은 일은 클라이언트에서도 일어나지 않았다.
+         - 초당 패킷 교환 양이 높고, 손실을 최소화하는 게 좋은 서버
+         - 효율적인 방법 : 모든 처리를 전부 동기화하면 네트워크 비용이 비싸지고 무겁다. 그래서 꼭 필요한 정보만 주고 받는다.(애니메이션은 전부 싱크 할 필요 없음) 총을 쏘거나 데미지를 갱신하는 중요한 일에 중점을 둔다.(이것도 당연히 호스트에게 요청하는 방식)
+   - PhotonEngine
+     - https://www.photonengine.com/ko-KR/
+   - Firebase
+     - https://firebase.google.com/?hl=ko
+   - 레트로 강의 : Unity MultiPlayer Network Game Study (PhotonEngine + Firebase)
+     - https://www.youtube.com/watch?v=-QsfDgvcheQ&list=PLctzObGsrjfwF7kkoraWb235U8Z602gx1
+       - 1화
+         - 데스크톱, 모바일 지원
+         - 계정 인증 : 구글 파이어베이스
+         - 네트워크 : 포톤
+         - 구글이나 애플, 또는 이메일 계정으로 로그인
+         - 포톤의 매치메이킹 서버를 통해 빈 방을 생성하거나 이미 생성된 방에 접속해 게임을 진행
+         - 로컬과 리모트 오브젝트의 차이
+         - RPC의 개념
+         - 준비 프로젝트
+       - 2화
+         - 파이어베이스 유니티 SDK 다운로드 링크 : https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbF9sbzNzVTB4S0p4MXBYSTR3Wnc1N3ZBTnNsQXxBQ3Jtc0tuN1ZweVotSVBVWjFGcXhuNkVQUXhHUHFLY3RESU81U3NWQ3FLTmd3Ml9oX3ZqRDludEcyQm51aF8ycndpT2NYdDJwaEdzdm9paTJ2NXRBaU5paDdNeVcxMFB2ek1HVlgzaGt1aVZJbHhURUxwbHNrNA&q=https%3A%2F%2Ffirebase.google.com%2Fdownload%2Funity%3Fhl%3Dko&v=0QY_W-7PSbI
+         - 파이어베이스란? Only One BackEnd 플랫폼 - 백엔드 지식이 부족하더라도 복잡한 웹API 설계를 한 번에 대체할 수 있다.
+         - 계정 인증을 위해 FirebaseAuth 임포트
+         - 포톤 임포트
+         - 파이어베이스 인식을 위해 앱의 식별자 변경
+         - 신뢰할 수 있는 앱 - 키 설정
+       - 3화
+         - 포톤 네트워크와 유니티 앱 동기화
+         - 파이어베이스와 유니티 앱 동기화
+         - Firebase Authentication - 직접 로그인을 구현하지 않고 이 서비스를 사용하므로써, 한 번에 해결 가능
+         - 파이어베이스 프로젝트 설정에서 디지털 지문 추가
+
+https://console.firebase.google.com/project/unity-pong-sample-backen-e21e4/settings/general/android:com.Ugee.firebasepong?hl=ko
+https://dashboard.photonengine.com/ko-KR
+### 22-07-()
+ - 
+ - 
+
+### 22-07-()
+ - 
+ - 
+
+### 22-07-()
+ - 
+ - 
+
+### 22-07-()
  - 멀티쓰레드
- - 
-
-### 22-07-()
- - 
- - 
-
-### 22-07-()
- - 
- - 
-
-### 22-07-()
- - 
- - 
-
-### 22-07-()
- - 
- - 
+ - 위키북스 - 절대강좌 유니티
  - 
