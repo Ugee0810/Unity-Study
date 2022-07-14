@@ -107,7 +107,30 @@
      - https://firebase.google.com/?hl=ko
    - 레트로 강의 : Unity MultiPlayer Network Game Study (PhotonEngine + Firebase)
      - https://www.youtube.com/watch?v=-QsfDgvcheQ&list=PLctzObGsrjfwF7kkoraWb235U8Z602gx1
+       - 1화
+         - 데스크톱, 모바일 지원
+         - 계정 인증 : 구글 파이어베이스
+         - 네트워크 : 포톤
+         - 구글이나 애플, 또는 이메일 계정으로 로그인
+         - 포톤의 매치메이킹 서버를 통해 빈 방을 생성하거나 이미 생성된 방에 접속해 게임을 진행
+         - 로컬과 리모트 오브젝트의 차이
+         - RPC의 개념
+         - 준비 프로젝트
+       - 2화
+         - 파이어베이스 유니티 SDK 다운로드 링크 : https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbF9sbzNzVTB4S0p4MXBYSTR3Wnc1N3ZBTnNsQXxBQ3Jtc0tuN1ZweVotSVBVWjFGcXhuNkVQUXhHUHFLY3RESU81U3NWQ3FLTmd3Ml9oX3ZqRDludEcyQm51aF8ycndpT2NYdDJwaEdzdm9paTJ2NXRBaU5paDdNeVcxMFB2ek1HVlgzaGt1aVZJbHhURUxwbHNrNA&q=https%3A%2F%2Ffirebase.google.com%2Fdownload%2Funity%3Fhl%3Dko&v=0QY_W-7PSbI
+         - 파이어베이스란? Only One BackEnd 플랫폼 - 백엔드 지식이 부족하더라도 복잡한 웹API 설계를 한 번에 대체할 수 있다.
+         - 계정 인증을 위해 FirebaseAuth 임포트
+         - 포톤 임포트
+         - 파이어베이스 인식을 위해 앱의 식별자 변경
+         - 신뢰할 수 있는 앱 - 키 설정
+       - 3화
+         - 포톤 네트워크와 유니티 앱 동기화
+         - 파이어베이스와 유니티 앱 동기화
+         - Firebase Authentication - 직접 로그인을 구현하지 않고 이 서비스를 사용하므로써, 한 번에 해결 가능
+         - 파이어베이스 프로젝트 설정에서 디지털 지문 추가
 
+https://console.firebase.google.com/project/unity-pong-sample-backen-e21e4/settings/general/android:com.Ugee.firebasepong?hl=ko
+https://dashboard.photonengine.com/ko-KR
 ### 22-07-()
  - 
  - 
