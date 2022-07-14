@@ -84,9 +84,9 @@
    - 예시)마법사가 친구들을 힐링해줄 때 오브젝트 풀링보단 대체자를 사용하는게 더 자연스러운 로직이기 때문
  ### 22-07-14(Thu)
  - 네트워크 이론과 게임 개발(포톤, 파이어베이스) 개념 공부, 실습
-   - 레트로 강의 - 네트워크 게임 개발하기 - 이론 1/2 (로컬 플레이어와 리모트 플레이어)
+   - 레트로 강의 : 네트워크 게임 개발하기 - 이론 1/2 (로컬 플레이어와 리모트 플레이어)
      - https://youtu.be/z8KLb3lQofg
-   - 레트로 강의 - 네트워크 게임 개발하기 - 이론 2/2 (서버-클라이언트와 권한 분리)
+   - 레트로 강의 : 네트워크 게임 개발하기 - 이론 2/2 (서버-클라이언트와 권한 분리)
      - https://youtu.be/xJFadtTv5BI
        - Play as Host Server
          - 한 명의 플레이어가 서버 호스트가 되는 방식
@@ -105,7 +105,7 @@
      - https://www.photonengine.com/ko-KR/
    - Firebase
      - https://firebase.google.com/?hl=ko
-   - 레트로 강의 - Unity MultiPlayer Network Game Study (포톤 + 파이어베이스) 10편
+   - 레트로 강의 : Unity MultiPlayer Network Game Study (PhotonEngine + Firebase)
      - https://www.youtube.com/watch?v=-QsfDgvcheQ&list=PLctzObGsrjfwF7kkoraWb235U8Z602gx1
 
 ### 22-07-()
