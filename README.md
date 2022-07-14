@@ -127,11 +127,14 @@
          - 포톤 네트워크와 유니티 앱 동기화
          - 파이어베이스와 유니티 앱 동기화
          - Firebase Authentication - 직접 로그인을 구현하지 않고 이 서비스를 사용하므로써, 한 번에 해결 가능
-         - 파이어베이스 프로젝트 설정에서 디지털 지문 추가
-
-https://console.firebase.google.com/project/unity-pong-sample-backen-e21e4/settings/general/android:com.Ugee.firebasepong?hl=ko
-https://dashboard.photonengine.com/ko-KR
-### 22-07-()
+         - 파이어베이스 프로젝트 설정에서 디지털 지문 추가(JDK를 설치하고 환경 변수를 추가해야함)
+         - 파이어베이스에서 사용자 추가(가입 구현x)
+       - 4화
+         - 유니티 로그인 화면 구현
+           - Signin Scene의 Auth Manager 오브젝트에서 UI요소의 필드 값을 동기화함
+           - ![image](https://user-images.githubusercontent.com/85896566/178981342-aa25fe63-327e-48b2-9d54-532d259bd7a6.png)
+           - 제트브레인이라는 툴을 사용해야 하므로 완성본을 가지고 강의에 맞춰 따라간다.
+### 22-07-15(Fri)
  - 
  - 
 
