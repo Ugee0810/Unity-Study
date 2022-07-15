@@ -135,7 +135,17 @@
            - ![image](https://user-images.githubusercontent.com/85896566/178981342-aa25fe63-327e-48b2-9d54-532d259bd7a6.png)
            - 제트브레인이라는 툴을 사용해야 하므로 완성본을 가지고 강의에 맞춰 따라간다.
 ### 22-07-15(Fri)
- - 
+ - 2D 슈팅 게임 생성
+   - GetAxis vs GetAxisRaw
+     - GetAxis : 디테일한 동작을 연출하고 싶을 때 사용
+     - GetAxisRaw : 방향에 대해 정보를 알고 싶을 때 : output ex) -1, 0, 1
+     - RigidBody2D - Body Type
+       - 1.Dynamic - 실제 물레엔진과 중력을 받음
+       - 2.Kinematic - 스크립트 의존
+       - 3.Static - 물리 계산만 함
+     - OnTriggerEnter2D에서 Tag를 이용해 인게임에서 오브젝트들이 외부로 나가지 않게 트리거함
+     - Animator와 Animation (https://novemberfirst.tistory.com/96)
+     - 피격 스프라이트 구현
  - 
 
 ### 22-07-()
