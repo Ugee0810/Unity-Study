@@ -146,7 +146,8 @@
      - OnTriggerEnter2D에서 Tag를 이용해 인게임에서 오브젝트들이 외부로 나가지 않게 트리거함
      - Animator와 Animation (https://novemberfirst.tistory.com/96)
      - 피격 스프라이트 구현
- - 
+     - ★하이어라키에 있는 오브젝트는 프리팹에서 가져올 수 없다.(프리팹에서 프리팹으로는 가능)
+ - 싱글톤, 오브젝트풀링, if절, invoke등을 사용하여 이벤트를 작성하여 
 
 ### 22-07-()
  - 
