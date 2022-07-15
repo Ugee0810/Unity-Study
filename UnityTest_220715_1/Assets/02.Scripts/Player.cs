@@ -4,23 +4,29 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float speed = 0f; // 변수 선언 할 때 초기화하는 게 좋다.
-    public float bulletSpeed = 0f;
-    public float curBulletDelay = 0f;
-    public float maxBulletDealy;
+    public  int   life = 0;
+    public  float moveSpeed = 0f;
+    public  float bulletSpeed = 0f;
+    private float curBulletDelay = 0f;
+    public  float maxBulletDelay;
 
-    public GameObject playerBullet;
+    public GameObject bulletPlayer;
+    public GameObject gameManager;
 
-    public bool isTouchTop    = false;
-    public bool isTouchBottom = false;
-    public bool isTouchRight  = false;
-    public bool isTouchLeft   = false;
+    public bool isHit = false;
 
-    private Animator animator;
+    public bool[] joyControl;
+    public bool   isControl;
+
+    private bool isTouchTop    = false;
+    private bool isTouchBottom = false;
+    private bool isTouchRight  = false;
+    private bool isTouchLeft   = false;
+    //private Animator anim;
 
     void Start()
     {
-        animator.GetComponent<Animator>(); // 컴포넌트에 대한 정의는 Start(), Awake()에서 초기화 | Awake는 전체 Scene이 로드될 때
+        //anim.GetComponent<Animator>(); // 컴포넌트에 대한 정의는 Start(), Awake()에서 초기화 | Awake는 전체 Scene이 로드될 때
     }
 
     void Update()
@@ -32,16 +38,11 @@ public class Player : MonoBehaviour
 
     void Fire()
     {
-        if (!Input.GetButton("Jump")) // Space
-        {
-            return;
-        }
+        if (!Input.GetButton("Jump")) return;
+        if (curBulletDelay < maxBulletDelay) return;
 
-        if (curBulletDelay < maxBulletDealy)
-            return;
-
-        GameObject bullet = Instantiate(playerBullet, transform.position, Quaternion.identity);
-        Rigidbody2D bulletRigidbody2D = bullet.GetComponent<Rigidbody2D>();
+        GameObject pBullet = Instantiate(bulletPlayer, transform.position, Quaternion.identity);
+        Rigidbody2D bulletRigidbody2D = pBullet.GetComponent<Rigidbody2D>();
         bulletRigidbody2D.AddForce(Vector2.up * bulletSpeed, ForceMode2D.Impulse); // ForceMode2D.Impulse - 질량 계산 무시(감속x)
 
         curBulletDelay = 0f;
@@ -55,23 +56,46 @@ public class Player : MonoBehaviour
     void Move()
     {
         float h = Input.GetAxisRaw("Horizontal");
-        if ((isTouchRight && h == 1) || (isTouchLeft && h == -1)) h = 0;
-
         float v = Input.GetAxisRaw("Vertical");
-        if ((isTouchTop && v == 1) || (isTouchBottom && v == -1)) v = 0;
+
+        if (joyControl[0]) { h = -1; v =  1; }
+        if (joyControl[1]) { h =  0; v =  1; }
+        if (joyControl[2]) { h =  1; v =  1; }
+        if (joyControl[3]) { h = -1; v =  0; }
+        if (joyControl[4]) { h =  0; v =  0; }
+        if (joyControl[5]) { h =  1; v =  0; }
+        if (joyControl[6]) { h = -1; v =  1; }
+        if (joyControl[7]) { h = -1; v = -1; }
+        if (joyControl[8]) { h =  0; v = -1; }
+        if (joyControl[9]) { h =  1; v = -1; }
+
+        if ((isTouchRight && h == 1) || (isTouchLeft   && h == -1) || !isControl) h = 0;
+        if ((isTouchTop   && v == 1) || (isTouchBottom && v == -1) || !isControl) v = 0;
 
         Vector2 curPos = transform.position; // 현 위치
-        Vector2 nextPos = new Vector2(h, v) * speed * Time.deltaTime; // 이동하는 위치
+        Vector2 nextPos = new Vector2(h, v) * moveSpeed * Time.deltaTime; // 이동 거리
 
         transform.position = curPos + nextPos;
-        
-        if (Input.GetButtonDown("Horizontal") || Input.GetButtonUp("Horizontal"))
-        {
-            animator.SetInteger("Input", (int) h);
-        }
 
-        Debug.Log("Input : " + h);
-        Debug.Log("Input : " + v);
+        //anim.SetInteger("MoveDiretion", (int) h);
+    }
+
+    public void JoyPanel(int type)
+    {
+        for (int idx = 0; idx < 9; idx++)
+        {
+            joyControl[idx] = idx == type;
+        }
+    }    
+
+    public void JoyDown()
+    {
+        isControl = true;
+    }
+
+    public void JoyUp()
+    {
+        isControl = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -101,6 +125,25 @@ public class Player : MonoBehaviour
                     }
                     break;
             }
+        }
+        else if (collision.gameObject.tag == "EnemyBullet")
+        {
+            life--;
+
+            GameManager gMager = gameManager.GetComponent<GameManager>();
+
+            gMager.UpdateLifeIcon(life);
+
+            if (life == 0)
+            {
+                // GameOver()
+            }
+            else
+            {
+                gMager.RespawnPlayer();
+            }
+            //Destroy(collision.gameObject);
+            gameObject.SetActive(false);
         }
     }
 
