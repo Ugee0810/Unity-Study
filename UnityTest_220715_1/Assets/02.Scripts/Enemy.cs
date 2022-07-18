@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
         Rigidbody2D rigidbody2D = eBullet.GetComponent<Rigidbody2D>();
 
         // Player를 유도하는 로직
-        Vector2 dirVec = bulletEnemy.transform.position - transform.position;
+        Vector2 dirVec = player.transform.position - transform.position;
         rigidbody2D.AddForce(dirVec.normalized * bulletSpeed, ForceMode2D.Impulse);
 
         curBulletDelay = 0;

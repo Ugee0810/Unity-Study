@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
     public GameObject[] enemyNumber;
     public Image[] imgLifes;
 
+    public Text scoreText;
+   // public 
+
+    public ObjectManager objManager;
+
     void Update()
     {
         SpawnEnemy();
@@ -35,9 +40,13 @@ public class GameManager : MonoBehaviour
 
         int randPoint = Random.Range(0, 5);
 
-        GameObject createEnemy = Instantiate(enemyNumber[Random.Range(0, 4)],
-                                             spawnPoints[randPoint].position,
-                                             spawnPoints[randPoint].rotation);
+        //GameObject createEnemy = Instantiate(enemyNumber[Random.Range(0, 4)],
+        //                                     spawnPoints[randPoint].position,
+        //                                     spawnPoints[randPoint].rotation);
+
+        // 오브젝트 풀링 이후 수정된 부분(생성은 오브젝트 매니저 스크립트에서
+        GameObject createEnemy = objManager.MakeObject("Enemy");
+        createEnemy.transform.position = spawnPoints[randPoint].position;
 
         Rigidbody2D rigidbody2D = createEnemy.GetComponent<Rigidbody2D>();
         Enemy enemy = createEnemy.GetComponent<Enemy>(); // Enemy의 speed 변수를 가져온다.

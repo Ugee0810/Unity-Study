@@ -22,11 +22,12 @@ public class Player : MonoBehaviour
     private bool isTouchBottom = false;
     private bool isTouchRight  = false;
     private bool isTouchLeft   = false;
-    //private Animator anim;
+
+    Animator anim;
 
     void Start()
     {
-        //anim.GetComponent<Animator>(); // 컴포넌트에 대한 정의는 Start(), Awake()에서 초기화 | Awake는 전체 Scene이 로드될 때
+        anim = GetComponent<Animator>(); // 컴포넌트에 대한 정의는 Start(), Awake()에서 초기화 | Awake는 전체 Scene이 로드될 때
     }
 
     void Update()
@@ -42,8 +43,8 @@ public class Player : MonoBehaviour
         if (curBulletDelay < maxBulletDelay) return;
 
         GameObject pBullet = Instantiate(bulletPlayer, transform.position, Quaternion.identity);
-        Rigidbody2D bulletRigidbody2D = pBullet.GetComponent<Rigidbody2D>();
-        bulletRigidbody2D.AddForce(Vector2.up * bulletSpeed, ForceMode2D.Impulse); // ForceMode2D.Impulse - 질량 계산 무시(감속x)
+        Rigidbody2D pBbulletRigidbody2D = pBullet.GetComponent<Rigidbody2D>();
+        pBbulletRigidbody2D.AddForce(Vector2.up * bulletSpeed, ForceMode2D.Impulse); // ForceMode2D.Impulse - 질량 계산 무시(감속x)
 
         curBulletDelay = 0f;
     }
@@ -64,20 +65,25 @@ public class Player : MonoBehaviour
         if (joyControl[3]) { h = -1; v =  0; }
         if (joyControl[4]) { h =  0; v =  0; }
         if (joyControl[5]) { h =  1; v =  0; }
-        if (joyControl[6]) { h = -1; v =  1; }
-        if (joyControl[7]) { h = -1; v = -1; }
-        if (joyControl[8]) { h =  0; v = -1; }
-        if (joyControl[9]) { h =  1; v = -1; }
+        if (joyControl[6]) { h = -1; v = -1; }
+        if (joyControl[7]) { h =  0; v = -1; }
+        if (joyControl[8]) { h =  1; v = -1; }
 
-        if ((isTouchRight && h == 1) || (isTouchLeft   && h == -1) || !isControl) h = 0;
-        if ((isTouchTop   && v == 1) || (isTouchBottom && v == -1) || !isControl) v = 0;
+        if ((isTouchRight && h == 1) || (isTouchLeft && h == -1) || !isControl)
+            h = 0;
 
-        Vector2 curPos = transform.position; // 현 위치
-        Vector2 nextPos = new Vector2(h, v) * moveSpeed * Time.deltaTime; // 이동 거리
+        if ((isTouchTop && v == 1) || (isTouchBottom && v == -1) || !isControl)
+            v = 0;
+
+        Vector3 curPos = transform.position; // 현 위치
+        Vector3 nextPos = new Vector3(h, v, 0) * moveSpeed * Time.deltaTime; // 이동 거리
 
         transform.position = curPos + nextPos;
 
-        //anim.SetInteger("MoveDiretion", (int) h);
+        if (Input.GetButtonDown("Horizontal") || Input.GetButtonUp("Horizontal"))
+        {
+            anim.SetInteger("MoveDiretion", (int)h);
+        }
     }
 
     public void JoyPanel(int type)
@@ -86,7 +92,7 @@ public class Player : MonoBehaviour
         {
             joyControl[idx] = idx == type;
         }
-    }    
+    }
 
     public void JoyDown()
     {
@@ -128,11 +134,16 @@ public class Player : MonoBehaviour
         }
         else if (collision.gameObject.tag == "EnemyBullet")
         {
+            if (isHit)
+                return;
+
+            isHit = true;
+
             life--;
 
-            GameManager gMager = gameManager.GetComponent<GameManager>();
+            GameManager gManager = gameManager.GetComponent<GameManager>();
 
-            gMager.UpdateLifeIcon(life);
+            gManager.UpdateLifeIcon(life);
 
             if (life == 0)
             {
@@ -140,10 +151,10 @@ public class Player : MonoBehaviour
             }
             else
             {
-                gMager.RespawnPlayer();
+                gManager.RespawnPlayer();
             }
-            //Destroy(collision.gameObject);
             gameObject.SetActive(false);
+            Destroy(collision.gameObject);
         }
     }
 
