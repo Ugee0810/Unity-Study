@@ -1,0 +1,4 @@
+EnemyA,0.2,1
+EnemyB,1,2
+EnemyC,1.2,3
+EnemyD,1,4

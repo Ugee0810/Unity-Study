@@ -4,30 +4,29 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public  int   life = 0;
-    public  float moveSpeed = 0f;
-    public  float bulletSpeed = 0f;
-    private float curBulletDelay = 0f;
-    public  float maxBulletDelay;
+    public GameObject goGameManager;
+    public ObjectManager objectManager;
+    public GameObject goBullet;
+    Animator anim;
 
-    public GameObject bulletPlayer;
-    public GameObject gameManager;
+    public int life = 0;
+    public float moveSpeed = 0f;
+    public float bulletSpeed = 0f;
+    public int nScore;
+    public float curBulletDelay = 0;
+    public float maxBulletDelay;
 
     public bool isHit = false;
-
+    public bool isControl;
     public bool[] joyControl;
-    public bool   isControl;
-
-    private bool isTouchTop    = false;
-    private bool isTouchBottom = false;
-    private bool isTouchRight  = false;
-    private bool isTouchLeft   = false;
-
-    Animator anim;
+    public bool isTouchTop = false;
+    public bool isTouchBottom = false;
+    public bool isTouchRight = false;
+    public bool isTouchLeft = false;
 
     void Start()
     {
-        anim = GetComponent<Animator>(); // 컴포넌트에 대한 정의는 Start(), Awake()에서 초기화 | Awake는 전체 Scene이 로드될 때
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -42,11 +41,13 @@ public class Player : MonoBehaviour
         if (!Input.GetButton("Jump")) return;
         if (curBulletDelay < maxBulletDelay) return;
 
-        GameObject pBullet = Instantiate(bulletPlayer, transform.position, Quaternion.identity);
-        Rigidbody2D pBbulletRigidbody2D = pBullet.GetComponent<Rigidbody2D>();
-        pBbulletRigidbody2D.AddForce(Vector2.up * bulletSpeed, ForceMode2D.Impulse); // ForceMode2D.Impulse - 질량 계산 무시(감속x)
+        GameObject bullet = objectManager.MakeObject("PlayerBullet");
+        bullet.transform.position = transform.position;
 
-        curBulletDelay = 0f;
+        Rigidbody2D rd = bullet.GetComponent<Rigidbody2D>();
+        rd.AddForce(Vector2.up * bulletSpeed, ForceMode2D.Impulse);
+
+        curBulletDelay = 0;
     }
 
     void ReloadBullet()
@@ -71,27 +72,23 @@ public class Player : MonoBehaviour
 
         if ((isTouchRight && h == 1) || (isTouchLeft && h == -1) || !isControl)
             h = 0;
-
+        
         if ((isTouchTop && v == 1) || (isTouchBottom && v == -1) || !isControl)
             v = 0;
 
-        Vector3 curPos = transform.position; // 현 위치
-        Vector3 nextPos = new Vector3(h, v, 0) * moveSpeed * Time.deltaTime; // 이동 거리
+        Vector2 curPos = transform.position;
+        Vector2 nextPos = new Vector3(h, v) * moveSpeed * Time.deltaTime;
 
         transform.position = curPos + nextPos;
 
         if (Input.GetButtonDown("Horizontal") || Input.GetButtonUp("Horizontal"))
-        {
             anim.SetInteger("MoveDiretion", (int)h);
-        }
     }
 
     public void JoyPanel(int type)
     {
-        for (int idx = 0; idx < 9; idx++)
-        {
+        for(int idx=0; idx<9; idx++)
             joyControl[idx] = idx == type;
-        }
     }
 
     public void JoyDown()
@@ -104,11 +101,11 @@ public class Player : MonoBehaviour
         isControl = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Border")
         {
-            switch (collision.gameObject.name)
+            switch(collision.gameObject.name)
             {
                 case "Top":
                     {
@@ -141,24 +138,24 @@ public class Player : MonoBehaviour
 
             life--;
 
-            GameManager gManager = gameManager.GetComponent<GameManager>();
+            GameManager gManager = goGameManager.GetComponent<GameManager>();
 
             gManager.UpdateLifeIcon(life);
-
+            
             if (life == 0)
             {
-                // GameOver()
+                //gManager.GameOver();
             }
             else
             {
                 gManager.RespawnPlayer();
             }
             gameObject.SetActive(false);
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Border")
         {

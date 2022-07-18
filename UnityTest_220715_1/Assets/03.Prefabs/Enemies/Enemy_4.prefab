@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5105370354395195082}
   m_Layer: 0
   m_Name: Enemy_4
-  m_TagString: Untagged
+  m_TagString: Enemies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,12 +183,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cca4ca59c2854940a28562631ed8fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  goPlayer: {fileID: 0}
+  objManager: {fileID: 0}
+  name: EnemyD
+  health: 100
   moveSpeed: 0.25
-  bulletSpeed: 2
+  bulletSpeed: 1
+  curBulletDelay: 0
   maxBulletDelay: 1.25
-  bulletEnemy: {fileID: 8073063707703113550, guid: 448cfe4b851d95e4e8defc2f2768fac9, type: 3}
-  player: {fileID: 0}
   sprites:
   - {fileID: -157352390, guid: a269e9e183a7b704587af38819be9737, type: 3}
   - {fileID: -1981218554, guid: a269e9e183a7b704587af38819be9737, type: 3}

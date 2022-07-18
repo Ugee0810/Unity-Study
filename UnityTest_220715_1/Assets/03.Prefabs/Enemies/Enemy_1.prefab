@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2362903117399586113}
   m_Layer: 0
   m_Name: Enemy_1
-  m_TagString: Untagged
+  m_TagString: Enemies
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152,12 +152,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cca4ca59c2854940a28562631ed8fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  goPlayer: {fileID: 0}
+  objManager: {fileID: 0}
+  name: EnemyA
+  health: 10
   moveSpeed: 1
-  bulletSpeed: 5
+  bulletSpeed: 0.25
+  curBulletDelay: 0
   maxBulletDelay: 0.5
-  bulletEnemy: {fileID: 5786290198920373537, guid: 1ff3af030bfd63740a6e21d034db1a40, type: 3}
-  player: {fileID: 0}
   sprites:
   - {fileID: -1705525365, guid: a269e9e183a7b704587af38819be9737, type: 3}
   - {fileID: -2001189878, guid: a269e9e183a7b704587af38819be9737, type: 3}

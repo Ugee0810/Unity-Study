@@ -2,80 +2,146 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System.IO;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject player;
-    private float curEnemySpawnDelay;
-    private float maxEnemySpawnDelay;
-
-    public Transform[]  spawnPoints;
-    public GameObject[] enemyNumber;
-    public Image[] imgLifes;
-
-    public Text scoreText;
-   // public 
-
     public ObjectManager objManager;
 
-    void Update()
+    public GameObject goPlayer;
+    //public GameObject[] goEnemies;
+    public Image[] imgLifes;
+
+    //public Text scoreText;
+    //public GameObject goGameOver;
+
+    public int spawnIdx = 0;
+    public float curEnemySpawnDelay;
+    public float nextEnemySpawnDelay;
+    public bool spawnEnd;
+    public Transform[] spawnPoints;
+    public List<Spawn> spawnList;
+
+    public string[] enemyNames = { "EnemyA",
+                                   "EnemyB",
+                                   "EnemyC",
+                                   "EnemyD" };
+
+    public class Spawn
     {
-        SpawnEnemy();
-        ReloadEnemy();
+        public string type;  // 적기 타입
+        public float  delay; // 나타나는 시간
+        public int    point; // spawnpoint 중 하나
+    };
+
+    void Awake()
+    {
+        spawnList = new List<Spawn>();
+        ReadSpawnFile();
     }
 
-    /// <summary>
-    /// Enemy 관련
-    /// </summary>
+    void ReadSpawnFile()
+    {
+        spawnList.Clear();
+        spawnIdx = 0;
+        spawnEnd = false;
 
-    void ReloadEnemy()
+        TextAsset textFile = Resources.Load("stage") as TextAsset;
+        StringReader stringReader = new StringReader(textFile.text);
+
+        while (stringReader != null)
+        {
+            string txtLineData = stringReader.ReadLine();
+            Debug.Log(txtLineData);
+            if (txtLineData == null)
+                break;
+
+            Spawn data = new Spawn();
+            data.type = txtLineData.Split(',')[0];
+            data.delay = float.Parse(txtLineData.Split(',')[1]);
+            data.point = int.Parse(txtLineData.Split(',')[2]);
+
+            spawnList.Add(data);
+        }
+        stringReader.Close();
+
+        nextEnemySpawnDelay = spawnList[1].delay;
+    }
+
+    private void Update()
     {
         curEnemySpawnDelay += Time.deltaTime;
+        if (curEnemySpawnDelay > nextEnemySpawnDelay && !spawnEnd)
+        {
+            SpawnEnemy();
+            curEnemySpawnDelay = 0;
+        }
+
+        Player playerLogic = goPlayer.GetComponent<Player>();
+        //scoreText.text = string.Format("{0:n0}", playerLogic.nScore);
     }
 
     void SpawnEnemy()
     {
-        if (curEnemySpawnDelay < maxEnemySpawnDelay)
+        int enemyIdx = 0;
+        switch (spawnList[spawnIdx].type) // (0~4)
+        {
+            case "EnemyA":
+                {
+                    enemyIdx = 0;
+                }
+                break;
+            case "EnemyB":
+                {
+                    enemyIdx = 1;
+                }
+                break;
+            case "EnemyC":
+                {
+                    enemyIdx = 2;
+                }
+                break;
+            case "EnemyD":
+                {
+                    enemyIdx = 3;
+                }
+                break;
+        }
+
+        int enemyPoint = spawnList[spawnIdx].point; // 0~4의 스폰 위치 변수 선언
+
+        GameObject createEnemyA = objManager.MakeObject("EnemyA");
+        createEnemyA.transform.position = spawnPoints[enemyPoint].position;
+        Rigidbody2D rd = createEnemyA.GetComponent<Rigidbody2D>();
+        Enemy enemy = createEnemyA.GetComponent<Enemy>();
+
+        rd.velocity = new Vector2(0, enemy.moveSpeed * (-1));
+        enemy.objManager = objManager;
+        enemy.goPlayer = goPlayer;
+
+        spawnIdx++;
+        if (spawnIdx == spawnList.Count)
+        {
+            spawnEnd = true;
             return;
+        }
 
-        int randPoint = Random.Range(0, 5);
-
-        //GameObject createEnemy = Instantiate(enemyNumber[Random.Range(0, 4)],
-        //                                     spawnPoints[randPoint].position,
-        //                                     spawnPoints[randPoint].rotation);
-
-        // 오브젝트 풀링 이후 수정된 부분(생성은 오브젝트 매니저 스크립트에서
-        GameObject createEnemy = objManager.MakeObject("Enemy");
-        createEnemy.transform.position = spawnPoints[randPoint].position;
-
-        Rigidbody2D rigidbody2D = createEnemy.GetComponent<Rigidbody2D>();
-        Enemy enemy = createEnemy.GetComponent<Enemy>(); // Enemy의 speed 변수를 가져온다.
-        rigidbody2D.velocity = Vector2.down * enemy.moveSpeed;
-        enemy.player = player;
-
-
-        maxEnemySpawnDelay = Random.Range(0.3f, 2.0f);
-        curEnemySpawnDelay = 0f;
-    }
-
-    /// <summary>
-    /// Player 관련
-    /// </summary>
-
-    public void GameOver()
-    {
-
-    }
-
-    void AlivePlayer()
-    {
-        player.transform.position = Vector2.down * 4.0f;
-        player.SetActive(true);
+        nextEnemySpawnDelay = spawnList[spawnIdx].delay;
     }
 
     public void RespawnPlayer()
     {
-        Invoke("AlivePlayer", 2.0f);
+        Invoke("AlivePlayer", 1.0f);
+    }
+
+    void AlivePlayer()
+    {
+        goPlayer.transform.position = Vector3.down * 3.5f;
+        goPlayer.SetActive(true);
+
+        Player playerLogic = goPlayer.GetComponent<Player>();
+        playerLogic.isHit = false;
     }
 
     public void UpdateLifeIcon(int life)
@@ -87,7 +153,17 @@ public class GameManager : MonoBehaviour
 
         for (int idx = 0; idx < life; idx++)
         {
-            imgLifes[idx].color = new Color(1, 1, 1, 0);
+            imgLifes[idx].color = new Color(1, 1, 1, 1);
         }
     }
+
+    //public void GameOver()
+    //{
+    //    goGameOver.SetActive(true);
+    //}
+
+    //public void RetryGame()
+    //{
+    //    SceneManager.LoadScene(0);
+    //}
 }

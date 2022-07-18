@@ -4,22 +4,44 @@ using UnityEngine;
 
 public class ObjectManager : MonoBehaviour
 {
-    GameObject[] goEnemies;
-    public GameObject enemyPrefab;
+    GameObject[] goTargetPool;
+
+    GameObject[] goEnemyA;
+    GameObject[] goEnemyB;
+    GameObject[] goEnemyC;
+    GameObject[] goEnemyD;
+
+    GameObject[] goBulletEnemyA;
+    GameObject[] goBulletEnemyB;
+    GameObject[] goBulletEnemyC;
+    GameObject[] goBulletEnemyD;
 
     GameObject[] goBulletPlayer;
+
+    public GameObject enemyAPrefab;
+    public GameObject enemyBPrefab;
+    public GameObject enemyCPrefab;
+    public GameObject enemyDPrefab;
+
+    public GameObject bulletEnemyAPrefab;
+    public GameObject bulletEnemyBPrefab;
+    public GameObject bulletEnemyCPrefab;
+    public GameObject bulletEnemyDPrefab;
+
     public GameObject bulletPlayer;
-
-    GameObject[] goBulletEnemy;
-    public GameObject bulletEnemy;
-
-    GameObject[] goTargetPool;
 
     void Start()
     {
-        // 미리 리스트를 생성
-        goEnemies = new GameObject[10];
-        goBulletEnemy  = new GameObject[100];
+        goEnemyA = new GameObject[10];
+        goEnemyB = new GameObject[10];
+        goEnemyC = new GameObject[10];
+        goEnemyD = new GameObject[10];
+
+        goBulletEnemyA = new GameObject[100];
+        goBulletEnemyB = new GameObject[100];
+        goBulletEnemyC = new GameObject[100];
+        goBulletEnemyD = new GameObject[100];
+
         goBulletPlayer = new GameObject[100];
 
         Generate();
@@ -27,16 +49,50 @@ public class ObjectManager : MonoBehaviour
 
     void Generate()
     {
-        for (int i = 0; i < goEnemies.Length; i++)
+        for (int i = 0; i < goEnemyA.Length; i++)
         {
-            goEnemies[i] = Instantiate(enemyPrefab); // Instantiate에서 위치는 게임 매니저 스크립트에서 관리
-            goEnemies[i].SetActive(false);
+            goEnemyA[i] = Instantiate(enemyAPrefab);
+            goEnemyA[i].SetActive(false);
         }
-        for (int i = 0; i < goBulletEnemy.Length; i++)
+        for (int i = 0; i < goEnemyB.Length; i++)
         {
-            goBulletEnemy[i] = Instantiate(bulletEnemy);
-            goBulletEnemy[i].SetActive(false);
+            goEnemyB[i] = Instantiate(enemyBPrefab);
+            goEnemyB[i].SetActive(false);
         }
+        for (int i = 0; i < goEnemyC.Length; i++)
+        {
+            goEnemyC[i] = Instantiate(enemyCPrefab);
+            goEnemyC[i].SetActive(false);
+        }
+        for (int i = 0; i < goEnemyD.Length; i++)
+        {
+            goEnemyD[i] = Instantiate(enemyDPrefab);
+            goEnemyD[i].SetActive(false);
+        }
+
+
+        for (int i = 0; i < goBulletEnemyA.Length; i++)
+        {
+            goBulletEnemyA[i] = Instantiate(bulletEnemyAPrefab);
+            goBulletEnemyA[i].SetActive(false);
+        }
+        for (int i = 0; i < goBulletEnemyB.Length; i++)
+        {
+            goBulletEnemyB[i] = Instantiate(bulletEnemyBPrefab);
+            goBulletEnemyB[i].SetActive(false);
+        }
+        for (int i = 0; i < goBulletEnemyC.Length; i++)
+        {
+            goBulletEnemyC[i] = Instantiate(bulletEnemyCPrefab);
+            goBulletEnemyC[i].SetActive(false);
+        }
+        for (int i = 0; i < goBulletEnemyD.Length; i++)
+        {
+            goBulletEnemyD[i] = Instantiate(bulletEnemyDPrefab);
+            goBulletEnemyD[i].SetActive(false);
+        }
+
+
         for (int i = 0; i < goBulletPlayer.Length; i++)
         {
             goBulletPlayer[i] = Instantiate(bulletPlayer);
@@ -48,17 +104,49 @@ public class ObjectManager : MonoBehaviour
     {
         switch (objType)
         {
-            case "Enemy":
+            case "EnemyA":
                 {
-                    goTargetPool = goEnemies;
+                    goTargetPool = goEnemyA;
                 }
                 break;
-            case "BulletEnemy":
+            case "EnemyB":
                 {
-                    goTargetPool = goBulletEnemy;
+                    goTargetPool = goEnemyB;
                 }
                 break;
-            case "BulletPlayer":
+            case "EnemyC":
+                {
+                    goTargetPool = goEnemyC;
+                }
+                break;
+            case "EnemyD":
+                {
+                    goTargetPool = goEnemyD;
+                }
+                break;
+
+            case "EnemyBulletA":
+                {
+                    goTargetPool = goBulletEnemyA;
+                }
+                break;
+            case "EnemyBulletB":
+                {
+                    goTargetPool = goBulletEnemyB;
+                }
+                break;
+            case "EnemyBulletC":
+                {
+                    goTargetPool = goBulletEnemyC;
+                }
+                break;
+            case "EnemyBulletD":
+                {
+                    goTargetPool = goBulletEnemyD;
+                }
+                break;
+
+            case "PlayerBullet":
                 {
                     goTargetPool = goBulletPlayer;
                 }
@@ -67,7 +155,7 @@ public class ObjectManager : MonoBehaviour
 
         for (int i = 0; i < goTargetPool.Length; i++)
         {
-            if (goTargetPool[i].activeSelf == false) // 실행되지 않은 리소스를 반환
+            if (goTargetPool[i].activeSelf == false)
             {
                 goTargetPool[i].SetActive(true);
                 return goTargetPool[i];
