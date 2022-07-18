@@ -150,11 +150,17 @@
  - 싱글톤, 오브젝트풀링, if절, invoke등을 사용하여 이벤트를 작성하여 
 
   - https://wjtbgamechallenge.com/
-### 22-07-()
- - 
- - 
+### 22-07-18(Mon)
+ - 2D 슈팅 게임 진행
+   - 오브젝트풀링 스크립트(ObjectManager) 생성 후 개념 정리
+   - ★prefab에 오브젝트 할당
+     - ![image](https://user-images.githubusercontent.com/85896566/179443077-931207af-bcf9-4707-9875-6c1601f68c34.png)
+ - Assets의 Resources폴더 - 모든 플랫폼에서 공통된 경로이므로, 앱이 실행될 때, 로딩될 때 데이터들을 저장하게 된다.
+ - 외부 txt파일을 참조하고, 데이터를 읽어오는 방법
+   - ![image](https://user-images.githubusercontent.com/85896566/179451646-0c423fb5-bb03-4b2e-95f2-0fd3d14654be.png)
 
-### 22-07-()
+
+### 22-07-19(Tue)
  - 
  - 
 
