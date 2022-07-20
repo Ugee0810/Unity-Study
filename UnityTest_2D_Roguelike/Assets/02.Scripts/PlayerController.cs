@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MovingObject
 {
+    public int health = 100;
+    public int foodEnergy = 10;
+    public int wallDamage = 1;
+
     private Animator animator;
+
 
     protected override void Start()
     {
@@ -31,8 +36,33 @@ public class PlayerController : MovingObject
 
     }
 
+    protected override void AttemptMove<T>(int xDir, int yDir)
+    {
+        health--;
+        base.AttemptMove<T>(xDir, yDir);
+
+        RaycastHit2D hit;
+        if (Move(xDir, yDir, out hit))
+        {
+
+        }
+    }
+
     protected override void OnCantMove<T>(T component)
     {
-        throw new System.NotImplementedException();
+        Wall hitWall = component as Wall;
+
+        hitWall.DamageWall(wallDamage);
+
+        animator.SetTrigger("State");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Food")
+        {
+            health += foodEnergy;
+            collision.gameObject.SetActive(false); // 오브젝트와 닿은 오브젝트는 비활성화
+        }
     }
 }

@@ -6,6 +6,7 @@ public abstract class MovingObject : MonoBehaviour
 {
     public float moveTime = 0.1f;
     public LayerMask blockingLayer;
+
     private BoxCollider2D bC2D;
     private Rigidbody2D rb2D;
     private bool isMoving;
