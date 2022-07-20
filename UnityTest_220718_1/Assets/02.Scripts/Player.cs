@@ -4,32 +4,30 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float speed = 0f;
-    public bool isTouchTop = false;
-    public bool isTouchBottom = false;
-    public bool isTouchRight = false;
-    public bool isTouchLeft = false;
+    public GameObject goGameManager;
+    public GameObject goBullet;
+
+    public ObjectManager objectManager;
+    public WeaponManager weaponManager;
 
     Animator anim;
 
-    public GameObject goBullet;
+    public int life = 0;
+    public float speed = 0f;
+
+    public int nScore;
 
     public float curBulletDelay = 0;
     public float maxBulletDelay;
 
-    public int life = 0;
-
-    public GameObject goGameManager;
-
     public bool isHit = false;
-
-    public bool[] joyControl;
     public bool isControl;
+    public bool[] joyControl;
 
-    public int nScore;
-
-    public ObjectManager objectManager;
-    public WeaponManager weaponManager;
+    private bool isTouchTop = false;
+    private bool isTouchBottom = false;
+    private bool isTouchRight = false;
+    private bool isTouchLeft = false;
 
     void Start()
     {
@@ -48,14 +46,15 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             weaponManager.ChangeToBullet0();
+            weaponManager.Fire(gameObject);
+            return;
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             weaponManager.ChangeToBullet1();
+            weaponManager.Fire(gameObject);
+            return;
         }
-
-        weaponManager.Fire(gameObject);
-        return;
 
         if (curBulletDelay < maxBulletDelay)
             return;
@@ -76,46 +75,37 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
+        //// Move, Animation
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
+        anim.SetInteger("MoveDiretion", (int)h);
 
-        if (joyControl[0]) { h = -1; v = 1; }
-        if (joyControl[1]) { h = 0; v = 1; }
-        if (joyControl[2]) { h = 1; v = 1; }
-        if (joyControl[3]) { h = -1; v = 0; }
-        if (joyControl[4]) { h = 0; v = 0; }
-        if (joyControl[5]) { h = 1; v = 0; }
-        if (joyControl[6]) { h = -1; v = -1; }
-        if (joyControl[7]) { h = 0; v = -1; }
-        if (joyControl[8]) { h = 1; v = -1; }
+        //// 이동 제한
+        if ((isTouchTop   && v == 1) || (isTouchBottom && v == -1) || !isControl) v = 0;
+        if ((isTouchRight && h == 1) || (isTouchLeft   && h == -1) || !isControl) h = 0;
 
-        if ((isTouchRight && h == 1) || (isTouchLeft && h == -1) || !isControl)
-        {
-            h = 0;
-        }
-        
-        if ((isTouchTop && v == 1) || (isTouchBottom && v == -1) || !isControl)
-        {
-            v = 0;
-        }
-
-        Vector3 curPos = transform.position;
-        Vector3 nextPos = new Vector3(h, v, 0) * speed * Time.deltaTime;
+        //// 이동 로직
+        Vector2 curPos = transform.position;
+        Vector2 nextPos = new Vector2(h, v) * speed * Time.deltaTime;
 
         transform.position = curPos + nextPos;
 
-        if (Input.GetButtonDown("Horizontal") || Input.GetButtonUp("Horizontal"))
-        {
-            anim.SetInteger("Input", (int)h);
-        }
+        //// joypad
+        if (joyControl[0]) { h = -1; v =  1; }
+        if (joyControl[1]) { h =  0; v =  1; }
+        if (joyControl[2]) { h =  1; v =  1; }
+        if (joyControl[3]) { h = -1; v =  0; }
+        if (joyControl[4]) { h =  0; v =  0; }
+        if (joyControl[5]) { h =  1; v =  0; }
+        if (joyControl[6]) { h = -1; v = -1; }
+        if (joyControl[7]) { h =  0; v = -1; }
+        if (joyControl[8]) { h =  1; v = -1; }
     }
 
     public void JoyPanel(int type)
     {
-        for(int idx=0; idx<9; idx++)
-        {
+        for(int idx = 0; idx < 9; idx++)
             joyControl[idx] = idx == type;
-        }
     }
 
     public void JoyDown()
@@ -128,31 +118,19 @@ public class Player : MonoBehaviour
         isControl = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Border")
         {
             switch(collision.gameObject.name)
             {
-                case "Top":
-                    {
-                        isTouchTop = true;
-                    }
+                case "Top":    isTouchTop    = true;
                     break;
-                case "Bottom":
-                    {
-                        isTouchBottom = true;
-                    }
+                case "Bottom": isTouchBottom = true;
                     break;
-                case "Right":
-                    {
-                        isTouchRight = true;
-                    }
+                case "Right":  isTouchRight  = true;
                     break;
-                case "Left":
-                    {
-                        isTouchLeft = true;
-                    }
+                case "Left":   isTouchLeft   = true;
                     break;
             }
         }
@@ -182,34 +160,21 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Border")
         {
             switch (collision.gameObject.name)
             {
-                case "Top":
-                    {
-                        isTouchTop = false;
-                    }
+                case "Top":    isTouchTop    = false;
                     break;
-                case "Bottom":
-                    {
-                        isTouchBottom = false;
-                    }
+                case "Bottom": isTouchBottom = false;
                     break;
-                case "Right":
-                    {
-                        isTouchRight = false;
-                    }
+                case "Right":  isTouchRight  = false;
                     break;
-                case "Left":
-                    {
-                        isTouchLeft = false;
-                    }
+                case "Left":   isTouchLeft   = false;
                     break;
             }
         }
-
     }
 }

@@ -44,7 +44,7 @@ public class WeaponManager : MonoBehaviour
 
     void Start()
     {
-        SetWeaponType(WeaponType.Bullet0);
+        SetWeaponType(WeaponType.Bullet0); // 처음 무기 상태 초기화
     }
 
     public void ChangeToBullet0() // 총알 1발

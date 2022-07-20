@@ -13,6 +13,6 @@ public class MyBullet // ½î°ÔµÇ´Â ÃÑ¾Ë
 
     public void Shoot()
     {
-        weapon.Shoot();
+        //weapon.Shoot();
     }
 }

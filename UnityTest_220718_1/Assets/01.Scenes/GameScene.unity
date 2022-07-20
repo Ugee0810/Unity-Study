@@ -1911,6 +1911,7 @@ Transform:
   m_Children:
   - {fileID: 1208692996}
   - {fileID: 1724239283}
+  - {fileID: 1578746113}
   m_Father: {fileID: 1818408389}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3341,8 +3342,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd0575a91feae374cb0d5d45d97b6adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet0: {fileID: 2790204049106462, guid: 6eeea274ae2a3f84e9e475122e309ab0, type: 3}
-  bullet1: {fileID: 8107194680140210256, guid: c82c6e651eeec86469f7b41c2df0497b, type: 3}
+  bullet0: {fileID: 2790204049106462, guid: e8b2ccd9f9d337a4ba30ab1956e33a97, type: 3}
+  bullet1: {fileID: 8107194680140210256, guid: 8a7c7955f550ae74daee9d51bd94bc26, type: 3}
 --- !u!4 &1578746113
 Transform:
   m_ObjectHideFlags: 0
@@ -3350,13 +3351,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1578746111}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 913671291}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1586406365
 GameObject:
@@ -3691,7 +3692,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1753984323
 MonoBehaviour:
@@ -3705,21 +3706,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2899d33e57364fc45a01befd1829d915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  isTouchTop: 0
-  isTouchBottom: 0
-  isTouchRight: 0
-  isTouchLeft: 0
-  goBullet: {fileID: 1578746111}
-  curBulletDelay: 0
-  maxBulletDelay: 0.2
-  life: 3
   goGameManager: {fileID: 1208692994}
-  isHit: 0
-  joyControl: 000000000000000000
-  isControl: 1
-  nScore: 0
   objectManager: {fileID: 1724239282}
+  weaponManager: {fileID: 1578746112}
+  goBullet: {fileID: 1578746111}
+  life: 3
+  speed: 5
+  nScore: 0
+  curBulletDelay: 0
+  maxBulletDelay: 0.1
+  isHit: 0
+  isControl: 1
+  joyControl: 000000000000000000
 --- !u!50 &1753984324
 Rigidbody2D:
   serializedVersion: 4

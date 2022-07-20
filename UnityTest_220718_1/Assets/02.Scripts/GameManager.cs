@@ -87,6 +87,9 @@ public class GameManager : MonoBehaviour
 
     void SpawnEnemy()
     {
+        if (spawnList.Count <= 0)
+            return;
+
         int enemyIdx = 0;
         switch(spawnList[spawnIdx].type)
         {

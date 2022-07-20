@@ -18,18 +18,17 @@ public class ObjectManager : MonoBehaviour
 
     GameObject[] goTargetPool;
     
-    // Start is called before the first frame update
     void Start()
     {
-        goEnemies = new GameObject[10];
+        //goEnemies = new GameObject[10];
 
-        goBoss = new GameObject[1];
+        //goBoss = new GameObject[1];
 
-        goBulletEnemy = new GameObject[100];
+        //goBulletEnemy = new GameObject[100];
 
-        goBulletPlayer = new GameObject[100];
+        //goBulletPlayer = new GameObject[100];
 
-        Generate();
+        //Generate();
     }
 
     void Generate()

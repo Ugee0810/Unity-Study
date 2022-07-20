@@ -11,10 +11,10 @@ public class Bullet1 : MonoBehaviour, IWeapon // 2¹ßÂ¥¸® ÃÑ¾Ë
 {
     public void Shoot(GameObject obj, GameObject player) // ÃÑ¾Ë ¹ß»ç
     {
-        GameObject goBullet0 = obj;
-        goBullet0.transform.position = transform.position;
+        GameObject goBullet1 = Instantiate(obj);
+        goBullet1.transform.position = player.transform.position;
 
-        Rigidbody2D rigid = goBullet0.GetComponent<Rigidbody2D>();
+        Rigidbody2D rigid = goBullet1.GetComponent<Rigidbody2D>();
         rigid.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
     }
 }
