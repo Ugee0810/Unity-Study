@@ -240,6 +240,7 @@
   - ●검색 할 것●
 - 디자인 패턴 전략
   - ![image](https://user-images.githubusercontent.com/85896566/179891408-e7c4485f-7be5-4b86-941a-50bf8a1d63bd.png)
+- 오늘의 수업 내용 - 두 가지의 디자인 전략 패턴으로 기존의 스크립트를 리팩토링하는 내용
 
 ***
 
