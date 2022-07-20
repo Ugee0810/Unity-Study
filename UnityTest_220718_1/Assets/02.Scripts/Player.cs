@@ -29,14 +29,13 @@ public class Player : MonoBehaviour
     public int nScore;
 
     public ObjectManager objectManager;
+    public WeaponManager weaponManager;
 
-    // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         Move();
@@ -46,10 +45,17 @@ public class Player : MonoBehaviour
 
     void Fire()
     {
-        if (!Input.GetButton("Fire1"))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            return;
+            weaponManager.ChangeToBullet0();
         }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            weaponManager.ChangeToBullet1();
+        }
+
+        weaponManager.Fire(gameObject);
+        return;
 
         if (curBulletDelay < maxBulletDelay)
             return;
