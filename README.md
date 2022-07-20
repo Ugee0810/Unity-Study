@@ -231,17 +231,23 @@
 
 
 ### 22-07-20(Wen)
-- 2D 슈팅 게임 진행
-  - 전략 디자인 패턴 로직 - 타입에 따른 분류 방법 채택
 - 포르폴리오 - 다양한 게임 예제를 만드는 건 좋지만, 그 보다 다양한 로직으로 만드는 것이 더 중요하다.
-- 프로토 타입 패턴
-  - 같은 오브젝트이더라도 성질을 다르게 하여 생성하는 것(EX.체력, 데미지 등)
-- 팩토리 타입 패턴
-  - ●검색 할 것●
-- 디자인 패턴 전략
-  - ![image](https://user-images.githubusercontent.com/85896566/179891408-e7c4485f-7be5-4b86-941a-50bf8a1d63bd.png)
 - 오늘의 수업 내용 - 두 가지의 디자인 전략 패턴으로 기존의 스크립트를 리팩토링하는 내용
-
+  - 2D 슈팅 게임 진행
+    - 전략 디자인 패턴 로직 - 타입에 따른 분류 방법 채택
+  - 프로토 타입 패턴
+    - 같은 오브젝트이더라도 성질을 다르게 하여 생성하는 것(EX.체력, 데미지 등)
+  - 팩토리 타입 패턴
+    - ●검색 할 것●
+  - 디자인 패턴 전략
+    - ![image](https://user-images.githubusercontent.com/85896566/179891408-e7c4485f-7be5-4b86-941a-50bf8a1d63bd.png)
+  - 2D 로그라이크 게임 진행
+    - [에셋스토어](https://assetstore.unity.com/packages/templates/tutorials/2d-roguelike-29825)
+    - [튜토리얼](https://api.unity.com/v1/oauth2/authorize?client_id=unity_learn&locale=ko_KR&redirect_uri=https%3A%2F%2Flearn.unity.com%2Fauth%2Fcallback%3Fredirect_to%3D%252Fproject%252F2d-roguelike-tutorial&response_type=code&scope=identity+offline&state=3957df67-37c5-4966-9928-1569fc43ea53)
+    - 스크립트 자체적으론 굉장히 좋은 예제, 동영상도 참조
+    - 직렬화를 해야할 때 랜덤 함수를 사용하려면 이렇게 Using한다.
+      - ![image](https://user-images.githubusercontent.com/85896566/179930326-2c099dc3-cde3-42ef-a37f-9faef2bb4a1c.png)
+    - Tag가 아닌 Layer를 통해 이동 제한하기
 ***
 
 
