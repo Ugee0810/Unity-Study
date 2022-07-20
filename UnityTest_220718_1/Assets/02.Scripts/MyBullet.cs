@@ -10,9 +10,4 @@ public class MyBullet // ½î°ÔµÇ´Â ÃÑ¾Ë
     {
         this.weapon = weapon;
     }
-
-    public void Shoot()
-    {
-        //weapon.Shoot();
-    }
 }

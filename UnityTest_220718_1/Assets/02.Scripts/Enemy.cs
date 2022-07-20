@@ -4,33 +4,27 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float speed;
-    public float health;
+    public GameObject goBullet;
+    public GameObject goPlayer;
+
+    public ObjectManager objManager;
 
     public Sprite[] sprites;
     SpriteRenderer spriteRenderer;
 
-    Rigidbody2D rd;
+    public Animator anim;
 
+    public string name;
+    public float speed;
+    public float health;
+    public int nDmgPoint;
     public float curBulletDelay = 0f;
     public float maxBulletDelay;
-
-    public GameObject goBullet;
-    public GameObject goPlayer;
-
-    public int nDmgPoint;
-
-    public ObjectManager objManager;
-
-    //7.18
-    public string name;
-    public Animator anim;
 
     public int patternIdx = 0;
     public int curPatternCount = 0;
     public int[] maxPatternCount = { 2, 3, 100, 10 };
 
-    // Start is called before the first frame update
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -41,7 +35,6 @@ public class Enemy : MonoBehaviour
         //rd.velocity = Vector2.down * speed;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (name == "B")

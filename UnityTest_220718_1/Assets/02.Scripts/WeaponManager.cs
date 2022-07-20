@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public interface IWeapon
+{
+    void Shoot(GameObject obj, GameObject player);
+}
+
 public enum WeaponType // 총알 타입 정의
 {
     Bullet0,

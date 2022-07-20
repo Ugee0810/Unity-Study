@@ -105,6 +105,7 @@ public class GameManager : MonoBehaviour
                 break;
 
         }
+
         int enemyPoint = spawnList[spawnIdx].point;
         string enemyName = enemyNames[enemyIdx];
         GameObject createEnemy = objManager.MakeObject(enemyName);

@@ -17,4 +17,12 @@ public class Bullet0 : MonoBehaviour, IWeapon
         Rigidbody2D rigid = goBullet0.GetComponent<Rigidbody2D>();
         rigid.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Border")
+        {
+            Destroy(gameObject);
+        }
+    }
 }
