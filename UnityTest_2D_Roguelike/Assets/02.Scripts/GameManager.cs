@@ -6,16 +6,19 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
 
-    private BoardManager boardManager;
+    private BoardManager boardScript;
     private int level = 1;
 
-    void boardScript()
+    private void Awake()
     {
         if (instance == null)
             instance = this;
         else if (instance != this)
             Destroy(gameObject);
+
         DontDestroyOnLoad(gameObject);
+
+        boardScript = GetComponent<BoardManager>();
 
         InitGame();
     }

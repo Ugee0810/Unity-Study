@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4121646419521562558}
   - component: {fileID: 4121646419521562557}
+  - component: {fileID: 1761117146850280591}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -43,3 +44,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b7a1410d07df324ba03289d03bc58ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1761117146850280591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4121646419521562559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14f6f6fad79ab4144a7a102e7437cbfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colums: 8
+  rows: 8
+  wallCount:
+    minimum: 5
+    maximum: 9
+  foodCount:
+    minimum: 1
+    maximum: 5
+  exit: {fileID: 7475327425779580496, guid: cb8da09a9516023439d36b951266beab, type: 3}
+  floorTiles:
+  - {fileID: 4844883874667848869, guid: 0fd12b4123c345247b6d612754aabf20, type: 3}
+  - {fileID: 8726384641847789999, guid: 5ec6e8b616fb37d4eb00655345e26df5, type: 3}
+  - {fileID: 1859758638458992426, guid: a730f853d4c713547838740253006830, type: 3}
+  - {fileID: 2772144060624085657, guid: fe751ab0732ecfb4aad8001ebb531ed3, type: 3}
+  - {fileID: 9209603516621192780, guid: 5aef185dc1686be459a6fe8d8a6ccf49, type: 3}
+  - {fileID: 6226145538653052667, guid: f4488497aead5be47b6b60a50a1d9caf, type: 3}
+  - {fileID: 1960686399126942248, guid: 15aba94ab2ad4674882334424e66bb4c, type: 3}
+  - {fileID: 8731565756733971975, guid: b77e444ad3f3d714c94c216993faec3a, type: 3}
+  wallTiles:
+  - {fileID: 8148701717404005472, guid: 072d623c40a5018449fe5f58b1234975, type: 3}
+  - {fileID: 7322693963202803662, guid: 5bc02cda0fdeb1645b0d99052dea7269, type: 3}
+  - {fileID: 7243731066837348749, guid: 2d511759c9e4f5347b40cdca642c39d4, type: 3}
+  - {fileID: 1764906071101518167, guid: ed4cfc50fb02c6246ac1791ee9795ed2, type: 3}
+  - {fileID: 8365505532023827014, guid: d2a84bc34788f1a4c927cc49aaeb7347, type: 3}
+  - {fileID: 8813065155305101178, guid: ad466d06061cb7b42b175b08b9f15818, type: 3}
+  - {fileID: 7549302697720209747, guid: 16229bb23449d7b4083b7d3843f5c8e9, type: 3}
+  foodTiles: []
+  enemyTiles: []
+  otherWallTiles: []

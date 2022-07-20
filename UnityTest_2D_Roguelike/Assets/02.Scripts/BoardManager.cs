@@ -44,7 +44,7 @@ public class BoardManager : MonoBehaviour
         {
             for (int y = 0; y < rows; y++)
             {
-                gridPositions.Add (new Vector2 (x, y));
+                gridPositions.Add(new Vector3 (x, y, 0));
             }
         }
     }
@@ -61,7 +61,7 @@ public class BoardManager : MonoBehaviour
                 if (x == -1 || x == colums || y == -1 || y == rows)
                     toInstantiate = otherWallTiles[Random.Range(0, otherWallTiles.Length)];
 
-                GameObject instance = Instantiate(toInstantiate, new Vector2(x, y), Quaternion.identity);
+                GameObject instance = Instantiate(toInstantiate, new Vector3(x, y, 0f), Quaternion.identity);
 
                 instance.transform.SetParent(boardHolder);
             }
@@ -71,5 +71,30 @@ public class BoardManager : MonoBehaviour
     public void SetupScene(int level)
     {
         boardSetup();
+        InitialiseList();
+        //LayoutObjectAtRandom(wallTiles, wallCount.minimum, wallCount.maximum);
     }    
+
+    void LayoutObjectAtRandom(GameObject[] tileArray, int minimum, int maximum)
+    {
+        int objectCount = Random.Range(minimum, maximum);
+
+        for (int i = 0; i < objectCount; i++)
+        {
+            Vector3 randomPositon = RandomPositon();
+            GameObject tileChoice = tileArray[Random.Range(0, tileArray.Length)];
+
+            Instantiate(tileChoice, randomPositon, Quaternion.identity);
+        }
+    }
+
+    Vector3 RandomPositon()
+    {
+        int randIdx = Random.Range(0, gridPositions.Count);
+
+        Vector3 randPosition = gridPositions[randIdx];
+        gridPositions.RemoveAt(randIdx);
+
+        return randPosition; // 다음에 불러올 때 중첩되지 않도록 좌표를 지운다.
+    }
 }
