@@ -36,6 +36,13 @@ public class BoardManager : MonoBehaviour
     private Transform boardHolder;
     private List<Vector2> gridPositions = new List<Vector2> (); // 한 곳에 같은, 다른 타일이 있는지 중복 확인
 
+    public void SetupScene(int level)
+    {
+        InitialiseList();
+        boardSetup();
+        LayoutObjectAtRandom(wallTiles, wallCount.minimum, wallCount.maximum);
+    }    
+
     void InitialiseList()
     {
         gridPositions.Clear();
@@ -68,13 +75,6 @@ public class BoardManager : MonoBehaviour
         }
     }
 
-    public void SetupScene(int level)
-    {
-        boardSetup();
-        InitialiseList();
-        //LayoutObjectAtRandom(wallTiles, wallCount.minimum, wallCount.maximum);
-    }    
-
     void LayoutObjectAtRandom(GameObject[] tileArray, int minimum, int maximum)
     {
         int objectCount = Random.Range(minimum, maximum);
@@ -87,7 +87,6 @@ public class BoardManager : MonoBehaviour
             Instantiate(tileChoice, randomPositon, Quaternion.identity);
         }
     }
-
     Vector3 RandomPositon()
     {
         int randIdx = Random.Range(0, gridPositions.Count);
