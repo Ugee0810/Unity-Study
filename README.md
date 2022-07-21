@@ -231,16 +231,10 @@
 
 
 ### 22-07-20(Wen)
-- 포르폴리오 - 다양한 게임 예제를 만드는 건 좋지만, 그 보다 다양한 로직으로 만드는 것이 더 중요하다.
+- 포트폴리오 - 다양한 게임 예제를 만드는 건 좋지만, 그 보다 다양한 로직으로 만드는 것이 더 중요하다.
 - 오늘의 수업 내용 - 두 가지의 디자인 전략 패턴으로 기존의 스크립트를 리팩토링하는 내용
   - 2D 슈팅 게임 진행
     - 전략 디자인 패턴 로직 - 타입에 따른 분류 방법 채택
-  - 프로토 타입 패턴
-    - 같은 오브젝트이더라도 성질을 다르게 하여 생성하는 것(EX.체력, 데미지 등)
-  - 팩토리 타입 패턴
-    - ●검색 할 것●
-  - 디자인 패턴 전략
-    - ![image](https://user-images.githubusercontent.com/85896566/179891408-e7c4485f-7be5-4b86-941a-50bf8a1d63bd.png)
   - 2D 로그라이크 게임 진행
     - [에셋스토어](https://assetstore.unity.com/packages/templates/tutorials/2d-roguelike-29825)
     - [튜토리얼](https://api.unity.com/v1/oauth2/authorize?client_id=unity_learn&locale=ko_KR&redirect_uri=https%3A%2F%2Flearn.unity.com%2Fauth%2Fcallback%3Fredirect_to%3D%252Fproject%252F2d-roguelike-tutorial&response_type=code&scope=identity+offline&state=3957df67-37c5-4966-9928-1569fc43ea53)
@@ -248,6 +242,21 @@
     - 직렬화를 해야할 때 랜덤 함수를 사용하려면 이렇게 Using한다.
       - ![image](https://user-images.githubusercontent.com/85896566/179930326-2c099dc3-cde3-42ef-a37f-9faef2bb4a1c.png)
     - Tag가 아닌 Layer를 통해 이동 제한하기
+    
+- 디자인 패턴
+  - 객체 지향 프로그래밍 설계를 할 때 자주 발생하는 문제들을 피하기 위해 사용되는 패턴. 여러 사람이 협업해서 개발할 때 다른 사람이 작성한 코드, 기존에 존재하는 코드를 이해하는 것은 어렵다. 이런 코드를 수정하거나 새로운 기능을 추가해야 하는데 의도치 않은 결과나 버그를 발생시키기 쉽고 성능을 최적화시키기도 어렵다. 이로 인해 시간과 예산이 소모된다.</br>
+디자인 패턴은 의사소통 수단의 일종으로서 이런 문제를 해결해준다. 예를 들어 문제 해결의 제안에 있어서도 “기능마다 별도의 클래스를 만들고, 그 기능들로 해야할 일을 한번에 처리해주는 클래스를 만들자.”라고 제안하는 것보다 "Facade 패턴을 써보자."라고 제안하는 쪽이 이해하기 쉽다.</br>
+일반 프로그래머가 만나는 문제가 지구상에서 유일한 문제일 확률은 거의 없다. 이미 수많은 사람들이 부딪힌 문제다. 따라서 전문가들이 기존에 해결책을 다 마련해 놓았다.
+  - [Strategy Pattern(전략 패턴)](https://victorydntmd.tistory.com/292)
+    - ![image](https://user-images.githubusercontent.com/85896566/179891408-e7c4485f-7be5-4b86-941a-50bf8a1d63bd.png)
+    - ![image](https://user-images.githubusercontent.com/85896566/180203222-ef0e1292-c41d-4bc5-844d-9aceca4d0e0b.png)
+
+  - 프로토 타입 패턴
+    - 같은 오브젝트이더라도 성질을 다르게 하여 생성하는 것(EX.체력, 데미지 등)
+  - [Factory Method Pattern](https://victorydntmd.tistory.com/299?category=719467)
+  - [Singleton Pattern](https://victorydntmd.tistory.com/293?category=719467)
+    - ![image](https://user-images.githubusercontent.com/85896566/180203062-cdfc058f-22a7-4ea7-9824-31db0811f650.png)
+    
 ***
 
 
@@ -260,7 +269,7 @@
     - Animation Override Controller 사용하여 Enemy1의 애니메이션을 Enemy2로 재정의
   - 3화
     - 바닥, 음식, 방해물, 출구 같은 요소 프리팹화
-
+- 디자인 패턴 개념과 대표적인 종류에 대해서 알아보았다.
 ***
 
 
