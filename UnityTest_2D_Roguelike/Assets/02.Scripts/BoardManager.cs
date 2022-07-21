@@ -87,6 +87,7 @@ public class BoardManager : MonoBehaviour
             Instantiate(tileChoice, randomPositon, Quaternion.identity);
         }
     }
+
     Vector3 RandomPositon()
     {
         int randIdx = Random.Range(0, gridPositions.Count);
