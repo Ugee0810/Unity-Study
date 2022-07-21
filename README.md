@@ -259,7 +259,7 @@
     - 플레이어, Enemy1/2 프리팹 제작
     - Animation Override Controller 사용하여 Enemy1의 애니메이션을 Enemy2로 재정의
   - 3화
-    - 바닥, 음식, 방해물, 출구 같은 요소 
+    - 바닥, 음식, 방해물, 출구 같은 요소 프리팹화
 
 ***
 
