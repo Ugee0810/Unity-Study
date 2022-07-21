@@ -18,7 +18,7 @@ public class BoardManager : MonoBehaviour
             this.maximum = max;
         }
     }
-
+    
     // 8 x 8 Size
     public int colums = 8;
     public int rows   = 8;
