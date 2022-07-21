@@ -252,6 +252,15 @@
 
 
 ### 22-07-21(Thu)
+- [[인프런 - retr0]유니티 2D 로그라이크 게임 만들기 [한글자막]](https://www.inflearn.com/course/%EC%9C%A0%EB%8B%88%ED%8B%B0-3d-%EA%B2%8C%EC%9E%84-%EB%A7%8C%EB%93%A4%EA%B8%B0/)
+  - 1화
+    - 에셋스토어에서 임포팅 후 태그, 레이어, 솔팅레이어 적용 확인 / 프로젝트 설정
+  - 2화
+    - 플레이어, Enemy1/2 프리팹 제작
+    - Animation Override Controller 사용하여 Enemy1의 애니메이션을 Enemy2로 재정의
+  - 3화
+    - 바닥, 음식, 방해물, 출구 같은 요소 프리팹화
+
 ***
 
 
