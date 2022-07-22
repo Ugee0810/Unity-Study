@@ -46,6 +46,37 @@ public class GameManager : MonoBehaviour
         enemies.Add(script);
     }
 
+    void Update()
+    {
+        if (playersTurn || enemiesMoving)
+            return;
+
+        StartCoroutine(MoveEnemies());
+    }
+
+    IEnumerator MoveEnemies()
+    {
+        enemiesMoving = true;
+
+        yield return new WaitForSeconds(turnDelay);
+
+        if (enemies.Count == 0)
+        {
+            yield return new WaitForSeconds(turnDelay);
+        }
+
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            enemies[i].MoveEnemy();
+
+            yield return new WaitForSeconds(enemies[i].moveTime);
+        }
+
+        playersTurn = true;
+
+        enemiesMoving = false;
+    }
+
     public void GameOver()
     {
 

@@ -11,9 +11,12 @@ public class Player : MovingObject
     private Animator animator;
     private int food;
 
+    SpriteRenderer spriteRenderer;
+
     protected override void Start()
     {
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         food = GameManager.instance.playerFoodPoints;
 
         base.Start();
@@ -39,6 +42,14 @@ public class Player : MovingObject
 
         if (horizontal != 0 || vertical != 0) // Player가 이동 중이라면
         {
+            if (horizontal == 1) // Right Flip
+            {
+                spriteRenderer.flipX = false;
+            }
+            else if (horizontal == -1)
+            {
+                spriteRenderer.flipX = true;
+            }
             AttemptMove<Wall>(horizontal, vertical);
         }
     }
@@ -63,7 +74,6 @@ public class Player : MovingObject
         Wall hitWall = component as Wall;
 
         hitWall.DamageWall(wallDamage);
-
         animator.SetTrigger("PlayerAttack");
     }
 

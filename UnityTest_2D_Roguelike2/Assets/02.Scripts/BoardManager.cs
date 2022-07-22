@@ -49,7 +49,7 @@ public class BoardManager : MonoBehaviour
         }
     }
 
-    void BoardSetup()
+    void BoardSetup() // 정방면 보드 생성 알고리즘
     {
         boardHolder = new GameObject("Board").transform; // 게임오브젝트가 만들어지면 항상 트랜스폼 정보가 나오는데, 그것을 변수로 넘겨준다.
 
