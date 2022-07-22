@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private SpriteRenderer spriteRenderer;
+    public Sprite dmgSprite;
+    public int wallHp = 3;
+
+    void Awake()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DamageWall(int loss)
     {
-        
+        spriteRenderer.sprite = dmgSprite;
+
+        wallHp -= loss;
+
+        if (wallHp <= 0)
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

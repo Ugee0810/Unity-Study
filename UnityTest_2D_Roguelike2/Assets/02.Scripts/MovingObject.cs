@@ -20,7 +20,7 @@ public abstract class MovingObject : MonoBehaviour // 움직이는 물체의 공
         inverseMoveTime = 1f / moveTime;
     }
 
-    protected bool Move (int xDir, int yDir, out RaycastHit2D hit)
+    protected bool Move(int xDir, int yDir, out RaycastHit2D hit)
     {
         Vector2 start = transform.position;
         Vector2 end   = start + new Vector2(xDir, yDir);
@@ -30,7 +30,7 @@ public abstract class MovingObject : MonoBehaviour // 움직이는 물체의 공
 
         bc2d.enabled = true;
 
-        if (hit.transform == null && !isMoving) // 움직이는 물체가 걸린다면 stop
+        if (hit.transform == null && !isMoving) // 움직이는 도중 물체가 걸린다면 true
         {
             StartCoroutine(SmoothMovement(end));
 
@@ -46,7 +46,7 @@ public abstract class MovingObject : MonoBehaviour // 움직이는 물체의 공
         float sqrRemainingDistance = (transform.position - end).sqrMagnitude; // 남은 거리 계산 | sqrMagnitude - 정확한 거리 보다 거리간 비교용으로 사용(A와 B간의 거리가 특정 거리보다 작거나 큰지 비교만 함(성능))
         while (sqrRemainingDistance > float.Epsilon) // Epsilon : 0과 매우 가까운 수
         {
-            Vector3 newPosition = Vector3.MoveTowards(rb2d.position, end, inverseMoveTime + Time.deltaTime);
+            Vector3 newPosition = Vector3.MoveTowards(rb2d.position, end, inverseMoveTime * Time.deltaTime);
             rb2d.MovePosition(newPosition);
 
             sqrRemainingDistance = (transform.position - end).sqrMagnitude;
@@ -65,12 +65,16 @@ public abstract class MovingObject : MonoBehaviour // 움직이는 물체의 공
 
         bool canMove = Move(xDir, yDir, out hit);
 
-        if (hit.transform == )
+        if (hit.transform == null)
+            return;
+
+        T hitComponent = hit.transform.GetComponent<T>();
+
+        if (!canMove && hitComponent != null)
+        {
+            OnCantMove(hitComponent);
+        }
     }
 
-
-    void Update()
-    {
-        
-    }
+    protected abstract void OnCantMove <T> (T component) where T : Component;
 }

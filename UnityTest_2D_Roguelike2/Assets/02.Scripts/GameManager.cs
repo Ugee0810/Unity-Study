@@ -45,4 +45,9 @@ public class GameManager : MonoBehaviour
     {
         enemies.Add(script);
     }
+
+    public void GameOver()
+    {
+
+    }
 }
