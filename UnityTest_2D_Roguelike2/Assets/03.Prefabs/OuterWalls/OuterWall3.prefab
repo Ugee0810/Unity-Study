@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6443277707274107952}
   - component: {fileID: 6443277707274107953}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: OuterWall3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,8 +67,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -479216357
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 2575423838102518957, guid: cc7586ed75ca3b44e8f0af1934b23ffe,
     type: 3}

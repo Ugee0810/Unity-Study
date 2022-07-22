@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2945828682597615282}
   - component: {fileID: 2945828682597615281}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,8 +67,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1680304765
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -7693588445340633418, guid: cc7586ed75ca3b44e8f0af1934b23ffe,
     type: 3}
