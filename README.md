@@ -273,7 +273,31 @@
 ***
 
 
-### 22-07-()
+### 22-07-22(Fri)
+- 2D 로그라이크2 게임 수업 진행
+  - 게임 오브젝트 프리팹 생성
+  - 태그, 레이어, 솔팅레이어 정의 및 적용
+  - ![image](https://user-images.githubusercontent.com/85896566/180345514-34601301-ea57-4425-8faa-c1be6cab24e0.png)
+    - 보드 매니저 스크립트 - 각 스테이지별 오브젝트 생성에 대한 로직을 구성하는 스크립트
+    - 게임 매니저 스크립트 - 몬스터가 자동으로 움직일 수 있게 하는 로직
+    - 오디오 매니저 스크립트 사용
+    - 광고 설정
+      - 구글 플레이 콘솔
+      - 구글 애드몹
+      - 유니티 內 설정
+- Mathf 클래스 함수 - 기본 수학 함수가 내장되어있는 클래스
+- 디자인 패턴 필수 공부
+  - 전략
+  - 팩토리
+  - 옵저버
+  - 커맨드
+  - 싱글톤
+- 객체 이동
+  - Movetowards : [A to B] 정해진 위치까지만 이동하는 방법
+- ![image](https://user-images.githubusercontent.com/85896566/180353939-44a3d3fe-5453-4ebf-ac97-b1fde02dfd23.png)
+- ![image](https://user-images.githubusercontent.com/85896566/180355105-fd282669-2a09-4b76-a9de-ffc87430f5bd.png)
+- ![image](https://user-images.githubusercontent.com/85896566/180355546-1d00fc7b-8691-48bb-8b7f-07d04e1a4f1c.png)
+- ★UML 다이어그램
 ***
 
 
