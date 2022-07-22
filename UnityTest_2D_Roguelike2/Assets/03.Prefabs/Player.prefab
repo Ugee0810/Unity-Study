@@ -170,3 +170,11 @@ MonoBehaviour:
   pointsPerFood: 10
   pointsPerSoda: 20
   wallDamage: 1
+  moveSound1: {fileID: 8300000, guid: 68ba64f9705c9454886be1ea777a38f2, type: 3}
+  moveSound2: {fileID: 8300000, guid: be614ab9f535c704db015ffa25e59ef5, type: 3}
+  eatSound1: {fileID: 8300000, guid: 8f7da70f5c4e9254989c966e7462e4aa, type: 3}
+  eatSound2: {fileID: 8300000, guid: eee8765411f68684a97887aab4652f2d, type: 3}
+  drinkSound1: {fileID: 8300000, guid: 1720a3b89fd946a4fa30136f97835934, type: 3}
+  drinkSound2: {fileID: 8300000, guid: 538ebbc3a934c3342a8e59e883aeca81, type: 3}
+  gameOverSound: {fileID: 8300000, guid: c322f288cf79a954392d7261e84c071d, type: 3}
+  restartLevelDelay: 1

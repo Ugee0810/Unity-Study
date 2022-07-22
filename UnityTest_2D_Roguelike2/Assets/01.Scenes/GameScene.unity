@@ -162,6 +162,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 6843513692298147560, guid: 0f85685c7c3cb3c4bb489acd63667203,
     type: 3}
+  soundManager: {fileID: 5366837214226001061, guid: 6aa220cf05eaa7a4cbb211b801e102d6,
+    type: 3}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -213,7 +215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 3.5, y: 3.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

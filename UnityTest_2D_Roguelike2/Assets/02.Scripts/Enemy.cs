@@ -7,6 +7,8 @@ public class Enemy : MovingObject
     public int playerDamage = 1;
 
     private Animator  animator;
+    public AudioClip attackSound1;
+    public AudioClip attackSound2;
     private Transform target; // Player의 정보
     private bool skipMove;
 
@@ -58,10 +60,6 @@ public class Enemy : MovingObject
         hitPlayer.LoseFood(1);
 
         animator.SetTrigger("EnemyAttack");
-    }
-
-    void Update()
-    {
-        
+        SoundManager.instance.RandomizeSfx(attackSound1, attackSound2);
     }
 }

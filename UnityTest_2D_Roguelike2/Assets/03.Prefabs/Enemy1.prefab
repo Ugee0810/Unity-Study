@@ -168,3 +168,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   playerDamage: 1
+  attackSound1: {fileID: 8300000, guid: f3de331f3e6982046b8cb26a3d5011cb, type: 3}
+  attackSound2: {fileID: 8300000, guid: ed0fe6ff4b048cf479e9bf313905ae7a, type: 3}

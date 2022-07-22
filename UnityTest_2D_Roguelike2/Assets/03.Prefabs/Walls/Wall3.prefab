@@ -122,5 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4803e4a935803f24298e59061dade7f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmgSprite: {fileID: 0}
+  dmgSprite: {fileID: -6111907640925398891, guid: cc7586ed75ca3b44e8f0af1934b23ffe,
+    type: 3}
   wallHp: 3
+  hitSound1: {fileID: 8300000, guid: 5117d6db641ae3447ba28ac98ca665df, type: 3}
+  hitSound2: {fileID: 8300000, guid: 5b02be35e1a8b2e43a42c2b1ed4e2fc4, type: 3}

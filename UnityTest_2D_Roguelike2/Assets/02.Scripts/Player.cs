@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MovingObject
 {
@@ -9,9 +10,18 @@ public class Player : MovingObject
     public int wallDamage = 1;
 
     private Animator animator;
+    public AudioClip moveSound1;
+    public AudioClip moveSound2;
+    public AudioClip eatSound1;
+    public AudioClip eatSound2;
+    public AudioClip drinkSound1;
+    public AudioClip drinkSound2;
+    public AudioClip gameOverSound;
     private int food;
 
     SpriteRenderer spriteRenderer;
+
+    public float restartLevelDelay = 1f;
 
     protected override void Start()
     {
@@ -62,7 +72,10 @@ public class Player : MovingObject
 
         RaycastHit2D hit;
 
-        Move(xDir, yDir, out hit);
+        if (Move(xDir, yDir, out hit))
+        {
+            SoundManager.instance.RandomizeSfx(moveSound1, moveSound2);
+        }
 
         CheakIfGameOver();
 
@@ -81,18 +94,26 @@ public class Player : MovingObject
     {
         if (collision.tag == "Exit")
         {
+            Invoke("Restart", restartLevelDelay);
             enabled = false; // OnDisable() 메서드 호출
         }
         else if(collision.tag == "Food")
         {
             food += pointsPerFood;
+            SoundManager.instance.RandomizeSfx(eatSound1, eatSound2);
             collision.gameObject.SetActive(false);
         }
         else if(collision.tag == "Soda")
         {
             food += pointsPerSoda;
+            SoundManager.instance.RandomizeSfx(drinkSound1, drinkSound2);
             collision.gameObject.SetActive(false);
         }
+    }
+
+    private void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single); // 재시작
     }
 
     private void CheakIfGameOver()
@@ -100,6 +121,9 @@ public class Player : MovingObject
         if (food <= 0)
         {
             GameManager.instance.GameOver();
+
+            SoundManager.instance.PlaySingle(gameOverSound);
+            SoundManager.instance.musicSource.Stop();
         }    
     }
 
