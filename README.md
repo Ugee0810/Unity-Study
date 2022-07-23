@@ -307,8 +307,25 @@
     - Floor, Wall, Material, Player 생성
     - Player 스크립트
       - 이동 구현 - transform
+      - 걷는 속도 조절 - 삼항연산자 : [Bool 형태 조건 ? true값 : false값]
+      - 애니메이션 초기화 : GetComponentInChildren<>() - 자식 오브젝트에 있는 컴포넌트를 가져온다.
+      - 회전 구현 - transform.LookAt() - 지정된 벡터를 향해서 회전시켜주는 함수
     - RigidBody - Collsion Detection - Continuous : CPU를 더 사용해서 물리계산 빈도를 높인다.
-    - 
+    - 카메라의 플레이어 유도 이동 구현
+      - Follow 스크립트
+```c#
+public class Follow : MonoBehaviour
+{
+    public Transform target; // Player 오브젝트의 위치 값 참조
+    public Vector3   offset; // 위치 오프셋
+
+    void Update()
+    {
+        transform.position = target.position + offset;
+    }
+}
+```
+
     - 
     - 
     
