@@ -301,11 +301,31 @@
 ***
 
 
-### 22-07-()
+### 22-07-23(Sat)
+- [골드메탈 - QuarterView 3D Action BE5](https://youtu.be/WkMM7Uu2AoA)
+  - 1화
+    - Floor, Wall, Material, Player 생성
+    - Player 스크립트
+      - 이동 구현 - transform
+    - RigidBody - Collsion Detection - Continuous : CPU를 더 사용해서 물리계산 빈도를 높인다.
+    - 
+    - 
+    - 
+    
+  - 2화
+    - 
+  - 3화
+    - 
+  - 4화
+    - 
+  - 5화
+    - 
+  - 6화
+    - 
 ***
 
 
-### 22-07-()
+### 22-07-24(Sun)
 ***
 
 
