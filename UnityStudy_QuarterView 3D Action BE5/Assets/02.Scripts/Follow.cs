@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Follow : MonoBehaviour
 {
-    public Transform target;
-    public Vector3 offset; // 따라갈 목표와 위치 오프셋을 public 변수로 선언
+    public Transform target; // Player 오브젝트의 위치 값 참조
+    public Vector3   offset; // 위치 오프셋
 
     void Update()
     {
