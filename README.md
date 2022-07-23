@@ -313,24 +313,11 @@
     - RigidBody - Collsion Detection - Continuous : CPU를 더 사용해서 물리계산 빈도를 높인다.
     - 카메라의 플레이어 유도 이동 구현
       - Follow 스크립트
-```c#
-public class Follow : MonoBehaviour
-{
-    public Transform target; // Player 오브젝트의 위치 값 참조
-    public Vector3   offset; // 위치 오프셋
-
-    void Update()
-    {
-        transform.position = target.position + offset;
-    }
-}
-```
-
-    - 
-    - 
-    
+        - ![image](https://user-images.githubusercontent.com/85896566/180601580-bdfdf2fd-830f-4518-8402-39b60a8c22e2.png)
   - 2화
-    - 
+    - 점프 구현
+    - 지형 물리 강화(Physic Metarial)
+    - 회피 구현
   - 3화
     - 
   - 4화
