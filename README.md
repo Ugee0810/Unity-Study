@@ -318,18 +318,29 @@
     - 점프 구현
     - 지형 물리 강화(Physic Metarial)
     - 회피 구현
+***
+
+
+### 22-07-24(Sun)
+- [골드메탈 - QuarterView 3D Action BE5](https://youtu.be/WkMM7Uu2AoA)
   - 3화
-    - 
+    - 아이템 구현
+    - 라이트 이펙트
+    - 파티클 이펙트
+      - Emission : 파티클 입자 출력양
+      - Shape : 파티클 입자 출력 모양
+      - Limit Velocity over Lifetime : 시간에 따른 속도제한
+      - Color over Lifetime : 시간에 따른 색상변화
+      - Size over Lifetime : 시간에 따른 크기변화
+    - 로직 구현
+      - enum으로 아이템 타입 열거
+      - 오브젝트 회전 효과
   - 4화
     - 
   - 5화
     - 
   - 6화
     - 
-***
-
-
-### 22-07-24(Sun)
 ***
 
 
