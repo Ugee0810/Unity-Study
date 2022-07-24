@@ -8,6 +8,17 @@ public class Player : MonoBehaviour
     public float jumpPower;
     public GameObject[] weapons;
     public bool[] hasWeapons;
+    public GameObject[] granades;
+    public int hasGranades;
+
+    public int ammo;
+    public int coin;
+    public int health;
+
+    public int maxAmmo;
+    public int maxCoin;
+    public int maxHealth;
+    public int maxHasGranades;
 
     float hAxis;
     float vAxis;
@@ -180,6 +191,41 @@ public class Player : MonoBehaviour
         {
             anim.SetBool("isJump", false);
             isJump = false;
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Item")
+        {
+            Item item = other.GetComponent<Item>();
+            switch (item.type)
+            {
+                // enum + switch
+                case Item.Type.Ammo:
+                    ammo += item.value;
+                    if (ammo > maxAmmo)
+                        ammo = maxAmmo;
+                    break;
+                case Item.Type.Coin:
+                    coin += item.value;
+                    if (coin > maxCoin)
+                        coin = maxCoin;
+                    break;
+                case Item.Type.Heart:
+                    health += item.value;
+                    if (health > maxHealth)
+                        health = maxHealth;
+                    break;
+                case Item.Type.Grenade:
+                    // 수류단 개수대로 공전체가 활성화 되도록 구현
+                    granades[hasGranades].SetActive(true);
+                    hasGranades += item.value;
+                    if (hasGranades > maxHasGranades)
+                        hasGranades = maxHasGranades;
+                    break;
+            }
+            Destroy(other.gameObject);
         }
     }
 

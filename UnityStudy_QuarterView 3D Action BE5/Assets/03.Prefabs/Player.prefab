@@ -97,6 +97,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 15
   jumpPower: 15
+  weapons: []
+  hasWeapons: 
+  ammo: 0
+  coin: 0
+  health: 100
+  hasGranades: 0
+  maxAmmo: 999
+  maxCoin: 99999
+  maxHealth: 100
+  maxHasGranades: 4
 --- !u!1001 &559981498304221880
 PrefabInstance:
   m_ObjectHideFlags: 0
