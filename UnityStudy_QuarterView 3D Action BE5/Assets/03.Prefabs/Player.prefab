@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 15
+  jumpPower: 15
 --- !u!1001 &559981498304221880
 PrefabInstance:
   m_ObjectHideFlags: 0
