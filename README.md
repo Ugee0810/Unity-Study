@@ -4,6 +4,14 @@
 - https://blog.naver.com/hunii123/222440191093
 </details>
 
+- [mixamo 사이트, 사용법](https://www.mixamo.com/#/)
+- 모델링을 fbx에 올린다.
+  - ![image](https://user-images.githubusercontent.com/85896566/180706129-236d653f-6e4f-4878-a9f4-d22af4f4fafb.png)
+    - Without Skin으로 설정 후 다운로드
+- [메타버스 개발자 경진대회](https://www.metaversedev.kr/)
+- [한국 컨텐츠 진흥원](https://www.kocca.kr/kocca/main.do)
+  - 연초에 모집 공고에 지원할 것, 수상 시 커리어에 영향이 높다.
+
 # UnityStudy
 
 
@@ -360,7 +368,20 @@
   - 7화
     - 원거리 공격 구현
       - 총알, 탄피 생성, 스크립트
-      - 발사 구현 12:30
+      - 발사 구현
+      - 재장전 구현
+  - 8화
+    - 플레이어 자동 회전 방지
+    - 충돌 레이어 설정
+      - ![image](https://user-images.githubusercontent.com/85896566/180722967-0ea72e44-c9a5-4a44-aae3-380991feb4bc.png)
+    - 벽 관통 방지
+      - 레이어 마스크로 벽 레이어에 충돌 제한 적용
+    - 아이템 충돌 제거
+      - 스크립트로 태그와 충돌 시 RigidBody - isKinematic = true / Collider.enabled = false로 해준다.
+      - GetComponent() 함수는 중복 컴포넌트일 때 가장 첫 번째 컴포넌트만 가져오므로 주의한다.
+   - 9화
+     - 
+
 ***
 
 
