@@ -11318,7 +11318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 8489671267008547122}
-  offset: {x: 0, y: 20, z: -20}
+  offset: {x: 0, y: 15, z: -15}
 --- !u!1001 &979837527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22445,7 +22445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   damage: 25
-  rate: 0.4
+  rate: 0.5
   maxAmmo: 1
   curAmmo: 1
   meleeArea: {fileID: 2100780979}
