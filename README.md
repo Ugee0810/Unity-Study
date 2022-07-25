@@ -356,7 +356,11 @@
   - 전체 중력을 바꾸면 캐릭터 별로 차별화할 수 없으므로 Constant Force 컴포넌트를 오브젝트별로 추가하여 차별화 할 수 있다.
   - AddForce
     - ![image](https://user-images.githubusercontent.com/85896566/180682478-12732aed-af13-46d5-a46f-95ce5c74c7e3.png)
-
+- [골드메탈 - QuarterView 3D Action BE5](https://youtu.be/WkMM7Uu2AoA)
+  - 7화
+    - 원거리 공격 구현
+      - 총알, 탄피 생성, 스크립트
+      - 발사 구현 12:30
 ***
 
 
