@@ -388,6 +388,14 @@
      - 수류탄 피격
        - 공 모양의 레이캐스트 사용
        - SphereCastAll() - 구체 모양의 레이캐스팅(모든 물체)
+   - 10화
+     - Enemy Ai 구현
+       - 유니티가 제공하는 Nav A.I
+       - NavMesh - NavAgent가 경로를 그리기 위한 바탕(Mesh)
+       - NavMesh는 Static 오브젝트만 Bake 가능(Wall)
+       - 다른 오브젝트와 충돌시 이동 값이 변경되는 걸 예방하기 위해 FreezeVelocity() 함수 추가
+         - ![image](https://user-images.githubusercontent.com/85896566/180782281-0c1aa460-b48e-4e88-a4b4-0eab906e1b44.png)
+
 - [디자인 패턴 공부]
   - [싱글톤 패턴](https://youtu.be/-oy5jOd5PBg)
   - [[생성 패턴] 싱글톤(Singleton) 패턴을 구현하는 6가지 방법](https://readystory.tistory.com/116)
@@ -396,11 +404,13 @@
 ***
 
 
-### 22-07-()
+### 22-07-26(Tue)
+- [골드메탈 - QuarterView 3D Action BE5](https://youtu.be/WkMM7Uu2AoA)
+  - 10화
 ***
 
 
-### 22-07-()
+### 22-07-27(Wen)
 ***
 
 
