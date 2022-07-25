@@ -30,8 +30,6 @@ public class Player : MonoBehaviour
     bool  gDown;
     bool  rDown;
     bool  iDown;
-    // Do Clapping
-    bool  qDown;
     // 무기 교체
     bool sDown1;
     bool sDown2;
@@ -78,7 +76,6 @@ public class Player : MonoBehaviour
             Attack();
             Reload();
            Granade();
-          Clapping();
     }
 
     void GetInput()
@@ -92,7 +89,6 @@ public class Player : MonoBehaviour
         fDown = Input.GetButton("Fire1");
         gDown = Input.GetButtonDown("Fire2");
         rDown = Input.GetButtonDown("Reload");
-        qDown = Input.GetButtonDown("Clapping");
         sDown1 = Input.GetButtonDown("Swap1");
         sDown2 = Input.GetButtonDown("Swap2");
         sDown3 = Input.GetButtonDown("Swap3");
@@ -108,7 +104,7 @@ public class Player : MonoBehaviour
         if (isSwap || isReload || !isFireReady) moveVec = Vector3.zero;
         // Move if : Ray에 의해 RayMask인 Wall이 캐치될 경우엔 더하지 않는걸로 회전은 할 수 있게 한다.
         // 삼항 연산자로 Walk 컨트롤
-        if (!isBorder) transform.position += moveVec * moveSpeed * (wDown ? 0.3f : 1f) * (isClapping ? 0f : 1f)  * Time.deltaTime;
+        if (!isBorder) transform.position += moveVec * moveSpeed * (wDown ? 0.3f : 1f) * Time.deltaTime;
         // Animation
         anim.SetBool("isRun", moveVec != Vector3.zero);
         anim.SetBool("isWalk", wDown);
@@ -311,21 +307,6 @@ public class Player : MonoBehaviour
         // 플레이어가 소지한 탄은 사라짐
         ammo -= reAmmo;
         isReload = false;
-    }
-
-    void Clapping()
-    {
-        if (qDown && moveVec == Vector3.zero && !isJump && !isDodge && !isSwap)
-        {
-            anim.SetTrigger("doClapping");
-            isClapping = true;
-            Invoke("ClappingOut", 0.5f);
-        }
-    }
-
-    void ClappingOut()
-    {
-        isClapping = false;
     }
 
     void OnCollisionEnter(Collision collision)

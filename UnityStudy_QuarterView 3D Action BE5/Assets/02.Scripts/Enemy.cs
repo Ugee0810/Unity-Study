@@ -1,22 +1,59 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
     public int maxHelath;
     public int curHelath;
+    public Transform target;
+    // 추적을 결정하는 변수
+    public bool isChase;
 
-    Rigidbody   rb;
-    BoxCollider bc;
-    Material   mat;
+    Rigidbody     rb;
+    BoxCollider   bc;
+    Material     mat;
+    NavMeshAgent nav;
+    Animator    anim;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         bc = GetComponent<BoxCollider>();
         // Material을 가져오려면 아래의 구문처럼 한다.
-        mat = GetComponent<MeshRenderer>().material;
+        mat = GetComponentInChildren<MeshRenderer>().material;
+        nav = GetComponent<NavMeshAgent>();
+        anim = GetComponentInChildren<Animator>();
+
+        Invoke("ChaseStart", 2);
+    }
+
+    void ChaseStart()
+    {
+        isChase = true;
+        anim.SetBool("isWalk", true);
+    }
+
+    void Update()
+    {
+        // SetDestination() - 도착할 목표 위치 지정 함수
+        if (isChase) nav.SetDestination(target.position);
+    }
+
+    void FreezeVelocity()
+    {
+        if (isChase)
+        {
+            // 물리력이 NavAgent 이동을 방해하지 않도록 로직 추가
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        FreezeVelocity();
     }
 
     void OnTriggerEnter(Collider collision)
@@ -66,6 +103,11 @@ public class Enemy : MonoBehaviour
             mat.color = Color.gray;
             // 14번 레이어로 변경(Enemy Dead)
             gameObject.layer = 14;
+            // 추적 해제
+            isChase = false;
+            // 사망 리액션을 유지하기 위해 NavAgent를 비활성
+            nav.enabled = false;
+            anim.SetTrigger("doDie");
 
             if (isGrenade)
             {
