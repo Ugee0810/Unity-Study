@@ -390,6 +390,7 @@
        - SphereCastAll() - 구체 모양의 레이캐스팅(모든 물체)
 
 - [싱글톤 패턴](https://youtu.be/-oy5jOd5PBg)
+- [[생성 패턴] 싱글톤(Singleton) 패턴을 구현하는 6가지 방법](https://readystory.tistory.com/116)
 ***
 
 
