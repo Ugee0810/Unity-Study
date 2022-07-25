@@ -39,8 +39,8 @@ public class Player : MonoBehaviour
     Vector3 moveVec;
     Vector3 dodgeVec;
 
-    Rigidbody rb;
     Animator anim;
+    Rigidbody rb;
 
     // 트리거 된 아이템을 저장하기 위한 변수
     GameObject nearObject;
@@ -105,7 +105,7 @@ public class Player : MonoBehaviour
         anim.SetBool("isWalk", wDown);
     }
 
-    void Turn() // Rotate 구현
+    void Turn() // Player Rotate 구현
     {
         // transform.LookAt() - 지정된 벡터를 향해서 회전시켜주는 함수
         transform.LookAt(transform.position + moveVec);
