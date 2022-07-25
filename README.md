@@ -5,9 +5,9 @@
 </details>
 
 - [mixamo 사이트, 사용법](https://www.mixamo.com/#/)
-- 모델링을 fbx에 올린다.
+  - 모델링을 fbx에 올린다.
   - ![image](https://user-images.githubusercontent.com/85896566/180706129-236d653f-6e4f-4878-a9f4-d22af4f4fafb.png)
-    - Without Skin으로 설정 후 다운로드
+  - Without Skin으로 설정 후 다운로드
 - [메타버스 개발자 경진대회](https://www.metaversedev.kr/)
 - [한국 컨텐츠 진흥원](https://www.kocca.kr/kocca/main.do)
   - 연초에 모집 공고에 지원할 것, 수상 시 커리어에 영향이 높다.
