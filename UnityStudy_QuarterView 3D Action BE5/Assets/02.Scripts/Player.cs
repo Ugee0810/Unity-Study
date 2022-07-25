@@ -189,7 +189,8 @@ public class Player : MonoBehaviour
         if (fDown && isFireReady && !isDodge && !isSwap)
         {
             equipWeapon.Use();
-            anim.SetTrigger("doSwing");
+            // 삼항 연산자를 이용하여 무기 타입에 따른 다른 트리거 실행
+            anim.SetTrigger(equipWeapon.type == Weapon.Type.Melee ? "doSwing" : "doShot");
             // 공격 딜레이를 0으로 돌려서 다음 공격까지 기다리도록 작성
             fireDelay = 0;
         }
