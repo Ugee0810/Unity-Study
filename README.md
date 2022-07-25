@@ -389,6 +389,7 @@
        - 공 모양의 레이캐스트 사용
        - SphereCastAll() - 구체 모양의 레이캐스팅(모든 물체)
 
+- [싱글톤 패턴](https://youtu.be/-oy5jOd5PBg)
 ***
 
 
