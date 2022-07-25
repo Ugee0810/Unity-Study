@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public bool[] hasWeapons;
     public GameObject[] granades;
     public int hasGranades;
+    public GameObject granadeObj;
     public Camera followCamera;
 
     public int ammo;
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
     bool  wDown;
     bool  jDown;
     bool  fDown;
+    bool  gDown;
     bool  rDown;
     bool  iDown;
     // Do Clapping
@@ -75,6 +77,7 @@ public class Player : MonoBehaviour
               Swap();
             Attack();
             Reload();
+           Granade();
           Clapping();
     }
 
@@ -87,6 +90,7 @@ public class Player : MonoBehaviour
         jDown = Input.GetButtonDown("Jump");
         iDown = Input.GetButtonDown("Interation");
         fDown = Input.GetButton("Fire1");
+        gDown = Input.GetButtonDown("Fire2");
         rDown = Input.GetButtonDown("Reload");
         qDown = Input.GetButtonDown("Clapping");
         sDown1 = Input.GetButtonDown("Swap1");
@@ -246,6 +250,36 @@ public class Player : MonoBehaviour
             anim.SetTrigger("doReload");
             isReload = true;
             Invoke("ReloadOut", 0.5f);
+        }
+    }
+
+    void Granade()
+    {
+        if (hasGranades == 0) return;
+
+        if (gDown && !isReload && !isSwap)
+        {
+            // ScreenPointToRay() - 스크린에서 월드로 Ray를 쏘는 함수
+            Ray ray = followCamera.ScreenPointToRay(Input.mousePosition);
+            // RaycastHit 정보를 저장할 변수
+            RaycastHit rayHit;
+            // out : return처럼 반환값을 주어진 변수에 저장하는 키워드
+            if (Physics.Raycast(ray, out rayHit, 100))
+            {
+                // RayCastHit의 마우스 클릭 위치 활용하여 회전을 구현
+                Vector3 nextVec = rayHit.point - transform.position;
+                // RayCastHit의 높이는 무시하도록 Y축 값을 0으로 초기화
+                nextVec.y = 10;
+
+                GameObject instantGranade = Instantiate(granadeObj, transform.position, transform.rotation);
+                Rigidbody rbGranade = instantGranade.GetComponent<Rigidbody>();
+                rbGranade.AddForce(nextVec, ForceMode.Impulse);
+                rbGranade.AddTorque(Vector3.back * 10, ForceMode.Impulse);
+                // 수류탄 1개 제거
+                hasGranades--;
+                // 배열의 첫 번째 배열을 비활성화
+                granades[hasGranades].SetActive(false);
+            }
         }
     }
 
