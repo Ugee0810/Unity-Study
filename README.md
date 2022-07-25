@@ -192,6 +192,7 @@
     - 초기화 영역
     - 최초 1회
     - Debug.Log("사냥 장비를 챙겼습니다.");
+  - ![image](https://user-images.githubusercontent.com/85896566/180678681-bc603ecb-0aa1-4f28-8202-117ed510f7fc.png)
   - FixedUpdate()
     - 물리 연산 영역
     - 물리 연산 하기 전에 실행
@@ -351,6 +352,11 @@
 
 
 ### 22-07-25(Monday)
+- 수업 내용과 유튜브 강의의 차이점
+  - 전체 중력을 바꾸면 캐릭터 별로 차별화할 수 없으므로 Constant Force 컴포넌트를 오브젝트별로 추가하여 차별화 할 수 있다.
+  - AddForce
+    - ![image](https://user-images.githubusercontent.com/85896566/180682478-12732aed-af13-46d5-a46f-95ce5c74c7e3.png)
+
 ***
 
 
