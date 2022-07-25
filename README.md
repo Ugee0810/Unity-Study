@@ -388,9 +388,11 @@
      - 수류탄 피격
        - 공 모양의 레이캐스트 사용
        - SphereCastAll() - 구체 모양의 레이캐스팅(모든 물체)
-
-- [싱글톤 패턴](https://youtu.be/-oy5jOd5PBg)
-- [[생성 패턴] 싱글톤(Singleton) 패턴을 구현하는 6가지 방법](https://readystory.tistory.com/116)
+- [디자인 패턴 공부]
+  - [싱글톤 패턴](https://youtu.be/-oy5jOd5PBg)
+  - [[생성 패턴] 싱글톤(Singleton) 패턴을 구현하는 6가지 방법](https://readystory.tistory.com/116)
+  - [유니티 디자인패턴 - 싱글톤 (Unity Design Patterns - Singleton)](https://glikmakesworld.tistory.com/2)
+  - [유니티 디자인패턴 - 팩토리(심플팩토리, 팩토리 메소드, 추상팩토리) (Unity Design Patterns - Factory)](https://glikmakesworld.tistory.com/5?category=797136)
 ***
 
 
