@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public bool[] hasWeapons;
     public GameObject[] granades;
     public int hasGranades;
+    public Camera followCamera;
 
     public int ammo;
     public int coin;
@@ -25,7 +26,10 @@ public class Player : MonoBehaviour
     bool  wDown;
     bool  jDown;
     bool  fDown;
+    bool  rDown;
     bool  iDown;
+    // Do Clapping
+    bool  qDown;
     // 무기 교체
     bool sDown1;
     bool sDown2;
@@ -33,8 +37,11 @@ public class Player : MonoBehaviour
 
     bool isJump;
     bool isDodge;
+    bool isClapping;
     bool isSwap;
     bool isFireReady = true;
+    bool isReload;
+    bool isBorder;
 
     Vector3 moveVec;
     Vector3 dodgeVec;
@@ -61,11 +68,14 @@ public class Player : MonoBehaviour
     {
           GetInput();
               Move();
+              Turn();
               Jump();
              Dodge();
         Interation();
               Swap();
             Attack();
+            Reload();
+          Clapping();
     }
 
     void GetInput()
@@ -75,8 +85,10 @@ public class Player : MonoBehaviour
         // Input.GetButton() - 누를 때 적용 및 유지
         wDown = Input.GetButton("Walk");
         jDown = Input.GetButtonDown("Jump");
-        fDown = Input.GetButtonDown("Fire1");
         iDown = Input.GetButtonDown("Interation");
+        fDown = Input.GetButton("Fire1");
+        rDown = Input.GetButtonDown("Reload");
+        qDown = Input.GetButtonDown("Clapping");
         sDown1 = Input.GetButtonDown("Swap1");
         sDown2 = Input.GetButtonDown("Swap2");
         sDown3 = Input.GetButtonDown("Swap3");
@@ -88,15 +100,39 @@ public class Player : MonoBehaviour
         moveVec = new Vector3(hAxis, 0, vAxis).normalized;
         // 회피 중에는 움직임 벡터 -> 회피 방향 벡터로 바뀌도록 구현
         if (isDodge) moveVec = dodgeVec;
-        // transform.LookAt() - 지정된 벡터를 향해서 회전시켜주는 함수
-        transform.LookAt(transform.position + moveVec);
         // 스왑 중이거나 공격 중일 땐 움직이지 않도록 구현
-        if (isSwap || !isFireReady) moveVec = Vector3.zero;
-        // Move | 삼항연산자로 Walk 컨트롤
-        transform.position += moveVec * moveSpeed * (wDown ? 0.3f : 1f) * Time.deltaTime;
+        if (isSwap || isReload || !isFireReady) moveVec = Vector3.zero;
+        // Move if : Ray에 의해 RayMask인 Wall이 캐치될 경우엔 더하지 않는걸로 회전은 할 수 있게 한다.
+        // 삼항 연산자로 Walk 컨트롤
+        if (!isBorder) transform.position += moveVec * moveSpeed * (wDown ? 0.3f : 1f) * (isClapping ? 0f : 1f)  * Time.deltaTime;
         // Animation
         anim.SetBool("isRun", moveVec != Vector3.zero);
         anim.SetBool("isWalk", wDown);
+    }
+
+    void Turn()
+    {
+        //// 1.키보드에 의한 회전
+        // transform.LookAt() - 지정된 벡터를 향해서 회전시켜주는 함수
+        transform.LookAt(transform.position + moveVec);
+
+        //// 2.마우스에 의한 회전
+        if (fDown)
+        {
+            // ScreenPointToRay() - 스크린에서 월드로 Ray를 쏘는 함수
+            Ray ray = followCamera.ScreenPointToRay(Input.mousePosition);
+            // RaycastHit 정보를 저장할 변수
+            RaycastHit rayHit;
+            // out : return처럼 반환값을 주어진 변수에 저장하는 키워드
+            if (Physics.Raycast(ray, out rayHit, 100))
+            {
+                // RayCastHit의 마우스 클릭 위치 활용하여 회전을 구현
+                Vector3 nextVec = rayHit.point - transform.position;
+                // RayCastHit의 높이는 무시하도록 Y축 값을 0으로 초기화
+                nextVec.y = 0;
+                transform.LookAt(transform.position + nextVec);
+            }
+        }
     }
 
     void Jump()
@@ -194,6 +230,68 @@ public class Player : MonoBehaviour
             // 공격 딜레이를 0으로 돌려서 다음 공격까지 기다리도록 작성
             fireDelay = 0;
         }
+    }
+
+    void Reload()
+    {
+        // 보유 무기가 없다면 탈출
+        if (equipWeapon == null) return;
+        // 근접 무기라면 탈출
+        if (equipWeapon.type == Weapon.Type.Melee) return;
+        // 총알이 없다면 탈출
+        if (ammo == 0) return;
+
+        if (rDown && !isJump && !isDodge && !isSwap && isFireReady && !isReload)
+        {
+            anim.SetTrigger("doReload");
+            isReload = true;
+            Invoke("ReloadOut", 0.5f);
+        }
+    }
+
+    void FreezeRotation()
+    {
+        // angularVelocity - 물리 회전 속도
+        rb.angularVelocity = Vector3.zero;
+    }
+
+    void StopToWall()
+    {
+        Debug.DrawRay(transform.position, transform.forward * 5, Color.green);
+        // "Wall"이라는 레이어 마스크를 가진 오브젝트를 체크할 시 isBorder가 true가 됨.
+        isBorder = Physics.Raycast(transform.position, transform.forward, 5, LayerMask.GetMask("Wall"));
+    }
+
+    void FixedUpdate()
+    {
+        FreezeRotation();
+            StopToWall();
+    }
+
+    void ReloadOut()
+    {
+        // 플레이어가 소지한 탄을 고려해서 계산하기
+        int reAmmo = ammo < equipWeapon.maxAmmo ? ammo : equipWeapon.maxAmmo;
+        // 무기에 탄이 들어간다.
+        equipWeapon.curAmmo = reAmmo;
+        // 플레이어가 소지한 탄은 사라짐
+        ammo -= reAmmo;
+        isReload = false;
+    }
+
+    void Clapping()
+    {
+        if (qDown && moveVec == Vector3.zero && !isJump && !isDodge && !isSwap)
+        {
+            anim.SetTrigger("doClapping");
+            isClapping = true;
+            Invoke("ClappingOut", 0.5f);
+        }
+    }
+
+    void ClappingOut()
+    {
+        isClapping = false;
     }
 
     void OnCollisionEnter(Collision collision)

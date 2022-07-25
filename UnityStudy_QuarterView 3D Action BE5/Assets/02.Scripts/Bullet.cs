@@ -11,6 +11,6 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag == "Floor")
             Destroy(gameObject, 3f);
         else if (collision.gameObject.tag == "Wall")
-            Destroy(gameObject, 3f);
+            Destroy(gameObject);
     }
 }
