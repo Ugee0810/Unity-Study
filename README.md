@@ -446,7 +446,29 @@
       - 플레이어 이동 예측 로직
       - 상속을 할 때 주의점 : Awake() 함수는 자식 스크립트만 단독 실행!!
         - ![image](https://user-images.githubusercontent.com/85896566/180917789-361ba551-0ce0-424a-a410-d70b11ae2325.png)
-      
+  - 12화
+    - UI 배치하기
+      - 캔버스 세팅
+      - [쿠키런 무료 폰트](https://www.cookierunfont.com/)
+      - 메뉴 판넬
+      - 게임 판넬
+        - 스코어 그룹, 스테이터스 그룹, 스테이지 그룹, 적 그룹
+        - 장비 UI
+        - 보스 체력 UI
+  - 13화
+    - 상점 구현
+    - ![image](https://user-images.githubusercontent.com/85896566/180948352-9d2c86ae-48ce-44e7-a247-94fa6880a0af.png)
+  - 14화
+    - UI와 데이터 로직 연결
+      - 움직이는 메인 화면 카메라 로직
+      - 메인 화면 최고 기록 
+      - 유니티에서 자동으로 저장해주는 인자값과 함수
+        - ![image](https://user-images.githubusercontent.com/85896566/180962147-ab2303da-ce3a-4f45-8b9b-8affc3eeba5a.png)
+        - ','을 자동으로 넣어주며 저장된 스코어를 받아오는 것
+          - ![image](https://user-images.githubusercontent.com/85896566/180966292-08d477d9-e45b-465a-8130-647240d191e3.png)
+          - 22:27부터 
+
+  - 15화
 ***
 
 
