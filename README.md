@@ -467,7 +467,7 @@
         - ![image](https://user-images.githubusercontent.com/85896566/180962147-ab2303da-ce3a-4f45-8b9b-8affc3eeba5a.png)
         - ','을 자동으로 넣어주며 저장된 스코어를 받아오는 것
           - ![image](https://user-images.githubusercontent.com/85896566/180966292-08d477d9-e45b-465a-8130-647240d191e3.png)
-          - 22:27부터 
+          - 30:25
 
   - 15화
 ***
