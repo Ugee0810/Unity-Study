@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public int ammo;
     public int coin;
     public int health;
+    public int score;
 
     public int maxAmmo;
     public int maxCoin;
@@ -55,7 +56,7 @@ public class Player : MonoBehaviour
     // 트리거 된 아이템을 저장하기 위한 변수
     GameObject nearObject;
     // 기존에 장착된 무기를 저장하는 변수
-    Weapon equipWeapon;
+    public Weapon equipWeapon;
     int equipWeaponIndex = -1;
     // 공격 준비 딜레이 변수
     float fireDelay;

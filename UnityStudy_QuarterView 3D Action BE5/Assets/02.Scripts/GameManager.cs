@@ -64,6 +64,42 @@ public class GameManager : MonoBehaviour
         player.gameObject.SetActive(true);
     }
 
-    // 인게임 UI
+    void Update()
+    {
+        // 플레이 타임은 델타타임을 사용하여 증가
+        if (isBattle) playTime += Time.deltaTime;
+    }
 
+    // 인게임 UI
+    void LateUpdate()
+    {
+        scoreTxt.text        = string.Format("{0:n0}", player.score);
+        stageTxt.text        = "STAGE " + stage;
+        // 초단위 시간을 3600, 60으로 나누어 시분초로 계산
+        int hour   = (int)(playTime / 3600);
+        // 시간을 먼저 계산하고 남은 것을 빼준다.
+        int min    = (int)(playTime - hour * 3600 / 60);
+        int second = (int)(playTime % 60);
+        playTimeTxt.text = string.Format("{0:00}", hour  ) + ":" +
+                           string.Format("{0:00}", min   ) + ":" +
+                           string.Format("{0:00}", second);
+        playerHealthTxt.text = player.health + " / " + player.maxHealth;
+        playerCoinTxt.text   = string.Format("{0:n0}", player.coin);
+
+        // 무기를 보유하지 않았다면,
+        if (player.equipWeapon == null) playerAmmoTxt.text = "- / " + player.ammo;
+        // 보유한 무기가 근접 무기라면,
+        else if (player.equipWeapon.type == Weapon.Type.Melee) playerAmmoTxt.text = "- / " + player.ammo;
+        else playerAmmoTxt.text = player.equipWeapon.curAmmo + " / " + player.ammo;
+
+        // 무기 아이콘은 보유 상황에 따라 알파값만 변경
+        weapon1Img.color = new Color(1, 1, 1, player.hasWeapons[0]   ? 1 : 0);
+        weapon2Img.color = new Color(1, 1, 1, player.hasWeapons[1]   ? 1 : 0);
+        weapon3Img.color = new Color(1, 1, 1, player.hasWeapons[2]   ? 1 : 0);
+        weaponRImg.color = new Color(1, 1, 1, player.hasGranades > 0 ? 1 : 0);
+
+        enemyATxt.text = enemyCntA.ToString();
+        enemyBTxt.text = enemyCntB.ToString();
+        enemyCTxt.text = enemyCntC.ToString();
+    }
 }
