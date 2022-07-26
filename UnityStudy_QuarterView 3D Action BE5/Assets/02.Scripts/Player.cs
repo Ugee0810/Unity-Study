@@ -37,17 +37,19 @@ public class Player : MonoBehaviour
 
     bool isJump;
     bool isDodge;
-    bool isClapping;
     bool isSwap;
     bool isFireReady = true;
     bool isReload;
     bool isBorder;
+    bool isDamage;
 
     Vector3 moveVec;
     Vector3 dodgeVec;
 
     Animator anim;
     Rigidbody rb;
+    // 플레이어의 오브젝트(팔, 다리, 몸 등)이 많으므로 배열로 가져오기
+    MeshRenderer[] meshs;
 
     // 트리거 된 아이템을 저장하기 위한 변수
     GameObject nearObject;
@@ -61,7 +63,9 @@ public class Player : MonoBehaviour
     {
         // GetComponentInChildren<>() - 자식 오브젝트에 있는 컴포넌트를 가져온다.
         anim = GetComponentInChildren<Animator>();
-        rb   = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
+        // GetComponentsInChildren<>() - 메쉬렌더러를 가지고 있는 자식 오브젝트를 모두 가져온다.
+        meshs = GetComponentsInChildren<MeshRenderer>();
     }
 
     void Update()
@@ -350,6 +354,39 @@ public class Player : MonoBehaviour
                     break;
             }
             Destroy(other.gameObject);
+        }
+        else if (other.tag == "EnemyBullet")
+        {
+            if(!isDamage)
+            {
+                Bullet enemyBullet = other.GetComponent<Bullet>();
+                health -= enemyBullet.damage;
+                // RigidBody 유무를 조건으로 하여 Destroy() 호출
+                if (other.GetComponent<Rigidbody>() != null)
+                {
+                    Destroy(other.gameObject);
+                }
+
+                StartCoroutine(OnDamage());
+            }
+        }
+    }
+
+    IEnumerator OnDamage()
+    {
+        isDamage = true;
+        foreach (MeshRenderer mesh in meshs)
+        {
+            mesh.material.color = Color.yellow;
+        }
+
+        // 1초간 무적 
+        yield return new WaitForSeconds(1f);
+
+        isDamage = false;
+        foreach (MeshRenderer mesh in meshs)
+        {
+            mesh.material.color = Color.white;
         }
     }
 

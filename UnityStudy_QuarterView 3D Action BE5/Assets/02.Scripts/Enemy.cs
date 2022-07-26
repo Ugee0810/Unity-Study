@@ -5,11 +5,27 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    public enum Type
+    {
+        // 일반
+        A,
+        // 돌격
+        B,
+        // 원거리
+        C,
+    }
+    public Type enemyType;
+
     public int maxHelath;
     public int curHelath;
     public Transform target;
+    // 공격 범위
+    public BoxCollider     meleeArea;
+    public CapsuleCollider rangeArea;
+    public GameObject bullet;
     // 추적을 결정하는 변수
     public bool isChase;
+    public bool isAttack;
 
     Rigidbody     rb;
     BoxCollider   bc;
@@ -37,8 +53,94 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        // 네비게이션이 활성화 되어 있을 때만(플레이어가 죽고 나서도 움직이는 걸 방지)
         // SetDestination() - 도착할 목표 위치 지정 함수
-        if (isChase) nav.SetDestination(target.position);
+        // nav.isStopped를 사용하여 완벽하게 멈추도록 작성
+        if (nav.enabled)
+        {
+            nav.SetDestination(target.position);
+            nav.isStopped = !isChase;
+        }
+    }
+
+    void Targeting()
+    {
+        float targetRadius = 0f;
+        float targetRange  = 0f;
+
+        // switch문으로 각 타겟팅 수치 정하기
+        switch (enemyType)
+        {
+            case Type.A:
+                targetRadius = 1.5f;
+                targetRange  = 3f;
+                break;
+            case Type.B:
+                targetRadius = 1f;
+                targetRange  = 12f;
+                break;
+            case Type.C:
+                targetRadius = 0.5f;
+                targetRange  = 25f;
+                break;
+        }
+
+        // SphereCastAll() - 구체 모양의 레이캐스팅(모든 물체)
+        RaycastHit[] rayHits = Physics.SphereCastAll(transform.position, // 자신의 위치
+                                                     targetRadius,       // 구체 반지름
+                                                     transform.forward,  // 몬스터의 앞으로
+                                                     targetRange,        // 거리
+                                                     LayerMask.GetMask("Player"));
+        // rayHit 변수에 데이터가 들어오면 공격 코루틴 실행
+        // 공격 후에 연속으로 공격하는걸 방지(!isAttack)
+        if (rayHits.Length > 0 && !isAttack)
+        {
+            StartCoroutine(Attack());
+        }
+    }
+
+    IEnumerator Attack()
+    {
+        isChase = false;
+        isAttack = true;
+        anim.SetBool("isAttack", true);
+
+        switch (enemyType)
+        {
+            case Type.A:
+                // Type.A : 정지 -> 공격 -> 추적 개시
+                // 애니메이션과 맞추기 위해 딜레이를 준다.
+                yield return new WaitForSeconds(0.2f);
+                meleeArea.enabled = true;
+
+                yield return new WaitForSeconds(1f);
+                meleeArea.enabled = false;
+
+                yield return new WaitForSeconds(1f);
+                break;
+            case Type.B:
+                yield return new WaitForSeconds(0.1f);
+                rb.AddForce(transform.forward * 20, ForceMode.Impulse);
+                meleeArea.enabled = true;
+
+                yield return new WaitForSeconds(0.5f);
+                rb.velocity = Vector3.zero;
+                meleeArea.enabled = false;
+
+                yield return new WaitForSeconds(2f);
+                break;
+            case Type.C:
+                yield return new WaitForSeconds(0.5f);
+                GameObject instantBullet = Instantiate(bullet, transform.position, transform.rotation);
+                Rigidbody rbBullet = instantBullet.GetComponent<Rigidbody>();
+                rbBullet.velocity = transform.forward * 20;
+
+                yield return new WaitForSeconds(2f);
+                break;
+        }
+        isChase = true;
+        isAttack = false;
+        anim.SetBool("isAttack", false);
     }
 
     void FreezeVelocity()
@@ -53,6 +155,7 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
+        Targeting();
         FreezeVelocity();
     }
 
