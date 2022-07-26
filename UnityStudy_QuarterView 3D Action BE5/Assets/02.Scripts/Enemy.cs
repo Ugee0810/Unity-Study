@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
         B,
         // 원거리
         C,
+        // 보스
+        D,
     }
     public Type enemyType;
 
@@ -26,23 +28,25 @@ public class Enemy : MonoBehaviour
     // 추적을 결정하는 변수
     public bool isChase;
     public bool isAttack;
+    public bool isDead;
 
-    Rigidbody     rb;
-    BoxCollider   bc;
-    Material     mat;
-    NavMeshAgent nav;
-    Animator    anim;
+    public Rigidbody rb;
+    public BoxCollider bc;
+    public MeshRenderer[] meshs;
+    public NavMeshAgent nav;
+    public Animator anim;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         bc = GetComponent<BoxCollider>();
         // Material을 가져오려면 아래의 구문처럼 한다.
-        mat = GetComponentInChildren<MeshRenderer>().material;
+        meshs = GetComponentsInChildren<MeshRenderer>();
         nav = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<Animator>();
 
-        Invoke("ChaseStart", 2);
+        if (enemyType != Type.D)
+            Invoke("ChaseStart", 2);
     }
 
     void ChaseStart()
@@ -56,7 +60,7 @@ public class Enemy : MonoBehaviour
         // 네비게이션이 활성화 되어 있을 때만(플레이어가 죽고 나서도 움직이는 걸 방지)
         // SetDestination() - 도착할 목표 위치 지정 함수
         // nav.isStopped를 사용하여 완벽하게 멈추도록 작성
-        if (nav.enabled)
+        if (nav.enabled && enemyType != Type.D)
         {
             nav.SetDestination(target.position);
             nav.isStopped = !isChase;
@@ -65,37 +69,40 @@ public class Enemy : MonoBehaviour
 
     void Targeting()
     {
-        float targetRadius = 0f;
-        float targetRange  = 0f;
-
-        // switch문으로 각 타겟팅 수치 정하기
-        switch (enemyType)
+        if (!isDead && enemyType != Type.D)
         {
-            case Type.A:
-                targetRadius = 1.5f;
-                targetRange  = 3f;
-                break;
-            case Type.B:
-                targetRadius = 1f;
-                targetRange  = 12f;
-                break;
-            case Type.C:
-                targetRadius = 0.5f;
-                targetRange  = 25f;
-                break;
-        }
+            float targetRadius = 0f;
+            float targetRange  = 0f;
 
-        // SphereCastAll() - 구체 모양의 레이캐스팅(모든 물체)
-        RaycastHit[] rayHits = Physics.SphereCastAll(transform.position, // 자신의 위치
-                                                     targetRadius,       // 구체 반지름
-                                                     transform.forward,  // 몬스터의 앞으로
-                                                     targetRange,        // 거리
-                                                     LayerMask.GetMask("Player"));
-        // rayHit 변수에 데이터가 들어오면 공격 코루틴 실행
-        // 공격 후에 연속으로 공격하는걸 방지(!isAttack)
-        if (rayHits.Length > 0 && !isAttack)
-        {
-            StartCoroutine(Attack());
+            // switch문으로 각 타겟팅 수치 정하기
+            switch (enemyType)
+            {
+                case Type.A:
+                    targetRadius = 1.5f;
+                    targetRange  = 3f;
+                    break;
+                case Type.B:
+                    targetRadius = 1f;
+                    targetRange  = 12f;
+                    break;
+                case Type.C:
+                    targetRadius = 0.5f;
+                    targetRange  = 25f;
+                    break;
+            }
+
+            // SphereCastAll() - 구체 모양의 레이캐스팅(모든 물체)
+            RaycastHit[] rayHits = Physics.SphereCastAll(transform.position, // 자신의 위치
+                                                         targetRadius,       // 구체 반지름
+                                                         transform.forward,  // 방향 = 몬스터의 앞
+                                                         targetRange,        // 거리
+                                                         LayerMask.GetMask("Player"));
+            // rayHit 변수에 데이터가 들어오면 공격 코루틴 실행
+            // 공격 후에 연속으로 공격하는걸 방지(!isAttack)
+            if (rayHits.Length > 0 && !isAttack)
+            {
+                StartCoroutine(Attack());
+            }
         }
     }
 
@@ -194,27 +201,33 @@ public class Enemy : MonoBehaviour
 
     IEnumerator OnDamage(Vector3 reactVec, bool isGrenade)
     {
-        mat.color = Color.red;
+        // foreach문으로 메쉬렌더러를 한 번에 바꾼다.
+        foreach (MeshRenderer mesh in meshs)
+            mesh.material.color = Color.red;
+
         yield return new WaitForSeconds(0.05f);
 
         if (curHelath > 0)
         {
-            mat.color = Color.white;
+            foreach (MeshRenderer mesh in meshs) mesh.material.color = Color.white;
+
+            reactVec = reactVec.normalized;
+            reactVec += Vector3.up;
+
+            rb.AddForce(reactVec * 3, ForceMode.Impulse);
         }
         else // Died
         {
-            mat.color = Color.gray;
-            // 14번 레이어로 변경(Enemy Dead)
-            gameObject.layer = 14;
-            // 추적 해제
+            foreach (MeshRenderer mesh in meshs) mesh.material.color = Color.gray;
+            gameObject.layer = 14; // 14번 레이어로 변경(Enemy Dead)
+            isDead = true;
             isChase = false;
-            // 사망 리액션을 유지하기 위해 NavAgent를 비활성
-            nav.enabled = false;
+            nav.enabled = false; // 사망 리액션을 유지하기 위해 NavAgent를 비활성
             anim.SetTrigger("doDie");
 
             if (isGrenade)
             {
-            // 방향은 방향대로 밀려나는 값이 통일됨
+                // 방향은 방향대로 밀려나는 값이 통일됨
                 reactVec = reactVec.normalized;
                 reactVec += Vector3.up * 3;
 
@@ -228,9 +241,10 @@ public class Enemy : MonoBehaviour
             {
                 reactVec = reactVec.normalized;
                 reactVec += Vector3.up;
+
                 rb.AddForce(reactVec * 5, ForceMode.Impulse);      
             }
-            Destroy(gameObject, 4f);
+            if (enemyType != Type.D) Destroy(gameObject, 4f);
         }
     }
 }

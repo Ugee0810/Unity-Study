@@ -357,37 +357,35 @@ public class Player : MonoBehaviour
         }
         else if (other.tag == "EnemyBullet")
         {
-            if(!isDamage)
+            if (!isDamage)
             {
                 Bullet enemyBullet = other.GetComponent<Bullet>();
                 health -= enemyBullet.damage;
-                // RigidBody 유무를 조건으로 하여 Destroy() 호출
-                if (other.GetComponent<Rigidbody>() != null)
-                {
-                    Destroy(other.gameObject);
-                }
 
-                StartCoroutine(OnDamage());
+                // 보스의 근접공격 오브젝트의 이름으로 보스 공격을 인지
+                bool isBossAtk = other.name == "Boss Melee Area";
+
+                StartCoroutine(OnDamage(isBossAtk));
             }
+            // RigidBody 유무를 조건으로 하여 Destroy() 호출
+            if (other.GetComponent<Rigidbody>() != null) Destroy(other.gameObject);
         }
     }
 
-    IEnumerator OnDamage()
+    IEnumerator OnDamage(bool isBossAtk)
     {
         isDamage = true;
-        foreach (MeshRenderer mesh in meshs)
-        {
-            mesh.material.color = Color.yellow;
-        }
+        foreach (MeshRenderer mesh in meshs) mesh.material.color = Color.yellow;
+
+        if (isBossAtk) rb.AddForce(transform.forward * -25, ForceMode.Impulse);
 
         // 1초간 무적 
         yield return new WaitForSeconds(1f);
 
         isDamage = false;
-        foreach (MeshRenderer mesh in meshs)
-        {
-            mesh.material.color = Color.white;
-        }
+        foreach (MeshRenderer mesh in meshs) mesh.material.color = Color.white;
+
+        if (isBossAtk) rb.velocity = Vector3.zero;
     }
 
     void OnTriggerStay(Collider other)
