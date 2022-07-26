@@ -407,6 +407,46 @@
 ### 22-07-26(Tue)
 - [골드메탈 - QuarterView 3D Action BE5](https://youtu.be/WkMM7Uu2AoA)
   - 10화
+    - 플레이어 피격
+      - OnTriggerEnter에서 EnemyBullet 태그 적용
+      - Bullet 스크립트의 데미지 로직 사용
+      - OnDamage() 코루틴을 이용해 피격(Material을 이용한 색 변환) 및 무적 구현
+    - 몬스터 움직임 보완
+      - ![image](https://user-images.githubusercontent.com/85896566/180908751-bc20ae8a-6335-4852-aa7f-08d7a809ef0a.png)  
+    - 몬스터 공격
+      - FixedUpdate() -> Targeting()
+        - 변수 - 구체 반지름, ray 거리 생성
+        - 기본 Ray를 사용하면 가늘어서 판정하기 어려우므로, 수류탄에서 사용한 SphereCastAll() 사용
+        - ![image](https://user-images.githubusercontent.com/85896566/180909594-83644731-5fc4-414d-8b6e-0e68a5bfa367.png)
+      - IEnumerator Attack()
+        - 공격 타입대로 구현
+        - ![image](https://user-images.githubusercontent.com/85896566/180909840-86fe422d-2ba6-4786-b453-2296fa29bd56.png)
+    - 일반형 몬스터
+    - 돌격형 몬스터
+    - 원거리형 몬스터
+      - 미사일 프리팹, 이펙트, 생성, 삭제 로직 구현
+  - 11화
+    - 보스 기본 세팅
+      - 애니메이션 구현
+      - 프리팹, 컴포넌트 생성
+        - 미사일 오브젝트 2개 추가
+        - 근접 공격(땅 찍기) 오브젝트와 콜라이더 컴포넌트
+    - 투사체 추가
+      - 미사일
+        - 투사체가 회전하면서 파티클이 망가지지 않도록 파티클 컴포넌트에서 Simulation Space를 월드 좌표로 변경
+        - 유도 미사일이므로 Nav 컴포넌트 추가
+        - Bullet 스크립트를 상속 받는 BossMissaile 스크립트 추가
+      - 바위
+        - 구르기 때문에 Mass(무게)와 Angular Drag(회전 저항)을 설정
+        - Bullet 스크립트를 상속 받는 BossRock 스크립트 추가
+        - 상속된 스크립트에서 Floor에 닿으면 3초 뒤 삭제 되는 구문에서 isRock bool 조건 추가
+   - 보스 로직 준비
+      - Enemy 스크립트 상속하며 수정한다.
+        - ![image](https://user-images.githubusercontent.com/85896566/180915367-5e97c3e0-cb8f-440c-a20b-87d0b3698720.png)
+      - 플레이어 이동 예측 로직
+      - 상속을 할 때 주의점 : Awake() 함수는 자식 스크립트만 단독 실행!!
+        - ![image](https://user-images.githubusercontent.com/85896566/180917789-361ba551-0ce0-424a-a410-d70b11ae2325.png)
+      
 ***
 
 
