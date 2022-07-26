@@ -1,24 +1,6 @@
-오후 6:13 2022-07-26	대한 의사 협회 http://www.kma.org/
-			의사 협회 치매 교육 프로그램 참고
-			프로젝트 퀄리티 중점	1. 이용자의 이익 효과가 커야 좋음
-						2. 의사 협회에서 만든 치매 환자를 위한 문제의 수준
-
-
-			-일반적인 진행 방식(치매의 경우를 두지 않고-
-			0. 최초 실행 - 사용자 편의 설정 (멀티 프로필, 레벨 테스트 등)
-			1. 메인
-			1-1. 게임 설정
-			2. 스타트
-			3. 리스타트 or 메인
-
-오후 6:25 2022-07-26	데이터 크롤링(문제)
-			수리적인 사고 문제를 행동으로 해결하는 문제(+순발력, 재미 -> 성취감)
-
-
 <details>
-<summary>마크다운 사용법</summary> 
+<summary>x</summary> 
 
-- https://blog.naver.com/hunii123/222440191093
 </details>
 
 - [mixamo 사이트, 사용법](https://www.mixamo.com/#/)
@@ -28,9 +10,11 @@
 - [메타버스 개발자 경진대회](https://www.metaversedev.kr/)
 - [한국 컨텐츠 진흥원](https://www.kocca.kr/kocca/main.do)
   - 연초에 모집 공고에 지원할 것, 수상 시 커리어에 영향이 높다.
+- [마크다운 사용법](https://blog.naver.com/hunii123/222440191093)
+- [[Github] 깃허브 프로필의 리드미 꾸미기](https://onlyfor-me-blog.tistory.com/328)
+
 
 # UnityStudy
-
 
 ### 22-07-04(Mon)
 - 유니티 개발 환경 구성
