@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
     public int hasGranades;
     public GameObject granadeObj;
     public Camera followCamera;
+    public GameManager manager;
+
+    public AudioSource jumpSound;
 
     public int ammo;
     public int coin;
@@ -44,6 +47,7 @@ public class Player : MonoBehaviour
     bool isBorder;
     bool isDamage;
     bool isShop;
+    bool isDead;
 
     Vector3 moveVec;
     Vector3 dodgeVec;
@@ -68,8 +72,6 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         // GetComponentsInChildren<>() - 메쉬렌더러를 가지고 있는 자식 오브젝트를 모두 가져온다.
         meshs = GetComponentsInChildren<MeshRenderer>();
-
-        PlayerPrefs.SetInt("MaxScore", 112500);
     }
 
     void Update()
@@ -108,8 +110,8 @@ public class Player : MonoBehaviour
         moveVec = new Vector3(hAxis, 0, vAxis).normalized;
         // 회피 중에는 움직임 벡터 -> 회피 방향 벡터로 바뀌도록 구현
         if (isDodge) moveVec = dodgeVec;
-        // 스왑 중이거나 공격 중일 땐 움직이지 않도록 구현
-        if (isSwap || isReload || !isFireReady && !isShop) moveVec = Vector3.zero;
+        // 스왑 중, 재장전 중, 사격 가능 상태, 죽었을 때 움직임 없애기
+        if (isSwap || isReload || !isFireReady || isDead) moveVec = Vector3.zero;
         // Move if : Ray에 의해 RayMask인 Wall이 캐치될 경우엔 더하지 않는걸로 회전은 할 수 있게 한다.
         // 삼항 연산자로 Walk 컨트롤
         if (!isBorder) transform.position += moveVec * moveSpeed * (wDown ? 0.3f : 1f) * Time.deltaTime;
@@ -127,6 +129,8 @@ public class Player : MonoBehaviour
         //// 2.마우스에 의한 회전
         if (fDown)
         {
+            if (isDead) return;
+
             // ScreenPointToRay() - 스크린에서 월드로 Ray를 쏘는 함수
             Ray ray = followCamera.ScreenPointToRay(Input.mousePosition);
             // RaycastHit 정보를 저장할 변수
@@ -146,19 +150,21 @@ public class Player : MonoBehaviour
     void Jump()
     {
         // jDown && 정지 상태 && 점프 중 아닐 때 && 회피 중 아닐 때
-        if (jDown && moveVec == Vector3.zero && !isJump && !isDodge)
+        if (jDown && moveVec == Vector3.zero && !isJump && !isDodge && !isDead)
         {
             rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
 
             anim.SetTrigger("doJump");
             anim.SetBool("isJump", true);
             isJump = true;
+
+            jumpSound.Play();
         }
     }
 
     void Dodge()
     {
-        if (jDown && moveVec != Vector3.zero && !isJump && !isDodge && !isSwap)
+        if (jDown && moveVec != Vector3.zero && !isJump && !isDodge && !isSwap && !isDead)
         {
             dodgeVec = moveVec;
             moveSpeed *= 2;
@@ -177,14 +183,14 @@ public class Player : MonoBehaviour
 
     void Interation()
     {
-        if (iDown && nearObject != null && !isJump && !isDodge)
+        if (iDown && nearObject != null && !isJump && !isDodge && !isDead)
         {
             if (nearObject.tag == "Weapon")
             {
                 Item item = nearObject.GetComponent<Item>();
                 int weaponIndex = item.value;
                 hasWeapons[weaponIndex] = true;
-
+                GameObject.Find("Canvas").transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(false);
                 Destroy(nearObject);
             }
             // 상점 상호작용
@@ -209,7 +215,7 @@ public class Player : MonoBehaviour
         if (sDown2) weaponIndex = 1;
         if (sDown3) weaponIndex = 2;
 
-        if ((sDown1 || sDown2 || sDown3) && !isJump && !isDodge)
+        if ((sDown1 || sDown2 || sDown3) && !isJump && !isDodge && !isDead)
         {
             if (equipWeapon != null)
                 equipWeapon.gameObject.SetActive(false);
@@ -238,7 +244,7 @@ public class Player : MonoBehaviour
         fireDelay += Time.deltaTime;
         isFireReady = equipWeapon.rate < fireDelay;
 
-        if (fDown && isFireReady && !isDodge && !isSwap && !isShop)
+        if (fDown && isFireReady && !isDodge && !isSwap && !isShop && !isDead)
         {
             equipWeapon.Use();
             // 삼항 연산자를 이용하여 무기 타입에 따른 다른 트리거 실행
@@ -257,7 +263,7 @@ public class Player : MonoBehaviour
         // 총알이 없다면 탈출
         if (ammo == 0) return;
 
-        if (rDown && !isJump && !isDodge && !isSwap && isFireReady && !isReload && !isShop)
+        if (rDown && !isJump && !isDodge && !isSwap && isFireReady && !isReload && !isShop && !isDead)
         {
             anim.SetTrigger("doReload");
             isReload = true;
@@ -269,7 +275,7 @@ public class Player : MonoBehaviour
     {
         if (hasGranades == 0) return;
 
-        if (gDown && !isReload && !isSwap && !isShop)
+        if (gDown && !isReload && !isSwap && !isShop && !isDead)
         {
             // ScreenPointToRay() - 스크린에서 월드로 Ray를 쏘는 함수
             Ray ray = followCamera.ScreenPointToRay(Input.mousePosition);
@@ -391,6 +397,8 @@ public class Player : MonoBehaviour
 
         if (isBossAtk) rb.AddForce(transform.forward * -25, ForceMode.Impulse);
 
+        if (health <= 0 && !isDead) OnDie();
+
         // 1초간 무적 
         yield return new WaitForSeconds(1f);
 
@@ -399,13 +407,19 @@ public class Player : MonoBehaviour
 
         if (isBossAtk) rb.velocity = Vector3.zero;
     }
+    
+    void OnDie()
+    {
+        anim.SetTrigger("doDie");
+        isDead = true;
+        manager.GameOver();
+    }
 
     void OnTriggerStay(Collider other)
     {
         if (other.tag == "Weapon" || other.tag == "Shop")
         {
             nearObject = other.gameObject;
-
             GameObject.Find("Canvas").transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(true);
         }
     }
@@ -415,7 +429,6 @@ public class Player : MonoBehaviour
         if (other.tag == "Weapon")
         {
             nearObject = null;
-            GameObject.Find("Canvas").transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(false);
         }
         else if (other.tag == "Shop")
         {

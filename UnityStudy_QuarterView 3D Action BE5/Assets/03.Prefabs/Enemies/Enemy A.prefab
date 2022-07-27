@@ -58,6 +58,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  isMelee: 0
+  isRock: 0
 --- !u!1 &168021510149088621
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,12 +189,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67b2f714fda9e8e488ba8592d0045c29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHelath: 50
-  curHelath: 50
+  enemyType: 0
+  maxHelath: 30
+  curHelath: 30
+  score: 100
+  manager: {fileID: 0}
   target: {fileID: 0}
   meleeArea: {fileID: 1913911511}
+  rangeArea: {fileID: 0}
+  bullet: {fileID: 0}
+  coins:
+  - {fileID: 187925674369595927, guid: edb3c649d4d74654390d8794af8c704d, type: 3}
+  - {fileID: 4558268643383286394, guid: a177316526559464999436d36828f49b, type: 3}
+  - {fileID: 9051423972146906193, guid: f513066249386394a84f8e4bb912bf74, type: 3}
   isChase: 0
   isAttack: 0
+  isDead: 0
+  rb: {fileID: 0}
+  bc: {fileID: 0}
+  meshs: []
+  nav: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &1220701638468694373
 GameObject:
   m_ObjectHideFlags: 0

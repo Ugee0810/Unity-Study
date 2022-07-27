@@ -20,11 +20,14 @@ public class Enemy : MonoBehaviour
 
     public int maxHelath;
     public int curHelath;
+    public int score;
+    public GameManager manager;
     public Transform target;
     // 공격 범위
-    public BoxCollider     meleeArea;
+    public BoxCollider meleeArea;
     public CapsuleCollider rangeArea;
     public GameObject bullet;
+    public GameObject[] coins;
     // 추적을 결정하는 변수
     public bool isChase;
     public bool isAttack;
@@ -210,11 +213,6 @@ public class Enemy : MonoBehaviour
         if (curHelath > 0)
         {
             foreach (MeshRenderer mesh in meshs) mesh.material.color = Color.white;
-
-            reactVec = reactVec.normalized;
-            reactVec += Vector3.up;
-
-            rb.AddForce(reactVec * 3, ForceMode.Impulse);
         }
         else // Died
         {
@@ -224,6 +222,33 @@ public class Enemy : MonoBehaviour
             isChase = false;
             nav.enabled = false; // 사망 리액션을 유지하기 위해 NavAgent를 비활성
             anim.SetTrigger("doDie");
+
+            // 점수 부여
+            Player player = target.GetComponent<Player>();
+            player.score += score;
+
+            // 동전 드랍
+            int randomCoin = Random.Range(0, 3);
+            Instantiate(coins[randomCoin], transform.position, Quaternion.identity);
+
+            // 카운트 감소
+            switch (enemyType)
+            {
+                case Type.A:
+                    manager.enemyCntA--;
+                    break;
+                case Type.B:
+                    manager.enemyCntB--;
+                    break;
+                case Type.C:
+                    manager.enemyCntC--;
+                    break;
+                case Type.D:
+                    manager.enemyCntD--;
+                    break;
+                default:
+                    break;
+            }
 
             if (isGrenade)
             {
@@ -244,7 +269,7 @@ public class Enemy : MonoBehaviour
 
                 rb.AddForce(reactVec * 5, ForceMode.Impulse);      
             }
-            if (enemyType != Type.D) Destroy(gameObject, 4f);
+            Destroy(gameObject, 4f);
         }
     }
 }

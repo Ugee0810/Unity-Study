@@ -433,14 +433,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: 2
-  maxHelath: 150
-  curHelath: 150
+  maxHelath: 80
+  curHelath: 80
+  score: 500
+  manager: {fileID: 0}
   target: {fileID: 0}
   meleeArea: {fileID: 0}
   rangeArea: {fileID: 0}
   bullet: {fileID: 8779730238141376200, guid: 423420c4fa8883b41940f61a74a48297, type: 3}
+  coins:
+  - {fileID: 187925674369595927, guid: edb3c649d4d74654390d8794af8c704d, type: 3}
+  - {fileID: 4558268643383286394, guid: a177316526559464999436d36828f49b, type: 3}
+  - {fileID: 9051423972146906193, guid: f513066249386394a84f8e4bb912bf74, type: 3}
   isChase: 0
   isAttack: 0
+  isDead: 0
+  rb: {fileID: 0}
+  bc: {fileID: 0}
+  meshs: []
+  nav: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &6031240446961686415
 GameObject:
   m_ObjectHideFlags: 0
