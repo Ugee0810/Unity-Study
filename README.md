@@ -467,9 +467,15 @@
         - ![image](https://user-images.githubusercontent.com/85896566/180962147-ab2303da-ce3a-4f45-8b9b-8affc3eeba5a.png)
         - ','을 자동으로 넣어주며 저장된 스코어를 받아오는 것
           - ![image](https://user-images.githubusercontent.com/85896566/180966292-08d477d9-e45b-465a-8130-647240d191e3.png)
-          - 30:25
 
   - 15화
+    - 스테이지 관리
+      - 스타트존을 만들고 로직 연결
+      - 몬스터 생성
+    - 몬스터 코인 드랍
+    - 첫 실행할 때는 PlayerPrefs의 Key 세팅이 필요
+      - ![image](https://user-images.githubusercontent.com/85896566/181155422-43d4743a-e71f-4e2e-bcc4-c4d5703483eb.png)
+    - 사운드 연결
 ***
 
 
