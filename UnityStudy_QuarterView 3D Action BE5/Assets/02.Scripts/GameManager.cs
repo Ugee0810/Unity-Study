@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
     public GameObject startWall2;
     public GameObject startWall3;
     public GameObject startWall4;
-    public GameObject bossMap;
 
     public GameObject menuPanel;
     public GameObject gamePanel;
@@ -70,8 +69,7 @@ public class GameManager : MonoBehaviour
         maxScoreTxt.text = string.Format("{0:n0}", PlayerPrefs.GetInt("MaxScore"));
         enemyList = new List<int>();
         // ★HasKey() 함수로 Key가 있는지 확인 후, 없다면 0으로 저장
-        if (PlayerPrefs.HasKey("MaxScore"))
-            PlayerPrefs.SetInt("MaxScore", 0);
+        if (PlayerPrefs.HasKey("MaxScore")) PlayerPrefs.SetInt("MaxScore", 0);
     }
 
     // 게임 스타트 버튼 클릭 이벤트
@@ -90,6 +88,7 @@ public class GameManager : MonoBehaviour
         player.gameObject.SetActive(true);
     }
 
+    // StartZone
     public void StageStart()
     {
         itemShop.SetActive(false);
@@ -135,9 +134,6 @@ public class GameManager : MonoBehaviour
             // Enemy 스크립트에서 감소된 카운트를 가져온다.
             enemy.manager = this;
             boss = instantEnemy.GetComponent<Boss>();
-
-            if (boss) bossMap.SetActive(true);
-            else bossMap.SetActive(false);
         }
         else
         {

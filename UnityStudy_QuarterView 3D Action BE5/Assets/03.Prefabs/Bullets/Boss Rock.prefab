@@ -168,6 +168,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38cd690df1bf8ee489dd9c6ec727f174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 80
+  damage: 50
   isMelee: 0
   isRock: 1
