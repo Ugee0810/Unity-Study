@@ -462,6 +462,11 @@
     - 사운드 연결
     - 빌드
 - 베르의 게임 채널 네트워크 공부
+- 포톤네트워크 기본
+  - 에셋 Fun2 임포트 및 ID인증
+  - 프리팹에 포톤 스크립트 추가
+  - ![image](https://user-images.githubusercontent.com/85896566/181198136-439e04a1-f23e-4f8c-86e6-30df02ea028d.png)
+  - 커넥션을 위한 'atchMaker' 스크립트 생성
   - 
 ***
 
