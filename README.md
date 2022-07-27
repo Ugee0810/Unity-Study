@@ -466,8 +466,9 @@
   - 에셋 Fun2 임포트 및 ID인증
   - 프리팹에 포톤 스크립트 추가
   - ![image](https://user-images.githubusercontent.com/85896566/181198136-439e04a1-f23e-4f8c-86e6-30df02ea028d.png)
-  - 커넥션을 위한 'atchMaker' 스크립트 생성
-  - 
+  - 커넥션을 위한 'MatchMaker' 스크립트 생성
+  - ![image](https://user-images.githubusercontent.com/85896566/181209672-aa1e0126-0c10-4cfe-a2b5-77ad24355e92.png)
+  - 이후 앱 id로 
 ***
 
 
