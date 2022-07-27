@@ -1,19 +1,3 @@
-<details>
-<summary>x</summary> 
-
-</details>
-
-- [mixamo 사이트, 사용법](https://www.mixamo.com/#/)
-  - 모델링을 fbx에 올린다.
-  - ![image](https://user-images.githubusercontent.com/85896566/180706129-236d653f-6e4f-4878-a9f4-d22af4f4fafb.png)
-  - Without Skin으로 설정 후 다운로드
-- [메타버스 개발자 경진대회](https://www.metaversedev.kr/)
-- [한국 컨텐츠 진흥원](https://www.kocca.kr/kocca/main.do)
-  - 연초에 모집 공고에 지원할 것, 수상 시 커리어에 영향이 높다.
-- [마크다운 사용법](https://blog.naver.com/hunii123/222440191093)
-- [[Github] 깃허브 프로필의 리드미 꾸미기](https://onlyfor-me-blog.tistory.com/328)
-
-
 # UnityStudy
 
 ### 22-07-04(Mon)
@@ -478,7 +462,13 @@
     - 사운드 연결
     - 빌드
 - 베르의 게임 채널 네트워크 공부
-  - 
+- 포톤네트워크 기본
+  - 에셋 Fun2 임포트 및 ID인증
+  - 프리팹에 포톤 스크립트 추가
+  - ![image](https://user-images.githubusercontent.com/85896566/181198136-439e04a1-f23e-4f8c-86e6-30df02ea028d.png)
+  - 커넥션을 위한 'MatchMaker' 스크립트 생성
+  - ![image](https://user-images.githubusercontent.com/85896566/181209672-aa1e0126-0c10-4cfe-a2b5-77ad24355e92.png)
+  - 이후 앱 id로 
 ***
 
 
