@@ -476,6 +476,7 @@
     - 첫 실행할 때는 PlayerPrefs의 Key 세팅이 필요
       - ![image](https://user-images.githubusercontent.com/85896566/181155422-43d4743a-e71f-4e2e-bcc4-c4d5703483eb.png)
     - 사운드 연결
+    - 빌드
 ***
 
 
