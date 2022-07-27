@@ -33586,7 +33586,7 @@ MonoBehaviour:
   menuCam: {fileID: 752761036}
   gameCam: {fileID: 963194225}
   player: {fileID: 2611495319262285588}
-  boss: {fileID: 987030845, guid: faad4745ad57d86469244c6686bb1cbb, type: 3}
+  boss: {fileID: 0}
   itemShop: {fileID: 976964597}
   weaponShop: {fileID: 1444323507}
   startZone: {fileID: 415014702}
@@ -68836,7 +68836,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -30}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &2029031801
 GameObject:

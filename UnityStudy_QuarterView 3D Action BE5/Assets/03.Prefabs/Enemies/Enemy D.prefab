@@ -904,7 +904,7 @@ MonoBehaviour:
   enemyType: 3
   maxHelath: 200
   curHelath: 200
-  score: 2000
+  score: 5000
   manager: {fileID: 0}
   target: {fileID: 0}
   meleeArea: {fileID: 677082379}

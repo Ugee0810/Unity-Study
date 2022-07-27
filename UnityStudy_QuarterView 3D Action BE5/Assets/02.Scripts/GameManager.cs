@@ -69,7 +69,6 @@ public class GameManager : MonoBehaviour
     {
         maxScoreTxt.text = string.Format("{0:n0}", PlayerPrefs.GetInt("MaxScore"));
         enemyList = new List<int>();
-
         // ★HasKey() 함수로 Key가 있는지 확인 후, 없다면 0으로 저장
         if (PlayerPrefs.HasKey("MaxScore"))
             PlayerPrefs.SetInt("MaxScore", 0);
@@ -136,14 +135,9 @@ public class GameManager : MonoBehaviour
             // Enemy 스크립트에서 감소된 카운트를 가져온다.
             enemy.manager = this;
             boss = instantEnemy.GetComponent<Boss>();
-            if (boss)
-            {
-                bossMap.SetActive(true);
-            }
-            else
-            {
-                bossMap.SetActive(false);
-            }
+
+            if (boss) bossMap.SetActive(true);
+            else bossMap.SetActive(false);
         }
         else
         {
@@ -254,7 +248,8 @@ public class GameManager : MonoBehaviour
         enemyBTxt.text = enemyCntB.ToString();
         enemyCTxt.text = enemyCntC.ToString();
 
-        //// 보스 UI | int 형태끼리 연산하면 결과값도 int이므로 주의
+        //// 보스 UI 
+        // int 형태끼리 연산하면 결과값도 int이므로 주의 (하나만 float 변환)
         // 보스 변수가 비어있을 때 UI 업데이트 하지 않도록 조건 추가
         if (boss != null)
         {
