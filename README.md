@@ -477,6 +477,8 @@
       - ![image](https://user-images.githubusercontent.com/85896566/181155422-43d4743a-e71f-4e2e-bcc4-c4d5703483eb.png)
     - 사운드 연결
     - 빌드
+- 베르의 게임 채널 네트워크 공부
+  - 
 ***
 
 
