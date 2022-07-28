@@ -473,6 +473,9 @@
 
 
 ### 22-07-27(Wen)
+- [CharacterController 컴포넌트 클래스](https://docs.unity3d.com/kr/2021.1/Manual/class-CharacterController.html)
+- FireBase를 이용한 서버 구축
+  - 
 ***
 
 
