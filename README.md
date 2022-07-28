@@ -476,8 +476,13 @@
 - [CharacterController 컴포넌트 클래스](https://docs.unity3d.com/kr/2021.1/Manual/class-CharacterController.html)
 - [유니티 매뉴얼 Unity-XR](https://docs.unity3d.com/kr/2021.1/Manual/XR.html)
   - ![image](https://user-images.githubusercontent.com/85896566/181408453-918af70a-1db2-455b-96b2-4715023768e7.png)
-- FireBase를 이용한 서버 구축
-  - 
+- Photon과 FireBase를 이용한 서버 구축
+  - PakegeManager Import
+  - Build Setting - Android
+  - PUN Wizard - Setup Project - Photon App ID
+  - FireBase Create Project - 앱 추가 순서 1. 패키지 매니저 SDK 2. 패키지 네임 추가 3. JSON 파일 프로젝트 폴더에 보관
+  - 계정 등록 설정
+  - 디지털 지문 등록
 ***
 
 
