@@ -1,7 +1,7 @@
 # UnityStudy
 
 ### 22-07-04(Mon)
-- 유니티 개발 환경 구성
+- 유니티 개발 환경 구성		 
 - C# Script
   - GetComponent()
 - 기본 I/O
@@ -474,6 +474,8 @@
 
 ### 22-07-27(Wen)
 - [CharacterController 컴포넌트 클래스](https://docs.unity3d.com/kr/2021.1/Manual/class-CharacterController.html)
+- [유니티 매뉴얼 Unity-XR](https://docs.unity3d.com/kr/2021.1/Manual/XR.html)
+  - ![image](https://user-images.githubusercontent.com/85896566/181408453-918af70a-1db2-455b-96b2-4715023768e7.png)
 - FireBase를 이용한 서버 구축
   - 
 ***
