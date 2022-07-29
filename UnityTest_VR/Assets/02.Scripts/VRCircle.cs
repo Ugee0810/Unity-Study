@@ -13,6 +13,11 @@ public class VRCircle : MonoBehaviour
 
     private RaycastHit hit;
 
+    void Awake()
+    {
+        VoiceManager.OnResult += OnResult;
+    }
+
     void Update()
     {
         if (gvrStatus)
@@ -27,6 +32,7 @@ public class VRCircle : MonoBehaviour
         {
             if (ImageOutCirecleGauge.fillAmount == 1 && hit.transform.CompareTag("Teleport"))
             {
+                //_movePos = hit.triangleIndex.gameobject.
                 hit.transform.gameObject.GetComponent<Teleport>().TeleportPlayer();
             }    
         }
@@ -44,5 +50,22 @@ public class VRCircle : MonoBehaviour
         gvrStatus = false;
         gvrTimer = 0;
         ImageOutCirecleGauge.fillAmount = 0;
+    }
+
+
+
+    void OnResult(string result)
+    {
+        Debug.Log(result);
+
+        //if (result.Contains("move")) ;
+        //{
+        //    TeleportPlayer();
+        //}
+    }
+
+    public void Move()
+    {
+        //transform.position = new Vector3(_movePos.position.x, _movePos);
     }
 }
