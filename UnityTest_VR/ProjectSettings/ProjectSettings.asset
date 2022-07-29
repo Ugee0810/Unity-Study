@@ -621,7 +621,22 @@ PlayerSettings:
   webGLLinkerTarget: 1
   webGLThreadsSupport: 0
   webGLWasmStreaming: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    1: FG_GCSR
+    4: FG_GCSR
+    7: FG_GCSR
+    13: FG_GCSR
+    14: FG_GCSR
+    19: FG_GCSR
+    21: FG_GCSR
+    25: FG_GCSR
+    27: FG_GCSR
+    28: FG_GCSR
+    29: FG_GCSR
+    30: FG_GCSR
+    31: FG_GCSR
+    32: FG_GCSR
+    33: FG_GCSR
   platformArchitecture: {}
   scriptingBackend: {}
   il2cppCompilerConfiguration: {}
