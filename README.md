@@ -1,5 +1,5 @@
 # UnityStudy
-https://cdn.discordapp.com/attachments/996281490570743902/1002427638763229294/Speech_Recognition_using_Google_Cloud_VRARMobileDesktop_Pro.unitypackage
+
 ### 22-07-04(Mon)
 - 유니티 개발 환경 구성		 
 - C# Script
@@ -523,7 +523,7 @@ https://cdn.discordapp.com/attachments/996281490570743902/1002427638763229294/Sp
  - 캔버스에서 그래픽 레이캐스터를 없애야 한다.
 - 구글 클라우드 : 음성 인식 기술
 
-- 
+- [Speech_Recognition_using_Google_Cloud_VRARMobileDesktop_Pro.unitypackage](https://cdn.discordapp.com/attachments/996281490570743902/1002427638763229294/Speech_Recognition_using_Google_Cloud_VRARMobileDesktop_Pro.unitypackage)
 ***
 
 
