@@ -451,7 +451,6 @@
         - ![image](https://user-images.githubusercontent.com/85896566/180962147-ab2303da-ce3a-4f45-8b9b-8affc3eeba5a.png)
         - ','을 자동으로 넣어주며 저장된 스코어를 받아오는 것
           - ![image](https://user-images.githubusercontent.com/85896566/180966292-08d477d9-e45b-465a-8130-647240d191e3.png)
-
   - 15화
     - 스테이지 관리
       - 스타트존을 만들고 로직 연결
@@ -461,6 +460,10 @@
       - ![image](https://user-images.githubusercontent.com/85896566/181155422-43d4743a-e71f-4e2e-bcc4-c4d5703483eb.png)
     - 사운드 연결
     - 빌드
+***
+
+
+### 22-07-27(Wen)
 - 베르의 게임 채널 네트워크 공부
 - 포톤네트워크 기본
   - 에셋 Fun2 임포트 및 ID인증
@@ -468,11 +471,11 @@
   - ![image](https://user-images.githubusercontent.com/85896566/181198136-439e04a1-f23e-4f8c-86e6-30df02ea028d.png)
   - 커넥션을 위한 'MatchMaker' 스크립트 생성
   - ![image](https://user-images.githubusercontent.com/85896566/181209672-aa1e0126-0c10-4cfe-a2b5-77ad24355e92.png)
-  - 이후 앱 id로 
+  - 이후 앱 id로
 ***
 
 
-### 22-07-27(Wen)
+### 22-07-28(Thu)
 - [CharacterController 컴포넌트 클래스](https://docs.unity3d.com/kr/2021.1/Manual/class-CharacterController.html)
 - [유니티 매뉴얼 Unity-XR](https://docs.unity3d.com/kr/2021.1/Manual/XR.html)
   - ![image](https://user-images.githubusercontent.com/85896566/181408453-918af70a-1db2-455b-96b2-4715023768e7.png)
@@ -486,13 +489,28 @@
 ***
 
 
-### 22-07-28(Thu)
-- VR 예제 연습
-
-***
-
-
 ### 22-07-29(Fri)
+- VR 예제 연습(UnityTest_VR)
+  - Basic Setting
+    - Project Setting
+      - Other Setting : 오류 방지
+        - ![image](https://user-images.githubusercontent.com/85896566/181666895-faf9341f-640b-468c-89c6-38ca74eb7c01.png)
+      - XR Setting
+        - ![image](https://user-images.githubusercontent.com/85896566/181667399-d5274271-65ae-4096-b0aa-158ad2703119.png)
+    - ※ GVR SDK Pakage Setup
+      - [GVR SDK for Unity v1.200.1](https://github.com/googlevr/gvr-unity-sdk/releases)
+ - GvrEditorEmulator Prefab -> 기본 적인 무빙 가능
+    - ![image](https://user-images.githubusercontent.com/85896566/181668815-ce9bd903-df56-479d-a7f1-c28889ab8fb3.png)
+    - ![image](https://user-images.githubusercontent.com/85896566/181668937-f99b3c8d-320c-4a5a-a064-e13e651ff4a7.png)
+ - GvrReticlePointer Prefab-> 커서, 레이저
+   - ![image](https://user-images.githubusercontent.com/85896566/181668982-51d4ac6c-ffee-4817-8b4f-e0f0a5c7645a.png)
+   - 레이어 설정은 자신을 감지하면 안되므로 'Ignore Raycast'로 설정되어 있다.
+ - GvrPointerPhysicsRaycaster Script -> 레이캐스트 정보
+   - ![image](https://user-images.githubusercontent.com/85896566/181669307-bebb7a0d-a105-4b38-bcfa-4c22287b3c1f.png)
+ - GvrEventSystem Prefab -> 이벤트 발생 시 처리
+   - ![image](https://user-images.githubusercontent.com/85896566/181669476-5462035a-34a2-421c-bc25-53dc487046ee.png)
+ - 테스트 타겟의 컴포넌트에 Event Trigger 추가 시 GvrEventSystem가 작용
+   - 
 
 ***
 
