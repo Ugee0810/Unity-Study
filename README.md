@@ -509,8 +509,18 @@
    - ![image](https://user-images.githubusercontent.com/85896566/181669307-bebb7a0d-a105-4b38-bcfa-4c22287b3c1f.png)
  - GvrEventSystem Prefab -> 이벤트 발생 시 처리
    - ![image](https://user-images.githubusercontent.com/85896566/181669476-5462035a-34a2-421c-bc25-53dc487046ee.png)
- - 테스트 타겟의 컴포넌트에 Event Trigger 추가 시 GvrEventSystem가 작용
-   - 
+ - 텔레포트(테스트)의 컴포넌트에 Event Trigger 추가 시 GvrEventSystem가 작용
+   - ![image](https://user-images.githubusercontent.com/85896566/181672063-fc947dc9-fbb8-490b-91f3-7f47ed7f9e24.png)
+ - 보통의 VR은 보는 쪽으로 이동한다.
+   - UI도 플레이어에게 상속시키고 거리를 줄여준다.
+     - ![image](https://user-images.githubusercontent.com/85896566/181672801-e9e6ca8a-2703-4d87-b816-20aa089bf866.png)
+   - 트래킹 포인트 만들기
+     - ![image](https://user-images.githubusercontent.com/85896566/181673253-533adfba-08aa-4882-a041-3d9870b8046c.png)
+   - 포인터 동작
+     - ![image](https://user-images.githubusercontent.com/85896566/181673851-3d950deb-7150-4743-afa0-28b81dc29d85.png)
+     - 타겟에게도 이벤트 트리거를 걸어야 한다.
+       - ![image](https://user-images.githubusercontent.com/85896566/181674065-d461628b-4de9-40ac-94c5-19871027fd8e.png)
+ - 캔버스에서 그래픽 레이캐스터를 없애야 한다.
 
 ***
 
