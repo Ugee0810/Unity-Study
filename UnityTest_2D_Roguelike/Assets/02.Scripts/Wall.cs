@@ -4,23 +4,28 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
-    public Sprite dmgSprite;
-    public int hitTime = 3;
-
     private SpriteRenderer spriteRenderer;
+    public Sprite dmgSprite;
+    public int wallHp = 3;
 
-    void Start()
+    public AudioClip hitSound1;
+    public AudioClip hitSound2;
+
+    void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();    
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void DamageWall(int loss)
     {
+        SoundManager.instance.RandomizeSfx(hitSound1, hitSound2);
         spriteRenderer.sprite = dmgSprite;
 
-        hitTime -= loss;
+        wallHp -= loss;
 
-        if (hitTime <= 0)
+        if (wallHp <= 0)
+        {
             gameObject.SetActive(false);
+        }
     }
 }

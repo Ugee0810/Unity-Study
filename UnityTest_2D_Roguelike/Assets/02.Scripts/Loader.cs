@@ -5,10 +5,14 @@ using UnityEngine;
 public class Loader : MonoBehaviour
 {
     public GameObject gameManager;
+    public GameObject soundManager;
 
-    private void Awake()
+    void Awake()
     {
-        // 메인 카메라에서 로드 될 때 게임 매니저를 프리팹에서 생성한다.
-        if (GameManager.instance == null) Instantiate(gameManager);
+        if (GameManager.instance == null)
+            Instantiate(gameManager);
+
+        if (SoundManager.instance == null)
+            Instantiate(soundManager);
     }
 }
