@@ -531,6 +531,16 @@
 - Unity (URP; Universal Render Pipeline) 사용 권장
 
 절대강좌 유니티 책 공부
+- p121 유니티의 주요 이벤트 함수
+- p123 이벤트 함수의 호출 순서
+- p124 키보드 입력값 받아들이기
+  - p124 InputManager
+  - p125 GetAxis()
+  - p130 GetAxisRaw()
+- p130 캐릭터의 이동
+  - p132 Vector3 구조체
+  - p133 정규화 벡터
+  - p135 
 - 물리 엔진
 - p202 RigidBody 컴포넌트
 - p206 물리 엔진 속성 설정 - Physics Manager
@@ -545,7 +555,7 @@
 - p231 총알 발사 궤적 효과 만들기 - Trail Renderer
 - p239 파티클 활용하기
 - p 쿼터니언
-- p 코루틴 함수
+- p292 코루틴 함수
 - p 오디오
 - p307 유한 상태 머신(FSM; Finite State Machine)
 - p318 Animator 컴포넌트
