@@ -554,9 +554,17 @@
 - p225 기즈모의 활용
 - p231 총알 발사 궤적 효과 만들기 - Trail Renderer
 - p239 파티클 활용하기
-- p 쿼터니언
+  - p243 충돌 지점과 법선 벡터
+  - p245 쿼터니언
+  - p247 GetContact, GetContacts함수의 주의사항
+- p252 Scale Factor
+- p261 텍스처 변경하기 - Mesh Renderer
+- p264 UnityEngine.Random과 System.Random의 혼란
+- p273 오디오
 - p292 코루틴 함수
-- p 오디오
+  - p303 코루틴의 응용 - 임계치
+- p296 블링크 효과
+- p299 텍스처 오프셋 변경
 - p307 유한 상태 머신(FSM; Finite State Machine)
 - p318 Animator 컴포넌트
 - p332 NavMeshAgent 컴포넌트
