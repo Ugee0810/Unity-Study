@@ -527,7 +527,65 @@
 ***
 
 
-### 22-07-()
+### 22-08-01(Mon)
+- Unity (URP; Universal Render Pipeline) 사용 권장
+
+절대강좌 유니티 책 공부
+- 물리 엔진
+- p202 RigidBody 컴포넌트
+- p206 물리 엔진 속성 설정 - Physics Manager
+- p208 Collider 컴포넌트
+- p212 충돌 감지 조건
+- p215 충돌 이벤트
+- p216 Tag 활용
+- p219 OnCollisionEnter 콜백 함수
+- p221 CompareTag 함수
+- p222 총알 발사 로직
+- p225 기즈모의 활용
+- p231 총알 발사 궤적 효과 만들기 - Trail Renderer
+- p239 파티클 활용하기
+- p 쿼터니언
+- p 코루틴 함수
+- p 오디오
+- p307 유한 상태 머신(FSM; Finite State Machine)
+- p318 Animator 컴포넌트
+- p332 NavMeshAgent 컴포넌트
+- p336 Find ~ 계열의 함수 주의사항
+- p367 Resources 폴더
+- p380 특정 레이어 간의 충돌 금지
+- p395 대리자 이벤트 구동
+  - 함수를 변수로 사용
+- p401 이벤트 연결과 해제
+- p419 Canvas 컴포넌트
+- p458 스크립트에서 버튼 이벤트 처리하기
+  - p460 람다식
+- p463 TextMesh Pro
+  - p467 TextMesh Pro의 한글 처리
+  - p533 TMPro using 선언
+- p474 생명 게이지 구현
+- p503 싱글톤 디자인 패턴
+- p507 오브젝트 풀링 디자인 패턴
+- p528 스코어 UI 구현
+  - p537 playerPrefs를 활용한 스코어 저장
+  - p539 playerPrefs의 보안성의 주의 => API 등 활용으로 앱 내 파일 수치와 검사해서 보안 강화 가능
+- p541 레이캐스트
+  - p541 DrawRay
+  - p543 Raycast Hit
+- p552 동적 장애물, NavMeshObstacle 컴포넌트
+- p556 Off Mesh Link Generation
+- p568 전역 조명과 조명 모드
+  - p569 Mixed 모드
+  - p570 Baked 모드
+- p570 라이트매핑
+  - Generate Lightmap UVs 옵션(항상 체크)
+  - p578 Baked 라이트매핑
+  - p584 Area Light(에셋 : [Magic Light Probes: Promo]())
+- p585 라이트 프로브
+- p604 오클루전 컬링(최적화 작업, 특히 좁은 시야, 1인칭에 필수적)
+  - p605 컬링 방식
+    - p605 프러스텀 컬링
+  - p608 오클루전 컬링 실습
+- p664 URP; Universal Render Pipeline
 ***
 
 
