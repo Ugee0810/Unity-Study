@@ -625,6 +625,21 @@
       - ![image](https://user-images.githubusercontent.com/85896566/182281687-85dd36b9-5ca2-44c4-92c2-599ed3aeb297.png)
       - ![image](https://user-images.githubusercontent.com/85896566/182281951-b0896000-51f3-4c33-87ca-1a7c91494fb8.png)
       - ![image](https://user-images.githubusercontent.com/85896566/182282006-b44bbfc9-ec83-4a11-9564-cd8e68374fc7.png)
+    - Move
+      - 이동을 관장하는 오브젝트(씬 어디에든 배치 가능)
+        - ![image](https://user-images.githubusercontent.com/85896566/182286147-a635206d-16b0-48e0-b3c6-9c505c9808d1.png)
+      - 에어리어
+        - ![image](https://user-images.githubusercontent.com/85896566/182286497-624aa2a9-9878-480b-bc3f-a4bdb38ce44d.png)
+      - 앵커
+        - ![image](https://user-images.githubusercontent.com/85896566/182286561-db376206-0481-409c-af58-db378e427ed3.png)
+     - XR-UI
+       - ![image](https://user-images.githubusercontent.com/85896566/182287475-a7062378-8ebd-427e-b4c5-5f2e81d4a384.png)
+       - 버튼은 일반 UI에서
+         - ![image](https://user-images.githubusercontent.com/85896566/182287676-4f5e7380-37fd-4004-94df-3c7fa2b3e41f.png)
+     - Socket Interactor
+       - 
+
+
 ***
 
 
