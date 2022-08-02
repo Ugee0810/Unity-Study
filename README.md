@@ -614,6 +614,17 @@
     - ![image](https://user-images.githubusercontent.com/85896566/182275254-2fb0f878-1251-41a2-ac33-fc246e9685f8.png)
     - ![image](https://user-images.githubusercontent.com/85896566/182275432-8fff8f4a-d935-4f5f-bf6a-6185f01d9209.png)
     - ![image](https://user-images.githubusercontent.com/85896566/182277278-2682270a-c19a-4235-83db-7c20ac969159.png)
+    - ![image](https://user-images.githubusercontent.com/85896566/182280860-531f8c90-f0bb-4e71-932a-350c17ac5e23.png)
+    - ![image](https://user-images.githubusercontent.com/85896566/182281081-c7f086e6-1a5c-489a-b28d-130a55d1b91d.png)
+    - ![image](https://user-images.githubusercontent.com/85896566/182281507-786105c1-1103-4f50-8f62-70c3d6bcf8b5.png)
+    - 물건 잡기
+      - ![image](https://user-images.githubusercontent.com/85896566/182281632-8679297c-bc81-438d-b561-927aa4fa5bcd.png)
+      - 콘트롤러에서 스냅할 레이어 마스크 설정
+        - ![image](https://user-images.githubusercontent.com/85896566/182283889-fdbde663-ccb2-4eb8-9c13-52fa73b88008.png)
+    - 스냅 가능한 오브젝트엔 스크립트, 강체, 콜라이더가 필수
+      - ![image](https://user-images.githubusercontent.com/85896566/182281687-85dd36b9-5ca2-44c4-92c2-599ed3aeb297.png)
+      - ![image](https://user-images.githubusercontent.com/85896566/182281951-b0896000-51f3-4c33-87ca-1a7c91494fb8.png)
+      - ![image](https://user-images.githubusercontent.com/85896566/182282006-b44bbfc9-ec83-4a11-9564-cd8e68374fc7.png)
 ***
 
 
