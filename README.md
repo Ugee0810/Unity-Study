@@ -614,6 +614,32 @@
     - ![image](https://user-images.githubusercontent.com/85896566/182275254-2fb0f878-1251-41a2-ac33-fc246e9685f8.png)
     - ![image](https://user-images.githubusercontent.com/85896566/182275432-8fff8f4a-d935-4f5f-bf6a-6185f01d9209.png)
     - ![image](https://user-images.githubusercontent.com/85896566/182277278-2682270a-c19a-4235-83db-7c20ac969159.png)
+    - ![image](https://user-images.githubusercontent.com/85896566/182280860-531f8c90-f0bb-4e71-932a-350c17ac5e23.png)
+    - ![image](https://user-images.githubusercontent.com/85896566/182281081-c7f086e6-1a5c-489a-b28d-130a55d1b91d.png)
+    - ![image](https://user-images.githubusercontent.com/85896566/182281507-786105c1-1103-4f50-8f62-70c3d6bcf8b5.png)
+    - 물건 잡기
+      - ![image](https://user-images.githubusercontent.com/85896566/182281632-8679297c-bc81-438d-b561-927aa4fa5bcd.png)
+      - 콘트롤러에서 스냅할 레이어 마스크 설정
+        - ![image](https://user-images.githubusercontent.com/85896566/182283889-fdbde663-ccb2-4eb8-9c13-52fa73b88008.png)
+    - 스냅 가능한 오브젝트엔 스크립트, 강체, 콜라이더가 필수
+      - ![image](https://user-images.githubusercontent.com/85896566/182281687-85dd36b9-5ca2-44c4-92c2-599ed3aeb297.png)
+      - ![image](https://user-images.githubusercontent.com/85896566/182281951-b0896000-51f3-4c33-87ca-1a7c91494fb8.png)
+      - ![image](https://user-images.githubusercontent.com/85896566/182282006-b44bbfc9-ec83-4a11-9564-cd8e68374fc7.png)
+    - Move
+      - 이동을 관장하는 오브젝트(씬 어디에든 배치 가능)
+        - ![image](https://user-images.githubusercontent.com/85896566/182286147-a635206d-16b0-48e0-b3c6-9c505c9808d1.png)
+      - 에어리어
+        - ![image](https://user-images.githubusercontent.com/85896566/182286497-624aa2a9-9878-480b-bc3f-a4bdb38ce44d.png)
+      - 앵커
+        - ![image](https://user-images.githubusercontent.com/85896566/182286561-db376206-0481-409c-af58-db378e427ed3.png)
+     - XR-UI
+       - ![image](https://user-images.githubusercontent.com/85896566/182287475-a7062378-8ebd-427e-b4c5-5f2e81d4a384.png)
+       - 버튼은 일반 UI에서
+         - ![image](https://user-images.githubusercontent.com/85896566/182287676-4f5e7380-37fd-4004-94df-3c7fa2b3e41f.png)
+     - Socket Interactor
+       - 
+
+
 ***
 
 
