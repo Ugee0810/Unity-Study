@@ -607,17 +607,23 @@
 ***
 
 
-### 22-07-()
+### 22-08-02(화)
+- XR Interaction toolkit
+  - 초기 세팅
+    - ![image](https://user-images.githubusercontent.com/85896566/182276900-4100a8b8-89b2-4912-873e-151494baa970.png)
+    - ![image](https://user-images.githubusercontent.com/85896566/182275254-2fb0f878-1251-41a2-ac33-fc246e9685f8.png)
+    - ![image](https://user-images.githubusercontent.com/85896566/182275432-8fff8f4a-d935-4f5f-bf6a-6185f01d9209.png)
+    - ![image](https://user-images.githubusercontent.com/85896566/182277278-2682270a-c19a-4235-83db-7c20ac969159.png)
 ***
 
 
-### 22-07-()
+### 22-08-()
 ***
 
 
-### 22-07-()
+### 22-08-()
 ***
 
 
-### 22-07-()
+### 22-08-()
 ***
