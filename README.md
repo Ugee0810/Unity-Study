@@ -640,7 +640,7 @@
 ***
 
 
-### 22-08-()
+### 22-08-03(수)
 - VR 슈팅게임 제작
   - 레이어 설정
     - ![image](https://user-images.githubusercontent.com/85896566/182501377-2f8ba707-8676-4bf5-94e6-2efdf8bf20ee.png)
