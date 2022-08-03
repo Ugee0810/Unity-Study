@@ -640,7 +640,7 @@
 ***
 
 
-### 22-08-()
+### 22-08-03(수)
 - VR 슈팅게임 제작
   - 레이어 설정
     - ![image](https://user-images.githubusercontent.com/85896566/182501377-2f8ba707-8676-4bf5-94e6-2efdf8bf20ee.png)
@@ -650,10 +650,11 @@
   - 환경 세팅
     - 카메라 위치 동기화
       - ![image](https://user-images.githubusercontent.com/85896566/182502171-7896b972-154f-4298-bbcb-b8504fde2e14.png)
-    - 전체적인 분위기 조절
+    - 전체적인 분위기 조절(개인 설정)
       - ![image](https://user-images.githubusercontent.com/85896566/182502492-ae246091-f0c8-42fb-aaa1-d63e3d5f0c27.png)
       - ![image](https://user-images.githubusercontent.com/85896566/182502510-933bf252-73df-4268-8c69-53daaa8f75bb.png)
-
+- ★유니티 이벤트 시스템
+  - 스크립팅 분리, 리팩토링
 
 ***
 
