@@ -14,7 +14,7 @@ public class ChangeAgentDestination : MonoBehaviour
         target = GetComponent<NavMeshAgent>();
     }
 
-    void Call()
+    public void Call()
     {
         target.SetDestination(destination);
     }

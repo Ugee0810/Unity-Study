@@ -12,11 +12,10 @@ public class RandomColor : MonoBehaviour
     public float valueMin = 0.7f;
     public float valueMax = 1f;
 
-    public UnityEvent<Color> onCreated;  // 인자 값을 받아 처리 가능함.
+    public UnityEvent<Color> OnCreated;  // 인자 값을 받아 처리 가능함.
 
     public void Call()
     {
-        // environmentParticle
         var color = Random.ColorHSV(hueMin,
                                     hueMax,
                                     saturationMin,
@@ -24,6 +23,6 @@ public class RandomColor : MonoBehaviour
                                     valueMin,
                                     valueMax);
 
-        onCreated.Invoke(color);
+        OnCreated.Invoke(color);
     }
 }
