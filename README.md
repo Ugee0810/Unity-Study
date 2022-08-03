@@ -637,13 +637,24 @@
        - 버튼은 일반 UI에서
          - ![image](https://user-images.githubusercontent.com/85896566/182287676-4f5e7380-37fd-4004-94df-3c7fa2b3e41f.png)
      - Socket Interactor
-       - 
-
-
 ***
 
 
 ### 22-08-()
+- VR 슈팅게임 제작
+  - 레이어 설정
+    - ![image](https://user-images.githubusercontent.com/85896566/182501377-2f8ba707-8676-4bf5-94e6-2efdf8bf20ee.png)
+    - ![image](https://user-images.githubusercontent.com/85896566/182501588-dcf01d5f-f48d-4e1c-b77b-28c1facb9fdd.png)
+  - Physics 세팅
+    - ![image](https://user-images.githubusercontent.com/85896566/182501798-e18968a8-0d19-4afe-9245-5b5ad3d06a3f.png)
+  - 환경 세팅
+    - 카메라 위치 동기화
+      - ![image](https://user-images.githubusercontent.com/85896566/182502171-7896b972-154f-4298-bbcb-b8504fde2e14.png)
+    - 전체적인 분위기 조절
+      - ![image](https://user-images.githubusercontent.com/85896566/182502492-ae246091-f0c8-42fb-aaa1-d63e3d5f0c27.png)
+      - ![image](https://user-images.githubusercontent.com/85896566/182502510-933bf252-73df-4268-8c69-53daaa8f75bb.png)
+
+
 ***
 
 
