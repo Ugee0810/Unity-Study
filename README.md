@@ -654,7 +654,7 @@
       - ![image](https://user-images.githubusercontent.com/85896566/182502492-ae246091-f0c8-42fb-aaa1-d63e3d5f0c27.png)
       - ![image](https://user-images.githubusercontent.com/85896566/182502510-933bf252-73df-4268-8c69-53daaa8f75bb.png)
 - ★유니티 이벤트 시스템
-  - 스크립팅 분리, 리팩토링
+  - 스크립팅 분리, 리팩토링, 옵저버 디자인 패턴
 
 ***
 
