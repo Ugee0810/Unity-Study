@@ -655,11 +655,21 @@
       - ![image](https://user-images.githubusercontent.com/85896566/182502510-933bf252-73df-4268-8c69-53daaa8f75bb.png)
 - ★유니티 이벤트 시스템
   - 스크립팅 분리, 리팩토링, 옵저버 디자인 패턴
-
 ***
 
 
-### 22-08-()
+### 22-08-04(목)
+- VR 슈팅게임 제작
+  - 잡기 방식 변경(누르고 있을 때만(State)/유지(Sticky)
+    - ![image](https://user-images.githubusercontent.com/85896566/182741013-a7edd651-b7fb-4c0c-951a-88ba9b25f112.png)
+  - 선택했을 때 컨트롤러는 숨김  
+    - ![image](https://user-images.githubusercontent.com/85896566/182741246-1fffdda2-818e-4c50-bde9-9bc3e85b431a.png)
+  - 시작할 때 들고 있기
+    - ![image](https://user-images.githubusercontent.com/85896566/182741407-da55b35e-f38c-4760-b971-5ebdf3431ed9.png)
+  - 특정 오브젝트를 위한 광선 제작 하기
+    - 라인 렌더러 컴포넌트 좌표계를 부모에게 상속 받는 법(체크 해제)
+      - ![image](https://user-images.githubusercontent.com/85896566/182743115-429d0904-41a3-44f1-9f27-2b6462a12f88.png)
+
 ***
 
 
