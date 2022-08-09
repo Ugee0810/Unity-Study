@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerCtrl : MonoBehaviour
 {
     [Header("캐릭터 기본")]
-    public float moveSpeed = 10;
+    public float moveSpeed = 10f;
+    public float turnSpeed = 80f;
 
     // 컴포넌트의 캐시 처리(미리 변수에 담아 두고 해당 변수에 접근하는 방식이 미세하지만 빠름)
     private Transform tr;
@@ -20,7 +21,10 @@ public class PlayerCtrl : MonoBehaviour
     {
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
+        float r = Input.GetAxis("Mouse X");
 
-        tr.Translate(Vector3.forward * v * moveSpeed * Time.deltaTime);
+        Vector3 moveDir = (Vector3.forward * v) + (Vector3.right * h);
+        tr.Translate(moveDir.normalized * moveSpeed * Time.deltaTime);
+        tr.Rotate(Vector3.up * r * turnSpeed * Time.deltaTime);
     }
 }
