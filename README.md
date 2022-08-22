@@ -727,6 +727,16 @@
   - 오브젝트 풀링
   - 옵저버 패턴
   - 유니티 이벤트 함수
+  
+
+- 오전
+  - [오일러각(transform.eulerangles)을 사용하여 오브젝트 transform rotation값을 읽거나 수정할때 주의할점](https://learnandcreate.tistory.com/10)
+  - Vizualization Objects - FrequencyRing(AudioFrequencyRing.sc) : 생성한 프리팹 위치 수정
+  - Vizualization Objects - Ring : 생성될 때 멈추던 에러 
+  - ![image](https://user-images.githubusercontent.com/85896566/185834671-62dd9baa-71b6-4360-8624-d31fcc7dfeac.png)
+
+- 오후
+
 ***
 
 
