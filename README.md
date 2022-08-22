@@ -739,7 +739,9 @@
   - ![image](https://user-images.githubusercontent.com/85896566/185834671-62dd9baa-71b6-4360-8624-d31fcc7dfeac.png)
 
 - 오후
-
+  - 모션 모델링 적용
+    - ![image](https://user-images.githubusercontent.com/85896566/185851084-f326e318-094d-47f7-a4a6-8138c6f0a6c0.png)
+  - 지난 주 개발 내용, 이번 주 내용 조원과 진행상황 공유
 ***
 
 
