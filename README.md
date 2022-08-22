@@ -742,6 +742,10 @@
   - 모션 모델링 적용
     - ![image](https://user-images.githubusercontent.com/85896566/185851084-f326e318-094d-47f7-a4a6-8138c6f0a6c0.png)
   - 지난 주 개발 내용, 이번 주 내용 조원과 진행상황 공유
+  - 외부 디렉토리 연결(NAudio, WWW Class)
+  - [Unity UGUI 스크롤뷰(ScrollView) 사용법 간단 정리](https://blog.naver.com/PostView.nhn?blogId=eastfever5&logNo=222095602409)
+  - error : 버튼 크기
+    - ![image](https://user-images.githubusercontent.com/85896566/185877640-2a1f6979-ab2e-44c1-b675-50aa86a1eadb.png)
 ***
 
 
