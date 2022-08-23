@@ -779,8 +779,15 @@
 ***
 
 
-### 22-08-()
+### 22-08-23(화)
+오늘 할 일(프로젝트)
+- UI 스크롤뷰
+  - [Unity UGUI 스크롤뷰(ScrollView) 사용법 간단 정리](https://blog.naver.com/PostView.nhn?blogId=eastfever5&logNo=222095602409)
+- 외부 디렉토리 연결
+- 
 ***
+
+
 ### 22-08-()
 ***
 ### 22-08-()
