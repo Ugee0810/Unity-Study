@@ -783,6 +783,9 @@
 오늘 할 일(프로젝트)
 - UI 스크롤뷰
   - [Unity UGUI 스크롤뷰(ScrollView) 사용법 간단 정리](https://blog.naver.com/PostView.nhn?blogId=eastfever5&logNo=222095602409)
+  - ![image](https://user-images.githubusercontent.com/85896566/186048938-7679ebe9-b52e-4ad5-a59b-f1290fdc6c51.png)
+  - ![image](https://user-images.githubusercontent.com/85896566/186048953-c0e3b205-3d91-49fd-b479-0d42ce587d02.png)
+
 - 외부 디렉토리 연결
 - 
 ***
