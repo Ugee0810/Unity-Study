@@ -787,7 +787,7 @@
   - ![image](https://user-images.githubusercontent.com/85896566/186048953-c0e3b205-3d91-49fd-b479-0d42ce587d02.png)
 
 - 외부 디렉토리 연결
-- 
+  - 
 ***
 
 
